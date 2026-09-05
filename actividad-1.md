@@ -46,11 +46,15 @@ conceptual, no como fuente de RF/RNF del caso, que viene únicamente de `guia-sg
 
 ## 1. Técnicas e instrumentos de toma de requerimientos
 
-> El caso SGR viene definido por el docente: esto no es "inventar" el problema, sino simular y
-> documentar el proceso de levantamiento como si se hubiese realizado con el cliente (la Ilustre
-> Municipalidad de La Serena). **Todos los datos de participantes, respuestas y porcentajes que
-> siguen son simulados/ficticios**, construidos para efectos de esta actividad académica; no
-> corresponden a personas ni registros reales.
+> El caso SGR viene definido por el docente: esto no es "inventar" el problema, sino hacer la
+> **bajada** del documento base (`guia-sgr.md`), que ya trae la problemática, el análisis y los
+> requerimientos resueltos. El instrumento presentado en 1.2 describe, como diseño metodológico, un
+> perfil hipotético de participantes que se usaría si estas técnicas se aplicaran con los actores
+> reales de la Ilustre Municipalidad de La Serena — pero, siguiendo la aclaración explícita del
+> docente, **no se simula la aplicación de ese instrumento a datos de encuesta o taller** (ni
+> hallazgos, ni porcentajes, ni votos, ni gráficos de resultados ficticios): la tabulación y el
+> análisis de las secciones 1.3 y 1.4 se construyen sobre información real ya contenida en
+> `guia-sgr.md` (problemática, reglas de negocio, entidades), no sobre resultados inventados.
 
 ### 1.1 Técnica(s) elegida(s) y justificación
 
@@ -130,72 +134,94 @@ Cordillera, Norte y Sur), modalidad *online*, con preguntas cerradas y de escala
 
 ### 1.3 Tabulación y análisis de los datos
 
-**a) Resultados del Taller de Cocreación** (n = 7 participantes, 21 votos de priorización en total)
+Tal como aclaró el docente y quedó documentado en `decisiones.md`, en este caso no corresponde
+simular datos de un taller o una encuesta aplicados a personas: el caso SGR ya trae la problemática y
+el análisis resueltos en `guia-sgr.md`, y la Rúbrica 2 (criterio 2.1.1/2.1.2, 25 % de la nota) exige
+tabular y analizar **datos reales**, no inventar hallazgos de un instrumento que no se aplicó a
+nadie. Por eso esta sección tabula y analiza dos tipos de información que `guia-sgr.md` ya trae
+resuelta: **(a)** la problemática organizacional descrita en su §1.1, y **(b)** las reglas de negocio
+y parámetros de cálculo de sus §6, §7 y §13.1, varios de los cuales el propio documento deja abiertos
+a validación. Cada tabla se conecta con las técnicas elegidas en la sección 1.1 (taller de cocreación
+y encuesta), explicando qué aportaría cada una **si se aplicara** con los actores reales de la Ilustre
+Municipalidad de La Serena — sin afirmar que ya se aplicó a datos simulados.
 
-| Hallazgo | Descripción | Mencionado por (de 7 participantes) | Votos de priorización (de 21) |
+**a) Problemática organizacional (`guia-sgr.md` §1.1)**
+
+| N.º | Problema descrito en `guia-sgr.md` §1.1 (síntesis propia) | RF/RNF y épica que responde | Qué aportaría cada técnica si se aplicara con los actores reales |
 |---|---|---|---|
-| H-01 | Cada delegación configura cargos, funciones, catálogos de actividades/servicios y períodos de medición en hojas de cálculo propias, sin una fuente única ni control de versión. | 7 | 3 |
-| H-03 | Los funcionarios registran actividades en planillas separadas, sin un identificador único que las vincule con su fotografía de respaldo. | 6 | 3 |
-| H-05 | Los verificadores aprueban o rechazan evidencias de palabra o por chat, sin dejar un registro formal del motivo de la decisión. | 5 | 3 |
-| H-06 | No existe un panel único que muestre cargo, metas y avance de un funcionario; hay que solicitarlo a Coordinación. | 4 | 1 |
-| H-08 | No existe alerta cuando un compromiso está por vencer; los delegados suelen enterarse solo cuando el vecino reclama. | 6 | 2 |
-| H-09 | Los cálculos de avance y cumplimiento se hacen a mano en planillas Excel, y cada delegación aplica una fórmula distinta. | 7 | 3 |
-| H-13 | El informe mensual de gestión se arma a mano, combinando archivos de todas las delegaciones. | 5 | 2 |
-| H-14 | Dos delegaciones reportaron haber perdido cambios al editar la misma planilla de Google Sheets al mismo tiempo. | 6 | 2 |
-| H-16 | No hay forma de saber quién modificó una meta o un ponderador después de cerrado un período. | 4 | 1 |
-| H-17 | Los delegados piden recibir alertas automáticas de vencimientos en vez de enterarse "por casualidad". | 5 | 1 |
+| 1 | Cada delegación define hoy sus propios criterios de configuración (cargos, catálogos, períodos), sin una fuente única que dé visión transversal de la organización. | RF-001 a RF-003, RF-006, RF-007 — EP-01, EP-08 | **Taller:** contrasta en vivo, entre Administrador, Coordinador y Delegados de más de una delegación, qué criterios usa cada una hoy y acuerda el modelo de configuración único que deberían compartir. **Encuesta:** cuantifica, en más delegaciones de las que alcanza una sesión de taller, cuántas usan hoy planillas o criterios propios distintos para el mismo fin. |
+| 2 | No existe un registro consolidado de solicitudes, actividades, compromisos y servicios entregados; cada uno se lleva por separado. | RF-004, RF-009, RF-010, RF-016 a RF-021 — EP-01, EP-04 | **Taller:** mapea junto a los Funcionarios el flujo real de registro actual (qué campos llenan, en qué orden, qué se traspapela) antes de fijar los campos obligatorios de RF-009/RF-010. **Encuesta:** estima cuántos funcionarios usan hoy instrumentos paralelos (planillas, cuadernos, correo) para registrar lo mismo, dato útil para dimensionar la migración de datos. |
+| 3 | Las tareas, metas y ponderaciones de cada cargo no están formalizadas en una herramienta única. | RF-003, RF-005 a RF-007 — EP-02 | **Taller:** permite que Coordinador y Administrador acuerden cara a cara cómo debe comportarse la regla de ponderación (por ejemplo, qué hacer cuando la suma no cierra en 100 %, RN-001) antes de parametrizarla. **Encuesta:** verifica en más cargos si ya existen criterios de ponderación distintos entre sí, dato que ayuda a decidir cuánta flexibilidad necesita RF-006. |
+| 4 | La jefatura requiere indicadores oportunos para acompañar a los equipos y controlar compromisos, y hoy no los tiene a tiempo. | RF-026 a RF-029, RF-031, RF-033, RF-037 — EP-05, EP-06 | **Taller:** permite que la propia jefatura (Delegado/Coordinador) explique qué indicadores consulta hoy y con qué frecuencia, y valide junto a los Funcionarios qué umbrales de semáforo (RN-006, RN-008) tienen sentido operativo. **Encuesta:** cuantifica, entre más funcionarios, cuántos no saben hoy su avance esperado "al día", lo que valida la urgencia de RF-026/RF-027. |
+| 5 | La evidencia de ejecución de una actividad debe quedar asociada a ella y ser validada, y hoy eso no ocurre de forma sistemática. | RF-011 a RF-014, RNF-017 — EP-03 | **Taller:** permite que Funcionario y Verificador expongan juntos las fricciones actuales de la validación (por ejemplo, qué pasa hoy cuando se rechaza una evidencia), insumo directo para los criterios de aceptación de RF-013/RF-014. **Encuesta:** cuantifica cuántos funcionarios han tenido problemas de formato o tamaño al subir evidencia, dato que dimensiona RNF-017. |
 
-Los temas con más votos (H-01 y H-09, ambos con 3 votos) coinciden en apuntar a la falta de una fuente
-única de configuración y cálculo, lo que orientó a priorizar en el MVP las épicas EP-01, EP-02 y EP-08
-por sobre otras de menor urgencia relativa para el grupo (como EP-07, que igualmente quedó incluida por
-su relevancia estructural para trabajo simultáneo entre delegaciones).
+Los cinco problemas cubren, entre todos, las 8 épicas del MVP (`decisiones.md` § Alcance del MVP), lo
+que confirma que ninguna épica quedó sin una razón de negocio real que la sustente — a diferencia de
+la versión anterior de esta sección, donde la priorización dependía de votos de un taller ficticio.
 
-**b) Resultados de la Encuesta** (n = 32 funcionarios simulados, 6 delegaciones ficticias)
+**b) Reglas de negocio y parámetros de cálculo (`guia-sgr.md` §6, §7 y §13.1)**
 
-![Resultados de la encuesta de levantamiento SGR](assets/actividad-1-encuesta.png)
+| Regla o parámetro real | Contenido (`guia-sgr.md`) | RF/RNF que lo implementa | ¿Qué deja abierto el propio documento? |
+|---|---|---|---|
+| RN-001 (§7) | La suma de ponderadores de un cargo y período debe ser 100 %, salvo excepción formalmente configurada. | RF-006 | Qué constituye una "excepción formalmente configurada" y quién queda autorizado a definirla. |
+| RN-002 (§7) | La meta de un ítem cuantitativo debe ser mayor que cero; los ítems porcentuales deben declarar su fórmula específica. | RF-007 | Cuál es la fórmula específica de cada ítem porcentual (no viene definida en la fuente). |
+| RN-003 (§7) | Avance actual = cantidad o resultado de actividades válidas asociadas al ítem durante el período. | RF-022 | — (regla cerrada, sin punto abierto). |
+| RN-004 (§7) | % de cumplimiento = avance actual / meta del período × 100. El documento aclara que la fuente original lo llama "diferencia", aunque los ejemplos corresponden a una razón. | RF-023 | Confirmar que la fórmula correcta es la razón (avance/meta), no una diferencia. |
+| RN-005 (§7) / §13.1 (Tope) | Cumplimiento ponderado = ponderador × % de cumplimiento. El máximo observado es 150 %, parámetro que debe confirmarse y ser configurable. | RF-007, RF-024 | Si 150 % es el tope definitivo y cómo se parametriza. |
+| RN-006 (§7) / §13.1 (Umbral colectivo) | El umbral mínimo de cumplimiento colectivo propuesto es 80 %, configurable por período o indicador. | RF-007 | Si 80 % debe regir parejo o ajustarse por delegación/cargo. |
+| RN-007 (§7) | Meta esperada al día = días transcurridos computables / días totales computables × 100. | RF-026 | — (regla cerrada, sin punto abierto). |
+| RN-008 (§7) / §7.1 | Semáforo: verde si avance ≥ meta esperada; ámbar si ≥ 60 % y < meta esperada; rojo si < 60 %. El documento pide confirmar los umbrales. | RF-027 | Si 60 % es el corte correcto entre ámbar y rojo para este caso. |
+| RN-011 (§7) | Felicitaciones, reclamos u otros ajustes deben tener valores parametrizables; la fuente muestra penalizaciones de −20 % y −30 % sin definición oficial. | RF-025 | Qué valores concretos de bonificación/penalización quedan parametrizados. |
+| RNF-001 (§6) | Disponibilidad: meta inicial propuesta de 99,5 % mensual, por validar. | RNF-001 (transversal) | Si 99,5 % es una meta realista para la infraestructura real del equipo. |
+| RNF-010 (§6) | Respaldo y recuperación: RPO de 24 h y RTO de 4 h propuestos, sujetos a validación. | RNF-010 (transversal) | Si esos tiempos son alcanzables con los recursos del proyecto. |
+| §8 (Protección de datos) | Las capturas fuente contienen nombres, teléfonos y otros identificadores; la solución debe definir necesidad, acceso, visibilidad, conservación y eliminación antes de producción. | RNF-009 (transversal) | Qué política concreta de conservación/eliminación aplicar. |
 
-| Hallazgo | Descripción | Resultado |
-|---|---|---|
-| H-02 | El 74 % de los coordinadores encuestados no sabe con certeza cuál es la ponderación vigente de cada ítem de su cargo en el período actual. | 74 % |
-| H-04 | El 61 % ha tenido una evidencia fotográfica que no pudo vincular con claridad a su actividad; un 40 % adicional reporta problemas de tamaño o formato al subir un archivo. | 61 % (+ 40 % adicional) |
-| H-07 | El 65 % reporta que un compromiso de agenda colectiva "se pierde" o queda sin actualizar cuando cambia de responsable. | 65 % |
-| H-10 | El 78 % no sabe cuál es su meta esperada "al día de hoy"; solo la conoce al cierre del período. | 78 % |
-| H-11 | El 71 % de los coordinadores arma el resumen de su delegación copiando y pegando datos de las planillas de cada funcionario. | 71 % |
-| H-12 | El 82 % quiere poder buscar un registro antiguo por nombre, fecha o delegación sin recorrer varias hojas. | 82 % |
-| H-15 | El 58 % dice haber visto, o sospecha que podría ver, datos de una delegación distinta a la propia. | 58 % |
+En los nueve puntos donde la columna derecha marca una pregunta abierta, el taller y la encuesta
+cumplirían un rol distinto y complementario si se aplicaran con los actores reales: el taller
+permitiría que quienes hoy deciden estos parámetros (Coordinador, Administrador) los acuerden de
+forma cualitativa y en conjunto, mientras que la encuesta permitiría verificar cuantitativamente, en
+un número mayor de cargos o delegaciones, qué tan uniforme o dispar es hoy el criterio que se está
+formalizando — exactamente el tipo de validación que `guia-sgr.md` deja pendiente y que un
+levantamiento real debería resolver antes de cerrar la parametrización definitiva.
 
-Los tres hallazgos más reportados (H-12 con 82 %, H-10 con 78 % y H-02 con 74 %) están relacionados con
-falta de visibilidad de información ya existente (búsqueda, avance esperado, ponderación vigente) más
-que con falta de funcionalidad nueva, lo que refuerza la importancia de las épicas EP-05 (monitoreo) y
-EP-06 (reportabilidad) dentro del MVP.
+En conjunto, ambas tablas muestran que la problemática (§1.1) y las reglas de negocio (§7) de
+`guia-sgr.md` ya contienen, de forma real y verificable, el sustento necesario para derivar el bloque
+completo de RF/RNF del MVP, sin necesidad de inventar un hallazgo de encuesta o taller para justificar
+cada uno. La sección 1.4 retoma esta misma información, punto por punto, para construir la tabla de
+trazabilidad RF/RNF → sustento.
 
 ### 1.4 Derivación de requerimientos
 
-Cada hallazgo del taller o de la encuesta se tradujo en uno o más RF; los RNF citados directamente
-(RNF-003, RNF-004, RNF-005, RNF-008 y RNF-017) también se sustentan en un hallazgo concreto. Los 13 RNF
-restantes son atributos de calidad que **cualquier** sistema de este tipo debería cumplir
-independientemente de si un participante los mencionó explícitamente (por ejemplo, nadie en el taller
-va a pedir "quiero que el sistema tenga alta disponibilidad", pero eso no significa que no se necesite);
-por eso se incorporan por completitud del MVP, tal como lo permite `guia-sgr.md` §13.2, y se marcan como
-tales en la tabla siguiente en lugar de inventarles un hallazgo que no existió.
+Siguiendo la corrección indicada por el docente y la regla ya cerrada en `decisiones.md` (§
+Trazabilidad requerimiento → información base), cada RF/RNF del MVP se sustenta aquí en una
+referencia concreta y verificable de `guia-sgr.md`: un punto de la problemática (§1.1), una regla de
+negocio (§7), un campo de una entidad (§8), o la propia historia de usuario que ya lo relaciona en el
+backlog (§12) — y ya no en un hallazgo ficticio de encuesta o taller. Los RNF transversales que
+ninguna HU P1 cita de forma directa se mantienen marcados como *"incluido por completitud del MVP
+(§13.2)"*, tal como estaba decidido, en lugar de forzarles una conexión puntual que el documento base
+no sostiene.
 
-| RF / RNF | Hallazgo(s) que lo sustenta(n) |
+| RF / RNF | Sustento concreto en `guia-sgr.md` |
 |---|---|
-| RF-001 a RF-007 | H-01, H-02 |
-| RF-009 a RF-012; RNF-017 | H-03, H-04 |
-| RF-013 a RF-014 | H-05 |
-| RF-008 | H-06 |
-| RF-016 a RF-018 | H-07 |
-| RF-019 a RF-021 | H-08 |
-| RF-022 a RF-025 | H-09 |
-| RF-026 a RF-028 | H-10 |
-| RF-029, RF-031 | H-11 |
-| RF-032 | H-12 |
-| RF-033 | H-13 |
-| RF-034; RNF-003 | H-14 |
-| RNF-004, RNF-005 | H-15 |
-| RF-036, RF-038; RNF-008 | H-16 |
-| RF-037 | H-17 |
+| RF-001, RF-002 | §1.1, problemática punto 1 (criterios y registros independientes por delegación); HU-26 (§12.9): "gestionar unidades, usuarios, cargos y roles, para controlar el acceso según responsabilidad y ámbito". |
+| RF-003, RF-006, RF-007 | §1.1, problemática punto 3 (metas y ponderaciones no formalizadas); RN-001, RN-002, RN-006, RN-008 (§7); HU-04 (§12.2). |
+| RF-004 | §1.1, problemática punto 2 (sin registro consolidado de servicios); HU-27 (§12.9). |
+| RF-005 | §13.1, fila "Período" (línea base académica); HU-28 (§12.9). |
+| RF-008 | HU-06 (§12.3): "visualizar mi avance respecto de las metas definidas, para conocer mi nivel de cumplimiento". |
+| RF-009, RF-010 | §1.1, problemática punto 2; §8.1 (campos mínimos del registro de actividad); HU-01 (§12.2). |
+| RF-011, RF-012, RF-013, RF-014 | §1.1, problemática punto 5 (evidencia debe asociarse y validarse); RN-009, RN-010 (§7); HU-09, HU-10, HU-11 (§12.4). |
+| RF-016 a RF-021 | §1.1, problemática puntos 2 y 4; entidad "Compromiso" (§8); HU-02, HU-12, HU-13, HU-14 (§12.2, §12.5). |
+| RF-022, RF-023, RF-024, RF-026, RF-027 | RN-003 a RN-005, RN-007, RN-008 (§7); §13.1; HU-07, HU-16, HU-17 (§12.3, §12.6). |
+| RF-025 | RN-011 (§7). |
+| RF-028, RF-029, RF-031 | §1.1, problemática punto 4; HU-06, HU-18 (§12.3, §12.6). |
+| RF-032 | §1.1, problemática punto 1 (visión transversal dificultada); HU-29 (§12.9). |
+| RF-033 | §1.1, problemática punto 4; HU-20 (§12.7). |
+| RF-034; RNF-003 | HU-23 (§12.8): "trabajar simultáneamente con otros usuarios… sin pérdida ni sobrescritura silenciosa". |
+| RNF-004, RNF-005 | HU-26 (§12.9) — mismo sustento que RF-001/RF-002. |
+| RF-036; RNF-008 | HU-30 (§12.9): auditoría de cambios; RN-013 (§7, períodos cerrados). |
+| RF-037 | §1.1, problemática punto 4; HU-14 (§12.5): "gestionar oportunamente los incumplimientos". |
+| RF-038 | HU-25 (§12.8): "adaptar el sistema sin perder la historia"; RN-013 (§7). |
+| RNF-017 | §1.1, problemática punto 5; entidad "Evidencia" (§8); HU-09 (§12.4). |
 | RNF-001 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
 | RNF-002 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
 | RNF-006 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
@@ -211,10 +237,17 @@ tales en la tabla siguiente en lugar de inventarles un hallazgo que no existió.
 | RNF-018 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
 
 *Nota sobre las filas "incluido por completitud del MVP": corresponden a los 13 RNF transversales
-(RNF-001, RNF-002, RNF-006, RNF-007, RNF-009, RNF-010, RNF-011, RNF-012, RNF-013, RNF-014, RNF-015, RNF-016, RNF-018) que ningún hallazgo del taller o la encuesta mencionó de forma
-puntual, pero que `guia-sgr.md` §13.2 exige mantener igualmente por ser atributos de calidad que
+(RNF-001, RNF-002, RNF-006, RNF-007, RNF-009 a RNF-016, RNF-018) que ninguna HU P1 de `guia-sgr.md`
+§12 cita de forma directa en su columna "Requisitos relacionados" (ver `decisiones.md` § Alcance del
+MVP), pero que `guia-sgr.md` §13.2 exige mantener igualmente por ser atributos de calidad que
 cualquier sistema de este tipo debe cumplir (disponibilidad, rendimiento, confidencialidad, etc.), y
-no un problema aislado detectado en el levantamiento.*
+no un punto puntual de la problemática o de una regla de negocio.*
+
+Con esta reconstrucción, los 35 RF y los 5 RNF citados directamente (RNF-003, RNF-004, RNF-005,
+RNF-008, RNF-017) cuentan con un sustento concreto y verificable en `guia-sgr.md`; ninguno quedó sin
+una referencia real posible que obligara a forzar una conexión artificial. Solo los 13 RNF
+transversales listados arriba se mantienen bajo la etiqueta de completitud del MVP, conforme a
+`decisiones.md`.
 
 ---
 
@@ -792,7 +825,7 @@ sobra capacidad.
       inicio de este documento sobre la cifra "22" —, sin agregar HU-03/08/15/19/21/22/24/31)
 - [x] Técnica(s) de levantamiento justificada(s) (Taller de cocreación + Encuesta, §1.1)
 - [x] Instrumento aplicado (pauta de taller + formulario de encuesta, §1.2)
-- [x] Tabulación y análisis de datos simulados (§1.3, incluye gráfico)
+- [x] Tabulación y análisis de datos reales de `guia-sgr.md` (§1.3, sin datos simulados ni gráfico)
 - [x] Lista de RF codificados (35 RF, §2.1)
 - [x] Lista de RNF codificados (18 RNF, §2.2)
 - [x] Épicas definidas (8 épicas, §3.1)
