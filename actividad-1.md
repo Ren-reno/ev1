@@ -3,8 +3,11 @@
 **Ponderación en la rúbrica: 25%**
 
 **Depende de:** [`decisiones.md`](../decisiones.md) — usar los mismos códigos de `guia-sgr.md` (no
-renumerar). El alcance del MVP (qué épicas se cubren) aún está en espera; en cuanto se defina, se fija en
-este documento en la sección 2.
+renumerar). **Alcance: MVP de `guia-sgr.md` §13.2** (decisión cerrada, ver `decisiones.md` § Alcance
+del MVP) — se documentan únicamente las **22 HU marcadas P1** (de las 31 totales) y los RF/RNF que las
+sustentan, más los RNF transversales. La sección 2 de este documento debe incluir solo esos RF/RNF, y
+la sección 3 las 8 épicas (todas aparecen, aunque no todas con sus HU completas) con únicamente las 22
+HU del MVP — ver la tabla completa de HU incluidas/excluidas en `decisiones.md`.
 
 **Alimenta a:** Actividad 3 (los códigos de RF/RNF/EP/HU definidos aquí son los que se usan en los
 diagramas de casos de uso, el diagrama de requerimientos en árbol, y la matriz de trazabilidad). Cualquier
@@ -12,8 +15,12 @@ cambio de nombre o alcance hecho después de cerrar esta actividad debe avisarse
 Actividad 3.
 
 **Fuentes a consultar:** `fuentes/que-hacer-1-2-3.md` (sección Actividad 1), `fuentes/guia-sgr.md`
-(secciones de RF, RNF, épicas y HU correspondientes al alcance elegido), `fuentes/audio-clase-1.md` y
-`fuentes/audio-clase-2.md` (aclaraciones sobre esfuerzo y planificación).
+(secciones de RF §5, RNF §6, épicas y HU §12 — **solo las 22 HU marcadas P1**, ver `decisiones.md` §
+Alcance del MVP), `fuentes/audio-clase-1.md` y `fuentes/audio-clase-2.md` (aclaraciones sobre esfuerzo
+y planificación), `fuentes/apuntes-cocreacion-patrones.md` (marco teórico: técnicas de cocreación y
+levantamiento — entrevistas, talleres, encuestas, prototipos, mapeo de historias de usuario — y
+clasificación de requerimientos no funcionales según Sommerville; usar solo como respaldo conceptual,
+**no** como fuente de RF/RNF del caso SGR, eso viene únicamente de `guia-sgr.md`).
 
 ---
 
@@ -27,6 +34,12 @@ Actividad 3.
 
 _(Elegir 1 o más: entrevista, encuesta, taller de co-creación, revisión documental, observación, etc.
 Justificar por qué son adecuadas para este caso específico.)_
+
+> Apoyo teórico disponible en `fuentes/apuntes-cocreacion-patrones.md` (sección "Técnicas de
+> cocreación y levantamiento de requerimientos"): entrevistas, talleres de cocreación, encuestas y
+> cuestionarios, observación, prototipos, mapeo de historias de usuario, análisis de documentación y
+> focus groups. Útil para justificar con fundamento académico por qué se elige cada técnica, y para
+> citar a Sommerville al definir qué es un requerimiento y el proceso de obtención de requisitos.
 
 ### 1.2 Instrumento aplicado
 
@@ -47,9 +60,12 @@ deben aparecer "de la nada".)_
 
 ## 2. Requerimientos Funcionales y No Funcionales
 
-> Bajada desde `guia-sgr.md`: seleccionar qué RF/RNF aplican al alcance que el equipo decida cubrir.
-> Redactar con formato propio del equipo (no copiar/pegar tal cual). Código según `decisiones.md`
-> (numeración original de `guia-sgr.md`, sin renumerar).
+> Bajada desde `guia-sgr.md`: incluir **solo** los RF/RNF del MVP fijado en `decisiones.md` § Alcance
+> del MVP (los que sustentan alguna de las 22 HU marcadas P1, más los RNF transversales). No copiar
+> RF/RNF que solo aparezcan asociados a una HU P2/P3 excluida del MVP. Redactar con formato propio del
+> equipo (no copiar/pegar tal cual). Código según `decisiones.md` (numeración original de `guia-sgr.md`,
+> sin renumerar). Cada RF/RNF debe poder rastrearse hasta la tabla de la sección 1.4, ya sea con un
+> hallazgo real o con la etiqueta "incluido por completitud del MVP (§13.2)".
 
 ### 2.1 Requerimientos Funcionales
 
@@ -58,6 +74,12 @@ deben aparecer "de la nada".)_
 | RF-XXX | | |
 
 ### 2.2 Requerimientos No Funcionales
+
+> Para clasificar o justificar cada RNF puede usarse la taxonomía de `fuentes/apuntes-cocreacion-patrones.md`
+> (Sommerville): requerimientos de producto (usabilidad, eficiencia, fiabilidad, portabilidad),
+> organizacionales (entrega, implementación, estándares) y externos (interoperabilidad, éticos,
+> legislativos — privacidad y seguridad). No es obligatorio anotar la categoría en la tabla, pero sirve
+> como respaldo si la rúbrica pide fundamentar el tipo de cada RNF.
 
 | Código | Descripción | Prioridad |
 |---|---|---|
@@ -69,7 +91,9 @@ deben aparecer "de la nada".)_
 
 ### 3.1 Épicas cubiertas
 
-_(Según el alcance que se defina en `decisiones.md`.)_
+_(Las 8 épicas de `guia-sgr.md` §12 aparecen representadas, pero solo con sus HU marcadas P1 —ver la
+tabla completa de HU incluidas/excluidas por épica en `decisiones.md` § Alcance del MVP. No agregar
+HU-03, HU-08, HU-15, HU-19, HU-21, HU-22, HU-24 ni HU-31: quedan fuera del MVP.)_
 
 | Código | Nombre | RF/RNF relacionados |
 |---|---|---|
@@ -121,6 +145,7 @@ _(Adjuntar evidencia cuando esté disponible.)_
 
 ## Checklist de cierre — Actividad 1
 
+- [ ] Alcance verificado contra `decisiones.md` § Alcance del MVP (solo las 22 HU P1, sin agregar HU-03/08/15/19/21/22/24/31)
 - [ ] Técnica(s) de levantamiento justificada(s)
 - [ ] Instrumento aplicado (pauta/encuesta)
 - [ ] Tabulación y análisis de datos (aunque simulados)

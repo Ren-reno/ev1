@@ -2,8 +2,15 @@
 
 **Ponderación en la rúbrica: 35%**
 
-**Depende de:** [`decisiones.md`](../decisiones.md) — metodología elegida: **Scrum**. Falta definir la
-segunda metodología de comparación (candidatas sugeridas: Kanban, Cascada, o XP).
+**Depende de:**
+- [`decisiones.md`](../decisiones.md) — metodología elegida: **Scrum**. Falta definir la
+  segunda metodología de comparación (candidatas sugeridas: Kanban, Cascada, o XP). Alcance del
+  proyecto: MVP de 22 HU (ver `decisiones.md` § Alcance del MVP).
+- Actividad 1 → el volumen del backlog del MVP (22 HU de 31, con sus RF/RNF asociados, ver
+  `decisiones.md` § Alcance del MVP) es evidencia técnica a favor de la metodología elegida: úsalo en
+  la sección 1.4 (comparación técnica) en vez de razonar en abstracto sobre "un proyecto típico". Si
+  Actividad 1 todavía no cerró sus códigos finales, ese número puede citarse como aproximado, pero debe
+  revisarse antes de dar por cerrada esta actividad.
 
 **Alimenta a:** Actividad 3 (los recursos de hardware/software mínimos y óptimos definidos aquí en la
 sección 3 deben coincidir exactamente con lo que se represente en el diagrama de despliegue — no pueden
@@ -11,7 +18,10 @@ ser inconsistentes entre sí).
 
 **Fuentes a consultar:** `fuentes/que-hacer-1-2-3.md` (sección Actividad 2), `fuentes/audio-clase-1.md` y
 `fuentes/audio-clase-2.md` (énfasis en no aceptar cuadros simples de ventajas/desventajas), `fuentes/guia-sgr.md`
-§14.1 (arquitectura sugerida, como referencia para los recursos de despliegue).
+§14.1 (arquitectura sugerida, como referencia para los recursos de despliegue), `fuentes/apuntes-cocreacion-patrones.md`
+(marco teórico de metodologías tradicionales vs. ágiles y criterios de selección — tamaño del proyecto,
+recursos disponibles, requisitos del cliente, plazos y presupuesto; útil para dar fundamento académico a
+la sección 1, no reemplaza el análisis técnico específico del caso SGR).
 
 ---
 
@@ -24,12 +34,20 @@ ser inconsistentes entre sí).
 > artefactos que produce, roles, cadencia de entregas, forma de gestionar riesgo) con las condiciones
 > reales del proyecto.
 
+> Apoyo teórico disponible en `fuentes/apuntes-cocreacion-patrones.md` (sección "Selección de una
+> metodología y ciclo de vida"): los 4 criterios de análisis — tamaño del proyecto, recursos
+> disponibles, requisitos del cliente (claros/estables vs. cambiantes), y plazos/presupuesto — mapean
+> directamente con las condiciones reales del punto 1.1 y sirven de estructura para argumentar 1.2–1.4
+> sin caer en un cuadro simple de ventajas/desventajas.
+
 ### 1.1 Condiciones reales del proyecto (referencia obligatoria para el análisis)
 
 - Equipo de 4 personas
 - Plazo acotado: 9 días para esta etapa, semestre completo como restricción mayor
 - Requerimientos ya definidos por el docente, con margen de ajuste ("bajada")
-- Necesidad de llegar a un MVP funcional demostrable al final del curso
+- Alcance ya fijado al MVP de `guia-sgr.md` §13.2 (22 HU de 31, ver `decisiones.md` § Alcance del MVP);
+  esto refuerza la necesidad de una metodología que permita entregar valor de forma incremental dentro
+  del propio MVP, ya priorizado por sprints en `guia-sgr.md` §13.3
 
 ### 1.2 Metodología 1: Scrum
 

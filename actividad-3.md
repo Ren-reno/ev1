@@ -3,15 +3,19 @@
 **Ponderación en la rúbrica: 40%** (la de mayor peso y mayor riesgo técnico)
 
 **Depende de:**
-- [`decisiones.md`](../decisiones.md) — códigos originales de `guia-sgr.md`, sin renumerar.
-- Actividad 1 → épicas, HU y códigos RF/RNF finales (no usar un subconjunto distinto al ya cerrado ahí).
+- [`decisiones.md`](../decisiones.md) — códigos originales de `guia-sgr.md`, sin renumerar. Alcance:
+  MVP de 22 HU (ver `decisiones.md` § Alcance del MVP) — los diagramas de esta actividad representan
+  únicamente esas 22 HU y sus RF/RNF asociados, no el documento completo.
+- Actividad 1 → épicas, HU y códigos RF/RNF finales (no usar un subconjunto distinto al ya cerrado ahí,
+  ni volver a ampliar al documento completo).
 - Actividad 2 → recursos de hardware/software mínimos y óptimos (deben coincidir con el diagrama de
   despliegue de este documento).
 
 **Fuentes a consultar:** `fuentes/que-hacer-1-2-3.md` (sección Actividad 3, la más detallada),
 `fuentes/audio-clase-2.md` (aclaraciones técnicas de include/extend y la discrepancia RF/RNF en la
 trazabilidad — ver nota en la sección 6), `fuentes/guia-sgr.md` (entidades del dominio §8, arquitectura
-§14.1).
+§14.1), `fuentes/apuntes-cocreacion-patrones.md` (patrones de diseño GoF para el diagrama de clases —
+ver nota en la sección 3 — y definiciones de tipos de diagramas UML como referencia teórica general).
 
 ---
 
@@ -45,6 +49,22 @@ _(Insertar diagrama(s) por módulo/funcionalidad.)_
 > Estructurar lógicamente las entidades del dominio del sistema (ej. Funcionario, Actividad, Evidencia,
 > Delegación, Meta, según el caso SGR). Incluir atributos, métodos relevantes y relaciones (asociación,
 > composición, herencia si aplica).
+
+> **Patrones de diseño a evaluar (ver `fuentes/apuntes-cocreacion-patrones.md`, sección "Patrones de
+> diseño en software"):** el ramo cubre 4 patrones GoF (Gamma et al., 1995) que pueden sumar puntos si
+> se justifican con un caso real dentro del dominio SGR, no solo se nombran:
+> - **Singleton** — para un componente con una única instancia global (ej. gestor de configuración,
+>   conexión a base de datos, servicio de logging del sistema).
+> - **Factory** — si el sistema crea distintos tipos de objetos según una condición en tiempo de
+>   ejecución (ej. generación de distintos tipos de reportes según el módulo — ver HU-20).
+> - **Observer** — para relaciones 1-a-muchos donde varios objetos deben enterarse de un cambio de
+>   estado (ej. alertas por vencimiento o umbral — ver HU-14, HU-16 — coherente con el `extend` ya
+>   definido en la sección 2).
+> - **Adapter** — si el sistema integra un servicio externo con una interfaz distinta a la esperada
+>   (ej. autenticación con directorio institucional — ver RNF-004).
+>
+> No es obligatorio forzar los 4 patrones: se documenta solo el o los que tengan un caso de uso real y
+> justificable dentro de las 22 HU del MVP, indicando en el diagrama qué clase(s) lo implementan.
 
 _(Insertar diagrama.)_
 
@@ -119,9 +139,11 @@ justificar la pantalla de login recorriendo la cadena completa de principio a fi
 
 ## Checklist de cierre — Actividad 3
 
+- [ ] Alcance verificado contra `decisiones.md` § Alcance del MVP (solo las 22 HU del MVP, ninguna P2/P3)
 - [ ] Diagrama de Casos de Uso — alto nivel (desde épicas)
 - [ ] Diagrama(s) de Casos de Uso específicos con include/extend correctos
 - [ ] Diagrama de Clases del dominio
+- [ ] Patrón(es) de diseño identificado(s) y justificado(s) en el diagrama de clases (si aplica)
 - [ ] Diagrama(s) de Secuencia (exigido por la rúbrica)
 - [ ] Diagrama de Componentes (consumo de servicios)
 - [ ] Diagrama de Despliegue (coherente con Actividad 2)
