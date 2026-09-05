@@ -3,7 +3,7 @@
 **Ponderación en la rúbrica: 40%** (la de mayor peso y mayor riesgo técnico)
 
 **Depende de:**
-- [`decisiones.md`](../decisiones.md) — códigos originales de `guia-sgr.md`, sin renumerar. Alcance:
+- [`decisiones.md`](./decisiones.md) — códigos originales de `guia-sgr.md`, sin renumerar. Alcance:
   MVP de 22 HU (ver `decisiones.md` § Alcance del MVP) — los diagramas de esta actividad representan
   únicamente esas 22 HU y sus RF/RNF asociados, no el documento completo.
 - Actividad 1 → épicas, HU y códigos RF/RNF finales (no usar un subconjunto distinto al ya cerrado ahí,

@@ -3,7 +3,7 @@
 **Ponderación en la rúbrica: 35%**
 
 **Depende de:**
-- [`decisiones.md`](../decisiones.md) — metodología elegida: **Scrum**. Falta definir la
+- [`decisiones.md`](./decisiones.md) — metodología elegida: **Scrum**. Falta definir la
   segunda metodología de comparación (candidatas sugeridas: Kanban, Cascada, o XP). Alcance del
   proyecto: MVP de 22 HU (ver `decisiones.md` § Alcance del MVP).
 - Actividad 1 → el volumen del backlog del MVP (22 HU de 31, con sus RF/RNF asociados, ver

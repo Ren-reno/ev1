@@ -2,7 +2,7 @@
 
 **Ponderación en la rúbrica: 25%**
 
-**Depende de:** [`decisiones.md`](../decisiones.md) — usar los mismos códigos de `guia-sgr.md` (no
+**Depende de:** [`decisiones.md`](./decisiones.md) — usar los mismos códigos de `guia-sgr.md` (no
 renumerar). **Alcance: MVP de `guia-sgr.md` §13.2** (decisión cerrada, ver `decisiones.md` § Alcance
 del MVP) — se documentan únicamente las **22 HU marcadas P1** (de las 31 totales) y los RF/RNF que las
 sustentan, más los RNF transversales. La sección 2 de este documento debe incluir solo esos RF/RNF, y

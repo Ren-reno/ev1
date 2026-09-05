@@ -3,6 +3,11 @@
 Base común que las 3 actividades deben respetar. Cuando alguien redacte su parte, estas son las
 decisiones ya cerradas por el equipo — no hay que volver a discutirlas ni improvisar una distinta.
 
+**Alimenta a:** [`actividad-1.md`](./actividad-1.md), [`actividad-2.md`](./actividad-2.md) y
+[`actividad-3.md`](./actividad-3.md) — las tres leen este documento antes de empezar. Cualquier cambio
+aquí (alcance, metodología, nomenclatura) debe avisarse a quien esté trabajando cada actividad, porque
+puede invalidar contenido ya redactado.
+
 ---
 
 ## Alcance del MVP
