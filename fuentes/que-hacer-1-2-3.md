@@ -7,12 +7,35 @@
 
 ### 1. Técnicas e instrumentos de toma de requerimientos
 
-Como el caso SGR ya viene definido por el docente, esto no es "inventar" el problema sino **simular y documentar el proceso de levantamiento** como si se hubiera hecho con el cliente (la Municipalidad):
+Como el caso SGR ya viene definido por el docente, esto no es "inventar" el problema ni simular un
+instrumento aplicado a personas: es hacer la **bajada** del documento base (`guia-sgr.md`), que ya
+trae la problemática, el análisis y los requerimientos resueltos. **No se simulan ni se inventan
+datos de encuesta, taller u otro instrumento** (ni participantes, ni respuestas, ni porcentajes, ni
+gráficos de resultados ficticios) — el docente lo aclaró explícitamente: eso no corresponde y no debe
+figurar en el informe.
 
-- Elegir 1 o más técnicas (entrevista, encuesta, taller de co-creación, revisión documental, observación, etc.) y **justificar por qué esas técnicas** son adecuadas para este caso.
-- Presentar el **instrumento aplicado** en sí (ej. pauta de entrevista con preguntas, formulario de encuesta con sus ítems).
-- Mostrar **tabulación y análisis de los datos obtenidos** — aunque los datos sean simulados/ficticios (recuerda: está prohibido usar datos reales), deben verse como resultados reales de aplicar el instrumento (tablas, gráficos simples, hallazgos).
-- De ese análisis debe **derivarse explícitamente** la lista de requerimientos — no pueden aparecer los RF/RNF "de la nada", tienen que verse conectados a lo que arrojó el instrumento.
+**Importante — esto no exime de tabular y analizar datos.** La Rúbrica 2 (criterio 2.1.1/2.1.2, 25 %
+de la nota) exige explícitamente que el equipo **"aplica las técnicas necesarias"** y **"tabula y
+analiza los datos obtenidos"** para definir los requerimientos; el enunciado pide lo mismo ("el
+análisis de los datos y los resultados obtenidos"). Que no se simulen encuestas no significa dejar
+esta parte vacía o solo descriptiva ("así se aplicaría la técnica"): el dato que se tabula y analiza
+debe **existir y ser real**, tomado del propio `guia-sgr.md` (problemática, reglas de negocio,
+entidades, atributos de calidad). Una sección 1 que solo describe el instrumento sin tabular ni
+analizar nada concreto arriesga esa fila de la rúbrica igual que si hubiera usado datos inventados.
+
+- Elegir 1 o más técnicas (entrevista, encuesta, taller de co-creación, revisión documental,
+  observación, etc.) y **justificar técnicamente por qué esas técnicas** son adecuadas para este caso
+  (qué tipo de información permiten levantar, por qué calzan con el escenario municipal descrito en
+  `guia-sgr.md`).
+- Presentar el **instrumento** que se usaría (ej. pauta de entrevista con preguntas, formulario de
+  encuesta con sus ítems) como diseño metodológico — sin aplicarlo a datos simulados.
+- Mostrar la **tabulación y el análisis de los datos**, entendiendo por "datos" la información que
+  **ya está en `guia-sgr.md`** (problemática descrita, reglas de negocio, entidades, atributos de
+  calidad): organizarla en tablas/resúmenes propios, analizarla y conectarla con la técnica elegida —
+  este paso debe quedar tan visible como si fueran resultados de un instrumento aplicado, solo que
+  construido sobre información real del documento base, no inventada.
+- De ese análisis debe **derivarse explícitamente** la lista de requerimientos — no pueden aparecer
+  los RF/RNF "de la nada", tienen que verse conectados a la información del documento base.
 
 ### 2. Requerimientos Funcionales (RF) y No Funcionales (RNF)
 
@@ -42,8 +65,8 @@ Como el caso SGR ya viene definido por el docente, esto no es "inventar" el prob
 | Debe incluir | ¿Listo? |
 |---|---|
 | Técnica(s) de levantamiento justificada(s) | ☐ |
-| Instrumento aplicado (pauta/encuesta) | ☐ |
-| Tabulación y análisis de datos (aunque simulados) | ☐ |
+| Instrumento presentado (pauta/encuesta), como diseño metodológico | ☐ |
+| Tabulación y análisis con datos reales y concretos de `guia-sgr.md` (no solo mencionar la fuente; debe verse tabla/resumen y análisis, no un instrumento aplicado a datos simulados) | ☐ |
 | Lista de RF codificados | ☐ |
 | Lista de RNF codificados | ☐ |
 | Épicas definidas | ☐ |

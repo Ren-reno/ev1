@@ -54,9 +54,12 @@ relacionados" de cada HU en `guia-sgr.md` §12.2 a §12.9):
   compatibilidad, escalabilidad, mantenibilidad, interoperabilidad, monitoreo) porque aplican a
   cualquier subconjunto de funcionalidades que se implemente, no solo a un RF puntual.
 
-**Regla de trazabilidad para la Actividad 1, sección 1.4:** si un RF/RNF del MVP no tiene un hallazgo
-propio en las entrevistas/encuesta simuladas, se marca como **"incluido por completitud del MVP
-(§13.2)"** en la tabla de la sección 1.4, en vez de inventar un hallazgo ficticio que no se sostiene.
+**Regla de trazabilidad para la Actividad 1, sección 1.4:** no se simulan datos de encuesta, taller
+u otro instrumento (el docente lo aclaró explícitamente: eso no corresponde). El análisis de la
+sección 1.4 se hace sobre la información real ya contenida en `guia-sgr.md` (problemática, reglas de
+negocio, entidades). Si un RF/RNF del MVP no tiene un punto de la problemática o análisis que lo
+sustente de forma puntual, se marca como **"incluido por completitud del MVP (§13.2)"** en la tabla de
+la sección 1.4, en vez de forzar una conexión artificial que no está en el documento base.
 
 ### Nota para no confundir dos usos distintos de la palabra "MVP" en este proyecto
 
@@ -73,14 +76,18 @@ el documento completo), salvo que este archivo se actualice explícitamente para
 
 ---
 
-## Trazabilidad hallazgo → requerimiento (Actividad 1, sección 1.4)
+## Trazabilidad requerimiento → información base (Actividad 1, sección 1.4)
 
-Con alcance de MVP, la mayoría de los RF/RNF incluidos sí deberían poder sustentarse en un hallazgo
-simulado de la técnica de levantamiento elegida, porque el MVP ya es un subconjunto acotado y priorizado.
-Aun así, para los RNF transversales (ver lista arriba) que no surgen de un hallazgo puntual sino de
-buenas prácticas generales de la aplicación, se marca la etiqueta **"incluido por completitud del MVP
-(§13.2)"** en la tabla de la sección 1.4 en vez de forzar una relación artificial con un hallazgo
-ficticio.
+No se simulan hallazgos de encuesta, taller u otro instrumento aplicado a personas: el docente aclaró
+explícitamente que no corresponde. Esto **no exime** de cumplir la Rúbrica 2 (criterio 2.1.1/2.1.2,
+25 % de la nota), que exige "aplica las técnicas" y "tabula y analiza los datos obtenidos" — la
+sección 1.3/1.4 debe mostrar contenido real y concreto, no solo declarar la técnica sin tabular nada.
+Con alcance de MVP, la mayoría de los RF/RNF incluidos sí deberían poder sustentarse en algún punto
+concreto de la problemática, las reglas de negocio o el análisis que ya trae `guia-sgr.md`, porque el
+MVP ya es un subconjunto acotado y priorizado. Aun así, para los RNF transversales (ver lista arriba)
+que no responden a un punto puntual del documento base sino a buenas prácticas generales de la
+aplicación, se marca la etiqueta **"incluido por completitud del MVP (§13.2)"** en la tabla de la
+sección 1.4 en vez de forzar una relación artificial que el documento base no sostiene.
 
 ## Metodología
 
