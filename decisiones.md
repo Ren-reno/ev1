@@ -93,6 +93,11 @@ sección 1.4 en vez de forzar una relación artificial que el documento base no 
 
 **Scrum.**
 
+**Segunda metodología de comparación (Actividad 2, §1.3): Cascada.** Categoría estructurada, elegida
+por ser la que ofrece el contraste técnico más claro frente a Scrum para un caso con fases de
+análisis/diseño/construcción bien identificables (se descarta Espiral, excluida explícitamente de
+las categorías admisibles).
+
 ## Nomenclatura y codificación
 
 Se mantienen los mismos códigos de `guia-sgr.md` (RF-001, RNF-001, EP-01, HU-01, etc.), sin renumerar.
