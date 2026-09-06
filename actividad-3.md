@@ -350,13 +350,119 @@ tener que reconstruirlo.
 
 ### 8.1 Wireframes
 
-_(Insertar bocetos/diseño de las pantallas principales.)_
+Wireframes de baja fidelidad (boceto funcional en escala de grises, sin diseño visual final), una
+pantalla por flujo funcional distinto — no una por HU, ya que varias HU comparten formulario o panel
+porque así lo agrupa el propio dominio. Las 12 pantallas cubren, verificadas una por una, las 23 HU
+cerradas en `actividad-1.md` §3.2. El contenido de cada pantalla (campos, botones, estados, texto exacto)
+se derivó línea por línea de los criterios Dado/Cuando/Entonces de cada HU, de los atributos reales de
+`clases-dominio.puml` y de los nombres de caso de uso ya fijados en los `.puml` de la sección 2; el
+generador de imágenes solo ejecutó el layout ya decidido. Fuente de cada wireframe en
+[`assets/actividad-3/wireframes/`](assets/actividad-3/wireframes/).
+
+#### Pantalla 1 — Inicio de Sesión
+
+![Wireframe — Inicio de Sesión](assets/actividad-3/wireframes/wf-01-login.png)
+
+Única pantalla sin barra superior ni lateral (previa a la autenticación). Muestra el formulario en blanco
+junto al estado de acceso denegado de HU-26 criterio 2 ("Dado un usuario sin autorización, cuando intenta
+acceder fuera de su ámbito, entonces el acceso se deniega y el intento queda registrado").
+
+#### Pantalla 2 — Registrar Actividad con Evidencia
+
+![Wireframe — Registrar Actividad con Evidencia](assets/actividad-3/wireframes/wf-02-registrar-actividad.png)
+
+Formulario de HU-01 con adjuntar evidencia (HU-09) y generación de código verificador (HU-10) al guardar,
+más el modal de conflicto de edición concurrente de HU-23 criterio 2.
+
+#### Pantalla 3 — Validar Evidencia
+
+![Wireframe — Validar Evidencia](assets/actividad-3/wireframes/wf-03-validar-evidencia.png)
+
+Cola de evidencias pendientes (rol Verificador) con panel de detalle, observación obligatoria para
+rechazar o solicitar corrección (HU-11 criterio 1).
+
+#### Pantalla 4 — Registrar Compromiso Ciudadano
+
+![Wireframe — Registrar Compromiso Ciudadano](assets/actividad-3/wireframes/wf-04-compromiso-ciudadano.png)
+
+Formulario de HU-02, con el estado "VENCIDO" de un compromiso sin cierre (HU-02 criterio 2) mostrado como
+panel aparte.
+
+#### Pantalla 5 — Agenda Colectiva Compartida
+
+![Wireframe — Agenda Colectiva Compartida](assets/actividad-3/wireframes/wf-05-agenda-colectiva.png)
+
+Tabla ordenada por fecha con filtros (HU-12) y cambio de estado inline por fila que conserva historial
+(HU-13).
+
+#### Pantalla 6 — Mi Avance (panel del Funcionario + Semáforo)
+
+![Wireframe — Mi Avance](assets/actividad-3/wireframes/wf-06-mi-avance.png)
+
+Semáforo general del período (HU-16) y tabla de metas con recálculo automático al refrescar (HU-07),
+aplicando la regla RN-008 exacta: verde si avance ≥ meta esperada, ámbar si avance ≥ 60 % de la meta y
+menor que ella, rojo si avance < 60 % — cada estado con etiqueta de texto entre corchetes y patrón de
+relleno distinto, nunca solo color (HU-06).
+
+#### Pantalla 7 — Funciones y Metas por Cargo
+
+![Wireframe — Funciones y Metas por Cargo](assets/actividad-3/wireframes/wf-07-funciones-metas-cargo.png)
+
+Gestión de funciones asignadas por cargo (HU-04) y tabla de metas con validación de que los ponderadores
+sumen 100 % (RN-001), incluyendo el estado de error cuando no totalizan (HU-05).
+
+#### Pantalla 8 — Comparación de Avance Esperado vs. Real
+
+![Wireframe — Comparación de Avance Esperado vs. Real](assets/actividad-3/wireframes/wf-08-comparacion-avance.png)
+
+Gráfico comparativo esperado/real y tabla con diferencia y semáforo por funcionario (HU-17).
+
+#### Pantalla 9 — Resumen Ejecutivo y Seguimiento de Compromisos
+
+![Wireframe — Resumen Ejecutivo y Seguimiento de Compromisos](assets/actividad-3/wireframes/wf-09-resumen-ejecutivo.png)
+
+Tarjetas KPI (HU-18) y tabla de compromisos en riesgo con una fila expandida que reproduce los 4 campos
+exactos que exige una alerta según RF-037: motivo, responsable, fecha y enlace al elemento afectado
+(HU-14).
+
+#### Pantalla 10 — Generación de Informes
+
+![Wireframe — Generación de Informes](assets/actividad-3/wireframes/wf-10-generacion-informes.png)
+
+Selección de tipo de informe (Desempeño / Cumplimiento / Ejecutivo, subclases de `InformeFactory`) con
+vista previa que conserva encabezados, filtros aplicados y fecha de generación (HU-20).
+
+#### Pantalla 11 — Administración del Sistema (5 pestañas)
+
+![Wireframe — Administración del Sistema](assets/actividad-3/wireframes/wf-11-administracion-sistema.png)
+
+Agrupa 5 HU bajo el mismo actor (Administrador) y el mismo patrón visual de tabla + formulario de
+alta/edición: Delegaciones, Usuarios y Roles (HU-26, pestaña detallada en el wireframe), Catálogos
+(HU-27), Períodos (HU-28), Configuración (HU-25) y Auditoría (HU-30).
+
+#### Pantalla 12 — Consulta y Búsqueda General
+
+![Wireframe — Consulta y Búsqueda General](assets/actividad-3/wireframes/wf-12-consulta-general.png)
+
+Los 8 filtros exactos de RF-032 (delegación, área, funcionario, cargo, período, ítem, estado, rango de
+fechas) y el estado de "fuera de ámbito autorizado" de HU-29 criterio 2.
 
 ### 8.2 Matriz de trazabilidad
 
 | Wireframe | RF/RNF | Épica | HU | CU alto nivel | CU específico |
 |---|---|---|---|---|---|
-| | | | | | |
+| Inicio de Sesión | RF-001, RF-002, RNF-004, RNF-005 | EP-08 | HU-26 | EP-08 Administrar el Sistema | Administrar Delegaciones, Usuarios y Roles (HU-26) |
+| Registrar Actividad con Evidencia | RF-009, RF-010, RF-011, RF-012, RF-014, RF-022, RF-034, RNF-003, RNF-017 | EP-01, EP-03 | HU-01, HU-09, HU-10, HU-23 | EP-01 Registrar y Administrar Actividades; EP-03 Gestionar Evidencias | Registrar Actividad (HU-01) →include→ Generar Código Verificador (HU-10); Adjuntar Evidencia (HU-09) |
+| Validar Evidencia | RF-013, RF-014, RF-036 | EP-03 | HU-11 | EP-03 Gestionar Evidencias | Validar Evidencia (HU-11) |
+| Registrar Compromiso Ciudadano | RF-016 a RF-021 | EP-01 | HU-02 | EP-01 Registrar y Administrar Actividades | Registrar Compromiso Ciudadano (HU-02) |
+| Agenda Colectiva Compartida | RF-016, RF-017, RF-018, RF-036 | EP-04 | HU-12, HU-13 | EP-04 Gestionar Agenda Colectiva | Gestionar Agenda Compartida (HU-12); Actualizar Estado de Compromiso (HU-13) |
+| Mi Avance (panel + semáforo) | RF-008, RF-022 a RF-028 | EP-02, EP-05 | HU-06, HU-07, HU-16 | EP-02 Medir Desempeño; EP-05 Monitorear y Controlar la Gestión | Visualizar Avance (HU-06) →include→ Calcular Cumplimiento Automático (HU-07); Visualizar Semáforo de Cumplimiento (HU-16) |
+| Funciones y Metas por Cargo | RF-003, RF-005, RF-006, RF-007 | EP-01, EP-02 | HU-04, HU-05 | EP-01 Registrar y Administrar Actividades; EP-02 Medir Desempeño | Administrar Funciones por Cargo (HU-04); Definir Metas (HU-05) |
+| Comparación Avance Esperado vs. Real | RF-023, RF-026, RF-027 | EP-05 | HU-17 | EP-05 Monitorear y Controlar la Gestión | Comparar Avance Esperado vs. Real (HU-17) |
+| Resumen Ejecutivo + Seguimiento de Compromisos | RF-019, RF-021, RF-028, RF-029, RF-031, RF-037 | EP-05, EP-04 | HU-18, HU-14 | EP-05 Monitorear y Controlar la Gestión; EP-04 Gestionar Agenda Colectiva | Consultar Resumen Ejecutivo (HU-18); Monitorear Compromisos (HU-14) →extend→ Generar Alerta |
+| Generación de Informes | RF-032, RF-033 | EP-06 | HU-20 | EP-06 Generar Reportes | Generar Informes (HU-20) |
+| Administración del Sistema | RF-001, RF-002, RF-004, RF-005, RF-036, RF-038, RNF-004, RNF-005, RNF-008 | EP-07, EP-08 | HU-25, HU-26, HU-27, HU-28, HU-30 | EP-07 Colaborar en la Plataforma; EP-08 Administrar el Sistema | Adaptar Configuración del Sistema (HU-25); Administrar Delegaciones, Usuarios y Roles (HU-26); Administrar Catálogos (HU-27); Administrar Períodos (HU-28); Auditar Cambios (HU-30) |
+| Consulta y Búsqueda General | RF-032 | EP-08 | HU-29 | EP-08 Administrar el Sistema | Buscar y Filtrar Información (HU-29) |
 
 _(Un renglón completo por cada wireframe presentado, no solo un ejemplo. El profesor dio como modelo
 justificar la pantalla de login recorriendo la cadena completa de principio a fin.)_
@@ -375,7 +481,7 @@ justificar la pantalla de login recorriendo la cadena completa de principio a fi
 - [x] Diagrama de Componentes (consumo de servicios)
 - [ ] Diagrama de Despliegue (coherente con Actividad 2)
 - [x] Diagrama de Requerimientos en árbol
-- [ ] Wireframes de las pantallas principales
-- [ ] Trazabilidad completa por cada wireframe (RF/RNF→Épica→HU→CU alto nivel→CU específico→Wireframe)
-- [ ] Verificado contra los códigos finales de Actividad 1 (sin inventar épicas/HU nuevas)
+- [x] Wireframes de las pantallas principales
+- [x] Trazabilidad completa por cada wireframe (RF/RNF→Épica→HU→CU alto nivel→CU específico→Wireframe)
+- [x] Verificado contra los códigos finales de Actividad 1 (sin inventar épicas/HU nuevas)
 - [ ] Verificado contra los recursos de Actividad 2 (diagrama de despliegue consistente)
