@@ -1,0 +1,124 @@
+@startmindmap
+<style>
+mindmapDiagram {
+  node {
+    Padding 6
+    Margin 7
+    MaximumWidth 230
+    FontSize 12
+    FontName "Helvetica"
+    RoundCorner 12
+    LineColor #334155
+    LineThickness 1
+  }
+  rootNode {
+    FontSize 15
+    FontStyle bold
+  }
+}
+</style>
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam ArrowColor #94A3B8
+
+title Diagrama de Requerimientos en Árbol — Épica → Historia de Usuario → Tarea
+
+*[#E2E8F0] Sistema SGR — MVP\n(23 HU)
+
+left side
+**[#EFF6FF] EP-01 Registro y gestión de actividades
+***[#F0FDF4] HU-01 Registro de actividades\n(RF-009, RF-010, RF-014, RF-022)
+****[#F8FAFC] T-01.1 Tabla actividad (BD)
+****[#F8FAFC] T-01.2 Endpoint POST /actividades
+****[#F8FAFC] T-01.3 Formulario de registro
+***[#F0FDF4] HU-02 Registro de compromisos ciudadanos\n(RF-016, RF-017, RF-018, RF-019, RF-020, RF-021)
+****[#F8FAFC] T-02.1 Tabla compromiso
+****[#F8FAFC] T-02.2 Endpoint POST /compromisos + estados
+****[#F8FAFC] T-02.3 Vista de agenda colectiva
+***[#F0FDF4] HU-04 Administración de funciones por cargo\n(RF-003, RF-006, RF-007)
+****[#F8FAFC] T-04.1 Modelo cargo_funcion_item
+****[#F8FAFC] T-04.2 Endpoint funciones/ítems por cargo
+****[#F8FAFC] T-04.3 Pantalla de configuración
+**[#EFF6FF] EP-02 Medición y desempeño
+***[#F0FDF4] HU-05 Definición de metas\n(RF-005, RF-006, RF-007)
+****[#F8FAFC] T-05.1 Tabla meta
+****[#F8FAFC] T-05.2 CRUD de metas + validación 100%
+****[#F8FAFC] T-05.3 Formulario de definición de metas
+***[#F0FDF4] HU-06 Seguimiento de avance\n(RF-008, RF-022, RF-023, RF-028)
+****[#F8FAFC] T-06.1 Servicio de cálculo de avance
+****[#F8FAFC] T-06.2 Endpoint GET /panel-personal
+****[#F8FAFC] T-06.3 Pantalla de panel personal
+***[#F0FDF4] HU-07 Cálculo automático de cumplimiento\n(RF-023, RF-024, RF-025, RF-026)
+****[#F8FAFC] T-07.1 Fórmulas RN-003 a RN-005
+****[#F8FAFC] T-07.2 Recálculo automático
+****[#F8FAFC] T-07.3 Pruebas unitarias de fórmulas
+**[#EFF6FF] EP-03 Evidencias y verificación
+***[#F0FDF4] HU-09 Registro de evidencia fotográfica\n(RF-012, RNF-017)
+****[#F8FAFC] T-09.1 Endpoint de carga de archivos
+****[#F8FAFC] T-09.2 Almacenamiento seguro de evidencias
+****[#F8FAFC] T-09.3 Carga/previsualización (frontend)
+***[#F0FDF4] HU-10 Generación de códigos verificadores\n(RF-011)
+****[#F8FAFC] T-10.1 Generador de código único
+****[#F8FAFC] T-10.2 Endpoint de búsqueda por código
+****[#F8FAFC] T-10.3 Pruebas de unicidad/colisión
+***[#F0FDF4] HU-11 Validación de actividades\n(RF-013, RF-014, RF-036)
+****[#F8FAFC] T-11.1 Bandeja de evidencias pendientes
+****[#F8FAFC] T-11.2 Endpoint PATCH validar evidencia
+****[#F8FAFC] T-11.3 Recálculo al aprobar/rechazar
+**[#EFF6FF] EP-04 Agenda colectiva y compromisos
+***[#F0FDF4] HU-12 Agenda compartida\n(RF-016, RF-017)
+****[#F8FAFC] T-12.1 Vista de agenda colectiva
+****[#F8FAFC] T-12.2 Filtros de agenda
+****[#F8FAFC] T-12.3 Permisos por delegación
+***[#F0FDF4] HU-13 Actualización de estados\n(RF-018, RF-036)
+****[#F8FAFC] T-13.1 Endpoint de cambio de estado
+****[#F8FAFC] T-13.2 Línea de tiempo de estados
+***[#F0FDF4] HU-14 Seguimiento de compromisos\n(RF-019, RF-021, RF-037)
+****[#F8FAFC] T-14.1 Servicio de vencimientos
+****[#F8FAFC] T-14.2 Resumen para el Delegado
+****[#F8FAFC] T-14.3 Integración con motor de alertas
+
+right side
+**[#EFF6FF] EP-05 Monitoreo y control de gestión
+***[#F0FDF4] HU-16 Semáforo de cumplimiento\n(RF-026, RF-027)
+****[#F8FAFC] T-16.1 Reglas de semáforo (RN-008)
+****[#F8FAFC] T-16.2 Componente visual de semáforo
+***[#F0FDF4] HU-17 Comparación avance esperado vs. real\n(RF-023, RF-026, RF-027)
+****[#F8FAFC] T-17.1 Meta esperada al día
+****[#F8FAFC] T-17.2 Vista comparativa esperado/real
+***[#F0FDF4] HU-18 Resumen ejecutivo\n(RF-028, RF-029, RF-031)
+****[#F8FAFC] T-18.1 Endpoint agregador por delegación
+****[#F8FAFC] T-18.2 Panel resumen del Delegado
+****[#F8FAFC] T-18.3 Optimización/caché del panel
+**[#EFF6FF] EP-06 Reportabilidad y toma de decisiones
+***[#F0FDF4] HU-20 Generación de informes\n(RF-032, RF-033)
+****[#F8FAFC] T-20.1 Motor de generación de informes
+****[#F8FAFC] T-20.2 Exportación en formato definido
+****[#F8FAFC] T-20.3 Control de ámbito y permisos
+**[#EFF6FF] EP-07 Plataforma colaborativa
+***[#F0FDF4] HU-23 Trabajo colaborativo en línea\n(RF-034, RNF-003)
+****[#F8FAFC] T-23.1 Control de concurrencia
+****[#F8FAFC] T-23.2 Notificación de actualización
+****[#F8FAFC] T-23.3 Pruebas de escrituras simultáneas
+***[#F0FDF4] HU-25 Adaptación continua\n(RF-038)
+****[#F8FAFC] T-25.1 Versionado de parámetros
+****[#F8FAFC] T-25.2 Pantalla admin. de indicadores
+**[#EFF6FF] EP-08 Administración, seguridad y trazabilidad
+***[#F0FDF4] HU-26 Admin. de delegaciones, usuarios y roles\n(RF-001, RF-002, RNF-004, RNF-005)
+****[#F8FAFC] T-26.1 CRUD delegaciones/usuarios/roles
+****[#F8FAFC] T-26.2 Autenticación con hash seguro
+****[#F8FAFC] T-26.3 Motor de autorización por rol
+***[#F0FDF4] HU-27 Administración de catálogos\n(RF-004)
+****[#F8FAFC] T-27.1 CRUD de catálogos
+****[#F8FAFC] T-27.2 Baja lógica de catálogo
+***[#F0FDF4] HU-28 Administración de períodos\n(RF-005)
+****[#F8FAFC] T-28.1 CRUD de períodos
+****[#F8FAFC] T-28.2 Bloqueo/reapertura de período
+***[#F0FDF4] HU-29 Búsqueda y filtros\n(RF-032)
+****[#F8FAFC] T-29.1 Motor de búsqueda/filtros
+****[#F8FAFC] T-29.2 Restricción de ámbito
+***[#F0FDF4] HU-30 Auditoría de cambios\n(RF-036, RNF-008)
+****[#F8FAFC] T-30.1 Bitácora de auditoría
+****[#F8FAFC] T-30.2 Pantalla de consulta de auditoría
+
+@endmindmap

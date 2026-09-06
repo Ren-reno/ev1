@@ -306,7 +306,33 @@ _(Insertar diagrama. Verificar contra `actividad-2.md` sección 2 antes de dar p
 > de desarrollo. Funciona como mapa visual del avance del proyecto, pensado para poder cruzarse con el
 > estado real del tablero de trabajo (Actividad 1, sección 5).
 
-_(Insertar diagrama.)_
+![Diagrama de Requerimientos en árbol](assets/actividad-3/arbol-requerimientos.svg)
+
+El árbol respeta la jerarquía real, sin duplicar ramas: cada Épica (las 8 de `actividad-1.md` §3.1)
+agrupa únicamente sus propias Historias de Usuario (23 en total, igual que el backlog de §5), y cada HU
+agrupa únicamente sus propias Tareas (61 en total, igual que §3.3 — conteo verificado contra esa tabla
+antes de armar el diagrama).
+
+**Dónde queda el "Requerimiento Funcional" de la cadena.** En vez de ubicar cada RF/RNF como raíz de su
+propia rama, se muestra como etiqueta bajo el nombre de cada HU — la misma línea "Requisitos
+relacionados" ya usada en `actividad-1.md` §3.2. La razón es que 16 de los 40 RF/RNF citados por alguna
+HU sustentan **más de una HU, en épicas distintas** (por ejemplo RF-036 en HU-11, HU-13 y HU-30 — EP-03,
+EP-04 y EP-08 —, o RF-023 en HU-06, HU-07 y HU-17 — EP-02 y EP-05): ponerlos como primer nivel de
+ramificación obligaría a repetir la HU completa (con sus tareas) una vez por cada requisito que la
+sustenta, rompiendo la jerarquía real de "una HU vive en una sola épica" que ya usa el tablero de la
+sección 5. Mostrar el RF/RNF como atributo de la HU mantiene el árbol fiel a esa jerarquía y conserva la
+trazabilidad completa igual: cada hoja sigue siendo rastreable hasta su(s) requisito(s).
+
+Quedan fuera del árbol los 13 RNF transversales que `actividad-1.md` §1.4 marca como "incluidos por
+completitud del MVP" (RNF-001, RNF-002, RNF-006, RNF-007, RNF-009 a RNF-016, RNF-018): no sustentan una
+HU puntual, sino que aplican por igual a cualquier rama (ver su definición real en `guia-sgr.md` §6),
+así que forzarlos dentro de una rama específica contradiría su propia naturaleza transversal.
+
+**Cruce con el tablero real (Actividad 1, §5):** cada hoja "Tarea" de este árbol corresponde a una fila
+de la tabla "Tareas por Historia de Usuario" (§3.3); cada nodo de HU corresponde a una tarjeta del
+backlog priorizado (§5-b), con el mismo código, el mismo nombre y la misma épica — de modo que, cuando
+el tablero avance, el estado de cada tarjeta puede anotarse directamente sobre este mismo árbol sin
+tener que reconstruirlo.
 
 ---
 
@@ -348,7 +374,7 @@ justificar la pantalla de login recorriendo la cadena completa de principio a fi
 - [x] Diagrama(s) de Secuencia (exigido por la rúbrica)
 - [x] Diagrama de Componentes (consumo de servicios)
 - [ ] Diagrama de Despliegue (coherente con Actividad 2)
-- [ ] Diagrama de Requerimientos en árbol
+- [x] Diagrama de Requerimientos en árbol
 - [ ] Wireframes de las pantallas principales
 - [ ] Trazabilidad completa por cada wireframe (RF/RNF→Épica→HU→CU alto nivel→CU específico→Wireframe)
 - [ ] Verificado contra los códigos finales de Actividad 1 (sin inventar épicas/HU nuevas)
