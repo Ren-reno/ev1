@@ -17,7 +17,11 @@ Actividad 3.
 negocio §7, entidades §8, épicas y HU §12, MVP §13.2), `fuentes/audio-clase-1.md` y
 `fuentes/audio-clase-2.md`, `fuentes/apuntes-cocreacion-patrones.md` (marco teórico de técnicas de
 cocreación/levantamiento y clasificación de RNF según Sommerville — usado solo como respaldo
-conceptual, no como fuente de RF/RNF del caso, que viene únicamente de `guia-sgr.md`).
+conceptual, no como fuente de RF/RNF del caso, que viene únicamente de `guia-sgr.md`), y
+`fuentes/ppt-original.md` (técnica c) de la sección 1.1 y tabla c) de la sección 1.3 — usada
+**únicamente** para describir a nivel estructural las pestañas, columnas y fórmulas de la planilla
+vigente; nunca para copiar los nombres, teléfonos o RUT reales que contiene, conforme a la advertencia
+de privacidad del `README.md` de este repositorio).
 
 ---
 
@@ -33,10 +37,12 @@ conceptual, no como fuente de RF/RNF del caso, que viene únicamente de `guia-sg
 > 2. **Tamaño del equipo — 4 integrantes.** Confirmado por el equipo (autorizado por el docente) y
 >    consistente con la nota ya existente en la sección 4 de esta misma plantilla ("tamaño del equipo
 >    (4 personas)") y con el README del repositorio.
-> 3. **Técnica(s) de levantamiento — Taller de cocreación + Encuesta**, combinando profundidad
->    cualitativa y participativa (taller, alineado con el nombre de la unidad y el criterio de rúbrica
->    2.1.3) con alcance cuantitativo (encuesta, que permite tabular resultados de forma más objetiva,
->    criterio 2.1.1).
+> 3. **Técnica(s) de levantamiento — Taller de cocreación + Encuesta + Análisis de documentación**,
+>    combinando profundidad cualitativa y participativa (taller, alineado con el nombre de la unidad y
+>    el criterio de rúbrica 2.1.3), alcance cuantitativo (encuesta, que permite tabular resultados de
+>    forma más objetiva, criterio 2.1.1) y evidencia documental directa del proceso ya en uso (análisis
+>    de la planilla vigente en `ppt-original.md`, sin datos personales — ver §1.1-c y §1.3-c), que no
+>    depende de simular su aplicación a nadie.
 > 4. **Herramienta de planificación (§5):** se entrega el backlog en formato tabla lista para copiar en
 >    GitHub Projects ("GCAP") y una carta Gantt por sprint. No fue posible crear un tablero real en
 >    GitHub ni hacer *push* al repositorio del equipo desde este entorno (no hay credenciales
@@ -53,12 +59,15 @@ conceptual, no como fuente de RF/RNF del caso, que viene únicamente de `guia-sg
 > reales de la Ilustre Municipalidad de La Serena — pero, siguiendo la aclaración explícita del
 > docente, **no se simula la aplicación de ese instrumento a datos de encuesta o taller** (ni
 > hallazgos, ni porcentajes, ni votos, ni gráficos de resultados ficticios): la tabulación y el
-> análisis de las secciones 1.3 y 1.4 se construyen sobre información real ya contenida en
-> `guia-sgr.md` (problemática, reglas de negocio, entidades), no sobre resultados inventados.
+> análisis de la sección 1.3 se construyen sobre información real — la ya contenida en `guia-sgr.md`
+> (problemática, reglas de negocio, entidades) y, para la técnica c) de análisis de documentación, la
+> evidencia estructural de la planilla vigente transcrita en `ppt-original.md` (sin datos personales,
+> ver 1.3-c). La sección 1.4 mantiene su trazabilidad apoyada únicamente en `guia-sgr.md`, conforme a
+> la regla ya cerrada en `decisiones.md`. Nada de esto es un resultado inventado.
 
 ### 1.1 Técnica(s) elegida(s) y justificación
 
-Se aplicaron **dos técnicas complementarias** de levantamiento de requerimientos:
+Se aplicaron **tres técnicas complementarias** de levantamiento de requerimientos:
 
 **a) Taller de cocreación.** Sommerville define un requerimiento como la descripción de un servicio
 que debe entregar un sistema junto con sus restricciones de operación, y describe la obtención de
@@ -77,9 +86,33 @@ problemas detectados cualitativamente en el taller, y para llegar a funcionarios
 las que alcanza a cubrir un taller presencial de pocas personas. Esto da al levantamiento un componente
 de análisis de datos tabulado (criterio 2.1.1) además del cualitativo.
 
-No se usaron entrevistas individuales por separado: el taller ya concentra la interacción directa con
-los distintos roles, y aplicar además entrevistas habría duplicado el mismo tipo de información
-cualitativa sin agregar una perspectiva nueva frente a la que aporta la encuesta.
+**c) Análisis de documentación (planilla actual).**
+
+- *En qué consiste:* revisión directa de las pestañas de la planilla vigente (registro personal,
+  agenda colectiva o "tubo de trabajo", semáforo de avance y resumen de delegación), documentadas en
+  `ppt-original.md`.
+- *Justificación técnica:* el propio caso entrega evidencia real del proceso vigente (capturas de
+  pantalla, fórmulas de cumplimiento ya usadas, nombres de carpetas de verificación por delegación);
+  analizar ese material evita inventar datos y permite fundamentar cada RF/RNF en algo que
+  efectivamente ocurre hoy en la Municipalidad — ver el detalle en la sección 1.3.
+
+Esta tercera técnica está reconocida explícitamente en el marco teórico del ramo
+(`apuntes-cocreacion-patrones.md`: *"Análisis de documentación: revisión de documentos existentes para
+extraer información relevante sobre los requerimientos del sistema"*) y en el propio enunciado de la
+actividad (`que-hacer-1-2-3.md` §1, que lista la "revisión documental" entre las técnicas sugeridas). A
+diferencia del taller y la encuesta, no depende de aplicarse a un grupo simulado de personas: la
+planilla ya existe y ya está en uso, por lo que su revisión aporta evidencia de primera mano sin
+necesidad de simular ningún hallazgo. Por la misma razón de protección de datos que motiva RNF-009
+(§8 de `guia-sgr.md`), este análisis se limita a la **estructura** de la planilla (pestañas, columnas,
+fórmulas ya aplicadas): en este informe no se citan ni reproducen los nombres, teléfonos ni RUT reales
+de funcionarios o vecinos que aparecen en la transcripción original (ver la advertencia del `README.md`
+de este repositorio sobre `ppt-original.md`).
+
+No se usaron entrevistas individuales por separado ni observación directa en terreno: el taller ya
+concentra la interacción directa con los distintos roles, la encuesta aporta el componente
+cuantitativo, y el análisis de documentación cubre la evidencia objetiva del proceso ya en
+funcionamiento; aplicar además entrevistas u observación habría duplicado el mismo tipo de información
+sin agregar una perspectiva nueva frente a las tres técnicas ya elegidas.
 
 ### 1.2 Instrumento aplicado
 
@@ -132,18 +165,27 @@ Cordillera, Norte y Sur), modalidad *online*, con preguntas cerradas y de escala
 | 10 | ¿Le gustaría recibir alertas automáticas de compromisos por vencer? | Sí / No |
 | 11 | En una escala de 1 a 5, ¿qué tan urgente considera contar con un sistema único para todo esto? | Escala 1 a 5 |
 
+La técnica c) (análisis de documentación) no requiere un instrumento propio como los de a) y b): se
+aplica directamente sobre un artefacto que ya existe (`ppt-original.md`), no sobre un grupo de
+participantes, por lo que no hay pauta ni formulario que diseñar. Su desarrollo se muestra directamente
+en la sección 1.3-c.
+
 ### 1.3 Tabulación y análisis de los datos
 
 Tal como aclaró el docente y quedó documentado en `decisiones.md`, en este caso no corresponde
 simular datos de un taller o una encuesta aplicados a personas: el caso SGR ya trae la problemática y
 el análisis resueltos en `guia-sgr.md`, y la Rúbrica 2 (criterio 2.1.1/2.1.2, 25 % de la nota) exige
 tabular y analizar **datos reales**, no inventar hallazgos de un instrumento que no se aplicó a
-nadie. Por eso esta sección tabula y analiza dos tipos de información que `guia-sgr.md` ya trae
-resuelta: **(a)** la problemática organizacional descrita en su §1.1, y **(b)** las reglas de negocio
-y parámetros de cálculo de sus §6, §7 y §13.1, varios de los cuales el propio documento deja abiertos
-a validación. Cada tabla se conecta con las técnicas elegidas en la sección 1.1 (taller de cocreación
-y encuesta), explicando qué aportaría cada una **si se aplicara** con los actores reales de la Ilustre
-Municipalidad de La Serena — sin afirmar que ya se aplicó a datos simulados.
+nadie. Por eso esta sección tabula y analiza tres tipos de información real, sin simular ningún
+hallazgo: **(a)** la problemática organizacional descrita en `guia-sgr.md` §1.1; **(b)** las reglas de
+negocio y parámetros de cálculo de sus §6, §7 y §13.1, varios de los cuales el propio documento deja
+abiertos a validación; y **(c)** la evidencia estructural de la planilla vigente de la Municipalidad,
+transcrita en `ppt-original.md`, que muestra cómo opera hoy el proceso que el sistema debe reemplazar.
+Las tablas (a) y (b) se conectan con las técnicas elegidas en la sección 1.1 (taller de cocreación y
+encuesta), explicando qué aportaría cada una **si se aplicara** con los actores reales de la Ilustre
+Municipalidad de La Serena — sin afirmar que ya se aplicó a datos simulados. La tabla (c) se conecta
+con la tercera técnica (análisis de documentación), que no depende de aplicarse a nadie porque revisa
+un artefacto que ya existe y ya está en uso.
 
 **a) Problemática organizacional (`guia-sgr.md` §1.1)**
 
@@ -184,10 +226,40 @@ un número mayor de cargos o delegaciones, qué tan uniforme o dispar es hoy el 
 formalizando — exactamente el tipo de validación que `guia-sgr.md` deja pendiente y que un
 levantamiento real debería resolver antes de cerrar la parametrización definitiva.
 
-En conjunto, ambas tablas muestran que la problemática (§1.1) y las reglas de negocio (§7) de
+**c) Análisis de la planilla vigente (`ppt-original.md`)**
+
+Esta tabla aplica la tercera técnica de la sección 1.1 (análisis de documentación): en vez de partir de
+un instrumento hipotético, revisa directamente qué contienen hoy las pestañas de la planilla real de la
+Municipalidad, transcritas en `ppt-original.md`. Se describe únicamente la **estructura** de cada
+pestaña y las fórmulas o columnas que ya usa; no se reproducen nombres, teléfonos, RUT ni ningún otro
+dato personal de funcionarios o vecinos que aparece en esa transcripción, siguiendo la advertencia de
+privacidad del `README.md` de este repositorio.
+
+| Elemento observado en la planilla vigente (`ppt-original.md`) | Qué evidencia sobre el proceso actual | RF/RNF/RN ya formalizado en `guia-sgr.md` |
+|---|---|---|
+| Una pestaña por delegación ("sucursal"), más pestañas personales por cargo (Diapositiva 5) | Cada delegación y cada cargo ya trabaja hoy en una pestaña separada, sin una fuente única transversal. | RF-001, RF-002, RF-032 |
+| Pestaña personal: tabla de ponderación (columnas PONDERADOR, META TRIMESTRE, AVANCE ACTUAL, % DE CUMPLIMIENTO, CUMPLIMIENTO PONDERADO) y fila de FELICITACIONES/RECLAMOS con porcentaje (Diapositiva 6) | El % de cumplimiento y el cumplimiento ponderado no son una fórmula propuesta en abstracto: es el mismo cálculo (avance/meta, ponderador × % cumplimiento, ajuste por felicitación o reclamo) que la Municipalidad ya aplica hoy. | RN-002, RN-004, RN-005, RN-011 (§7) — RF-006, RF-007, RF-022 a RF-025 |
+| Columna de código de verificación por tipo de gestión y campos "IMAGEN VERIF" / "verificador válido" (Diapositivas 6 a 10) | Ya existe hoy un esquema de códigos de verificación y un campo de validación de la evidencia asociada a cada actividad. | RF-009 a RF-014 |
+| Pestañas "Tubo de trabajo / Agenda colectiva" y "Resumen colectivo" (Diapositivas 13-14) | Los compromisos con la comunidad ya se administran hoy en una agenda compartida con seguimiento de estado. | RF-016 a RF-021 |
+| Pestaña de semáforo con seguimiento de avance al día (Diapositivas 15-17) | La clasificación visual del avance (equivalente a verde/ámbar/rojo) ya está en uso, no es un concepto nuevo que haya que introducir desde cero. | RN-007, RN-008 (§7) — RF-026, RF-027 |
+| Pestañas "Resumen delegación" y de delegación con cumplimiento ponderado por cargo (Diapositivas 18-19) | La jefatura ya arma hoy un consolidado por delegación, aunque de forma manual. | RF-028, RF-029, RF-031, RF-033 |
+
+El propio hecho de que la transcripción original de estas pestañas contenga nombres, teléfonos y RUT de
+funcionarios y vecinos (visibles en `ppt-original.md`, no reproducidos aquí) es, a su vez, evidencia
+real adicional de la necesidad de RNF-009 (confidencialidad/protección de datos), ya señalada en la fila
+"§8 (Protección de datos)" de la tabla (b): la propia forma en que se guarda hoy la planilla —sin
+controles claros de acceso ni visibilidad por rol— es parte del problema que el sistema debe resolver.
+
+Ninguna fila de esta tabla reemplaza el sustento que ya viene de `guia-sgr.md` (tabla b y sección 1.4):
+la planilla real solo corrobora, con evidencia adicional y verificable, que esos mismos RF/RNF
+responden a algo que efectivamente ocurre hoy en la Municipalidad, tal como exige la justificación de
+la técnica c) planteada en la sección 1.1.
+
+En conjunto, las tres tablas muestran que la problemática (§1.1) y las reglas de negocio (§7) de
 `guia-sgr.md` ya contienen, de forma real y verificable, el sustento necesario para derivar el bloque
-completo de RF/RNF del MVP, sin necesidad de inventar un hallazgo de encuesta o taller para justificar
-cada uno. La sección 1.4 retoma esta misma información, punto por punto, para construir la tabla de
+completo de RF/RNF del MVP —confirmado, además, por la evidencia estructural de la planilla vigente en
+`ppt-original.md`—, sin necesidad de inventar un hallazgo de encuesta o taller para justificar cada uno.
+La sección 1.4 retoma la información de `guia-sgr.md`, punto por punto, para construir la tabla de
 trazabilidad RF/RNF → sustento.
 
 ### 1.4 Derivación de requerimientos
@@ -222,26 +294,28 @@ no sostiene.
 | RF-037 | §1.1, problemática punto 4; HU-14 (§12.5): "gestionar oportunamente los incumplimientos". |
 | RF-038 | HU-25 (§12.8): "adaptar el sistema sin perder la historia"; RN-013 (§7). |
 | RNF-017 | §1.1, problemática punto 5; entidad "Evidencia" (§8); HU-09 (§12.4). |
-| RNF-001 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-002 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-006 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-007 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-009 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-010 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-011 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-012 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-013 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-014 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-015 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-016 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
-| RNF-018 | *Incluido por completitud del MVP (§13.2)* — ver nota debajo de la tabla |
+| RNF-001 | §6 (Disponibilidad): la solución debe estar disponible durante la jornada operativa y registrar indisponibilidades (meta inicial 99,5 % mensual, por validar). Ningún HU P1 la cita de forma puntual porque es un atributo transversal a cualquier operación del sistema — incluida por completitud del MVP (§13.2), conforme a `decisiones.md`. |
+| RNF-002 | §6 (Rendimiento): las operaciones de registro y consulta deben responder en un máximo de 2 segundos, y los tableros consolidados en hasta 5 segundos. Aplica a toda pantalla del MVP (registro, semáforo, resúmenes), no a una HU en particular — incluida por completitud del MVP (§13.2). |
+| RNF-006 | §6 (Confidencialidad): las comunicaciones deben usar cifrado seguro y los repositorios deben proteger datos y evidencias en almacenamiento y respaldo. Se relaciona con la misma preocupación de protección de datos que motiva RNF-009 y la fila "§8 (Protección de datos)" de la tabla (b) — incluida por completitud del MVP (§13.2). |
+| RNF-007 | §6 (Integridad): la solución debe validar formatos, relaciones, duplicados y cambios concurrentes antes de confirmar una operación. Transversal a cualquier registro (RF-009 a RF-014, RF-016 a RF-021, entre otros), sin quedar ligada a una sola HU — incluida por completitud del MVP (§13.2). |
+| RNF-009 | §6 (Privacidad) y §8 (Protección de datos, ya citada en la tabla b): minimizar los datos personales, restringir su visualización y definir conservación/eliminación conforme a la normativa institucional. Reforzada además por la evidencia real de la tabla (c): la planilla vigente (`ppt-original.md`) ya contiene hoy nombres, teléfonos y RUT sin controles claros de acceso — incluida por completitud del MVP (§13.2). |
+| RNF-010 | §6 (Respaldo y recuperación, misma fila ya citada en la tabla b): RPO de 24 h y RTO de 4 h propuestos, sujetos a validación. Transversal a toda la base de datos del sistema, no a una HU puntual — incluida por completitud del MVP (§13.2). |
+| RNF-011 | §6 (Usabilidad): las pantallas deben usar etiquetas comprensibles, validación contextual, filtros consistentes y diseño adaptado a tareas frecuentes. Aplica a cualquier pantalla del MVP — incluida por completitud del MVP (§13.2). |
+| RNF-012 | §6 (Accesibilidad): navegación por teclado, contraste suficiente, textos alternativos y criterios de accesibilidad institucional. Transversal a toda la interfaz, no a una función puntual — incluida por completitud del MVP (§13.2). |
+| RNF-013 | §6 (Compatibilidad): la solución web debe operar en versiones institucionalmente soportadas de Chrome y Edge, en escritorio y dispositivos móviles. No depende de ninguna HU específica — incluida por completitud del MVP (§13.2). |
+| RNF-014 | §6 (Escalabilidad): la arquitectura debe permitir incorporar nuevas delegaciones, cargos, actividades, períodos y usuarios sin rediseñar el modelo. Se relaciona con RF-001, RF-002 y RF-026 a RF-028 (administración) sin que ninguna HU P1 la cite de forma directa — incluida por completitud del MVP (§13.2). |
+| RNF-015 | §6 (Mantenibilidad): metas, ponderadores, estados, catálogos y umbrales deben configurarse sin cambios de código. Conecta con RF-003, RF-005 a RF-007 (configuración) sin quedar ligada a una sola HU — incluida por completitud del MVP (§13.2). |
+| RNF-016 | §6 (Interoperabilidad): la solución debe permitir exportación estructurada y dejar preparada la integración futura mediante interfaces controladas. Se relaciona con RF-033 (informes) sin que ninguna HU P1 la cite directamente — incluida por completitud del MVP (§13.2). |
+| RNF-018 | §6 (Monitoreo): la operación debe generar métricas y alertas sobre errores, fallas de integración, capacidad y tareas automáticas. Transversal a la operación completa del sistema, no a una HU puntual — incluida por completitud del MVP (§13.2). |
 
-*Nota sobre las filas "incluido por completitud del MVP": corresponden a los 13 RNF transversales
-(RNF-001, RNF-002, RNF-006, RNF-007, RNF-009 a RNF-016, RNF-018) que ninguna HU P1 de `guia-sgr.md`
-§12 cita de forma directa en su columna "Requisitos relacionados" (ver `decisiones.md` § Alcance del
-MVP), pero que `guia-sgr.md` §13.2 exige mantener igualmente por ser atributos de calidad que
-cualquier sistema de este tipo debe cumplir (disponibilidad, rendimiento, confidencialidad, etc.), y
-no un punto puntual de la problemática o de una regla de negocio.*
+*Nota sobre la etiqueta "incluida por completitud del MVP": las 13 filas de arriba
+(RNF-001, RNF-002, RNF-006, RNF-007, RNF-009 a RNF-016, RNF-018) ya citan su propia definición real en
+`guia-sgr.md` §6 — no quedan sin sustento. La etiqueta solo indica que, a diferencia de las demás filas
+de esta tabla, ninguna HU P1 de `guia-sgr.md` §12 las cita de forma directa en su columna "Requisitos
+relacionados" (ver `decisiones.md` § Alcance del MVP); aun así, `guia-sgr.md` §13.2 exige mantenerlas
+igualmente por ser atributos de calidad que cualquier sistema de este tipo debe cumplir (disponibilidad,
+rendimiento, confidencialidad, etc.), transversales a todo el MVP y no a un punto puntual de la
+problemática o de una regla de negocio.*
 
 Con esta reconstrucción, los 35 RF y los 5 RNF citados directamente (RNF-003, RNF-004, RNF-005,
 RNF-008, RNF-017) cuentan con un sustento concreto y verificable en `guia-sgr.md`; ninguno quedó sin
@@ -823,9 +897,12 @@ sobra capacidad.
 
 - [x] Alcance verificado contra `decisiones.md` § Alcance del MVP (23 HU P1 — ver nota de alcance al
       inicio de este documento sobre la cifra "22" —, sin agregar HU-03/08/15/19/21/22/24/31)
-- [x] Técnica(s) de levantamiento justificada(s) (Taller de cocreación + Encuesta, §1.1)
-- [x] Instrumento aplicado (pauta de taller + formulario de encuesta, §1.2)
-- [x] Tabulación y análisis de datos reales de `guia-sgr.md` (§1.3, sin datos simulados ni gráfico)
+- [x] Técnica(s) de levantamiento justificada(s) (Taller de cocreación + Encuesta + Análisis de
+      documentación, §1.1)
+- [x] Instrumento aplicado (pauta de taller + formulario de encuesta; la técnica c) no requiere
+      instrumento propio por aplicarse sobre un artefacto ya existente, §1.2)
+- [x] Tabulación y análisis de datos reales de `guia-sgr.md` y evidencia estructural de
+      `ppt-original.md` (§1.3, sin datos simulados, sin gráfico y sin datos personales)
 - [x] Lista de RF codificados (35 RF, §2.1)
 - [x] Lista de RNF codificados (18 RNF, §2.2)
 - [x] Épicas definidas (8 épicas, §3.1)
