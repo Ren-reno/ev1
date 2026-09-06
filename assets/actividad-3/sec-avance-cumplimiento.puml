@@ -1,0 +1,16 @@
+@startuml sec-avance-cumplimiento
+title Secuencia — Visualizar Avance y Calcular Cumplimiento (HU-06, HU-07)
+
+actor Funcionario
+participant "Sistema SGR" as SGR
+
+Funcionario -> SGR: visualizarAvance()
+activate SGR
+SGR -> SGR: calcularCumplimientoAutomatico()
+note right: <<include>> HU-07 (RF-022/023/024)
+SGR -> SGR: calcularSemaforo()
+note right: RN-008
+SGR --> Funcionario: panel (avance, cumplimiento, semáforo)
+deactivate SGR
+
+@enduml

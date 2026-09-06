@@ -1,0 +1,46 @@
+@startuml componentes
+title Diagrama de Componentes — Sistema SGR
+
+package "Cliente" {
+  [Aplicación Web (SPA)] as WEB
+}
+
+package "Backend" {
+  [Controladores API REST] as API
+  [Servicios de Casos de Uso] as SERV
+  package "Patrones de Diseño (sección 3.1)" {
+    [ConfiguracionSistema] as SINGLETON
+    [InformeFactory] as FACTORY
+    [GeneradorAlertas] as OBSERVER
+    [AutenticacionAdapter] as ADAPTER
+  }
+  [Núcleo de Dominio] as DOM
+}
+
+package "Datos y Archivos" {
+  database "Base de Datos\nRelacional" as BD
+  folder "Almacenamiento de\nEvidencias" as FILES
+}
+
+cloud "Directorio Institucional\n(LDAP/AD)" as LDAP
+
+WEB --> API : HTTPS / JSON\n(RNF-002, RNF-006)
+API --> SERV : invoca
+API --> ADAPTER : autentica
+SERV --> DOM : aplica reglas\ny cálculos
+SERV --> BD : persistencia (SQL)
+SERV --> FILES : lee/escribe\nevidencias (RNF-017)
+ADAPTER --> LDAP : valida credenciales\n(RNF-004)
+
+note bottom of DOM
+  Entidades de la sección 3:
+  Funcionario, Actividad, Meta,
+  Indicador, Compromiso, etc.
+end note
+
+note bottom of SINGLETON
+  Los 4 patrones de la sección 3.1,
+  invocados desde Servicios de Casos de Uso.
+end note
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml cu-ep01-registro-gestion-actividades
+left to right direction
+title Casos de Uso Específicos — EP-01 Registro y gestión de actividades
+
+actor "Funcionario" as FUN
+actor "Supervisor" as SUP
+actor "Coordinador" as COORD
+
+rectangle "SGR — Módulo Registro de Actividades" {
+  usecase "Registrar Actividad\n(HU-01)" as UC1
+  usecase "Registrar Compromiso\nCiudadano (HU-02)" as UC2
+  usecase "Administrar Funciones\npor Cargo (HU-04)" as UC4
+}
+
+FUN --> UC1
+FUN --> UC2
+SUP --> UC4
+COORD --> UC4
+
+note bottom of UC1
+  UC1 dispara <<include>> hacia
+  "Generar Código Verificador" (HU-10)
+  y "Validar Evidencia" (HU-11),
+  ambos del módulo EP-03.
+  Ver diagrama específico de EP-03.
+end note
+
+@enduml

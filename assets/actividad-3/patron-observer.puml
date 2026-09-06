@@ -1,0 +1,44 @@
+@startuml patron-observer
+title Patrón Observer — Generación de Alertas (HU-14, HU-16, RF-037)
+
+interface IObservadorAlerta {
+  +actualizar(evento: String, origen: Object)
+}
+
+class GeneradorAlertas {
+  +actualizar(evento: String, origen: Object)
+  -crearAlerta(evento: String, origen: Object): Alerta
+}
+
+class Alerta {
+  -tipo: String
+  -mensaje: String
+  -fecha: Date
+}
+
+IObservadorAlerta <|.. GeneradorAlertas
+GeneradorAlertas "1" -- "0..*" Alerta : crea
+
+class Compromiso {
+  +estaProximoAVencer(): boolean
+}
+class Indicador {
+  +calcularSemaforo()
+}
+
+Compromiso "1" -- "0..*" IObservadorAlerta : notifica a
+Indicador "1" -- "0..*" IObservadorAlerta : notifica a
+
+note right of Compromiso
+  estaProximoAVencer() == true → notifica
+  (condición: umbral configurado, HU-14
+  criterio 2 — mismo <<extend>> del punto 2)
+end note
+
+note right of Indicador
+  calcularSemaforo() == ROJO → notifica
+  (condición: avance < 60 %, RN-008, HU-16
+  criterio 2 — mismo <<extend>> del punto 2)
+end note
+
+@enduml

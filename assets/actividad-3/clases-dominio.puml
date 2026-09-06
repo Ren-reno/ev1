@@ -1,0 +1,163 @@
+@startuml clases-dominio
+title Diagrama de Clases — Dominio SGR (MVP, 23 HU)
+
+enum Rol {
+  FUNCIONARIO
+  VERIFICADOR
+  COORDINADOR
+  DELEGADO
+  ADMINISTRADOR
+  AUDITOR
+  USUARIO_CONSULTA
+  SUPERVISOR
+}
+
+enum EstadoCompromiso {
+  INGRESADO
+  PENDIENTE
+  EN_PROCESO
+  REALIZADO
+}
+
+enum Semaforo {
+  VERDE
+  AMBAR
+  ROJO
+}
+
+class Delegacion {
+  -id: String
+  -nombre: String
+  -ambito: String
+  -estado: boolean
+  +activar()
+  +desactivar()
+}
+
+class Cargo {
+  -nombre: String
+  -vigenciaDesde: Date
+  -estado: boolean
+  +asignarFuncion(item: String)
+  +validarPonderacionTotal(): boolean
+}
+
+class Funcionario {
+  -idInstitucional: String
+  -nombre: String
+  -roles: Rol[]
+  -estado: boolean
+  +registrarActividad(a: Actividad)
+  +registrarCompromiso(c: Compromiso)
+  +tieneRol(r: Rol): boolean
+}
+
+class Periodo {
+  -inicio: Date
+  -termino: Date
+  -diasComputables: int
+  -estado: String
+  -umbralAmbar: double
+  -versionParametros: int
+  +abrir()
+  +cerrar()
+  +reabrir(justificacion: String)
+  +calcularDiasComputables(): int
+}
+
+class Meta {
+  -item: String
+  -valorObjetivo: double
+  -unidad: String
+  -ponderador: double
+  +calcularAvanceEsperado(fecha: Date): double
+}
+
+class ElementoCatalogo {
+  -codigo: String
+  -nombre: String
+  -tipo: String
+  -subtipo: String
+  -estado: boolean
+}
+
+class Actividad {
+  -fecha: Date
+  -solicitudProblema: String
+  -accion: String
+  -contacto: String
+  -telefono: String
+  -estado: String
+  -codigoVerificador: String
+  +registrar()
+  +generarCodigoVerificador(): String
+  +adjuntarEvidencia(e: Evidencia)
+}
+
+class Compromiso {
+  -origen: String
+  -solicitante: String
+  -territorio: String
+  -fechaComprometida: Date
+  -apoyo: String
+  -estado: EstadoCompromiso
+  -observacion: String
+  +actualizarEstado(nuevo: EstadoCompromiso)
+  +estaProximoAVencer(): boolean
+}
+
+class Evidencia {
+  -codigo: String
+  -archivoOVinculo: String
+  -fecha: Date
+  -metadatos: String
+  -estadoRevision: String
+  +adjuntar(archivo: String)
+}
+
+class Validacion {
+  -decision: String
+  -fecha: Date
+  -observacion: String
+  -resultado: boolean
+  -version: int
+  +aprobar()
+  +rechazar(motivo: String)
+  +solicitarCorreccion(motivo: String)
+}
+
+class Indicador {
+  -avance: double
+  -cumplimiento: double
+  -cumplimientoPonderado: double
+  -semaforo: Semaforo
+  -fechaCalculo: Date
+  +calcularCumplimiento()
+  +calcularSemaforo()
+}
+
+class Auditoria {
+  -usuario: String
+  -evento: String
+  -fecha: Date
+  -entidad: String
+  -valorAnterior: String
+  -valorNuevo: String
+  +registrarEvento()
+}
+
+Delegacion "1" -- "0..*" Funcionario : agrupa
+Funcionario "0..*" -- "1" Cargo : ocupa
+Cargo "1" -- "0..*" Meta : define
+Meta "0..*" -- "1" Periodo : vigente en
+Funcionario "1" -- "0..*" Actividad : registra
+Actividad "0..*" -- "1" ElementoCatalogo : clasificada por
+Actividad "1" *-- "0..*" Evidencia : adjunta
+Evidencia "1" *-- "0..1" Validacion : recibe
+Validacion "0..*" -- "1" Funcionario : realizada por\n(rol Verificador)
+Funcionario "1" -- "0..*" Compromiso : responsable de
+Compromiso "0..*" -- "1" Delegacion : territorio
+Meta "1" *-- "1" Indicador : calcula
+Funcionario "1" -- "0..*" Auditoria : genera
+
+@enduml

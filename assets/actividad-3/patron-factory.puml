@@ -1,0 +1,47 @@
+@startuml patron-factory
+title Patrón Factory — Generación de Informes (HU-20)
+
+abstract class Informe {
+  #periodo: Periodo
+  #filtros: String
+  #fechaGeneracion: Date
+  +{abstract} generarContenido(): String
+  +exportar(formato: String): String
+}
+
+class InformeDesempeno {
+  +generarContenido(): String
+}
+class InformeCumplimiento {
+  +generarContenido(): String
+}
+class InformeEjecutivo {
+  +generarContenido(): String
+}
+
+abstract class InformeFactory {
+  +{abstract} crearInforme(tipo: String): Informe
+}
+class InformeFactoryImpl {
+  +crearInforme(tipo: String): Informe
+}
+
+Informe <|-- InformeDesempeno
+Informe <|-- InformeCumplimiento
+Informe <|-- InformeEjecutivo
+InformeFactory <|-- InformeFactoryImpl
+InformeFactoryImpl ..> Informe : crea
+
+class Funcionario {
+  -roles: Rol[]
+}
+Funcionario ..> InformeFactory : usa\n(rol Coordinador, HU-20)
+
+note bottom of InformeFactoryImpl
+  crearInforme(tipo) decide en tiempo de ejecución
+  qué subclase de Informe instanciar según el
+  módulo solicitado (RF-032, RF-033), sin que el
+  Coordinador conozca las clases concretas.
+end note
+
+@enduml

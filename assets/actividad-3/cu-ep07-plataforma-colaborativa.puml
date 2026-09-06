@@ -1,0 +1,16 @@
+@startuml cu-ep07-plataforma-colaborativa
+left to right direction
+title Casos de Uso Específicos — EP-07 Plataforma colaborativa
+
+actor "Funcionario" as FUN
+actor "Administrador" as ADM
+
+rectangle "SGR — Módulo Plataforma Colaborativa" {
+  usecase "Trabajar Colaborativamente\nen Línea (HU-23)" as UC23
+  usecase "Adaptar Configuración\ndel Sistema (HU-25)" as UC25
+}
+
+FUN --> UC23
+ADM --> UC25
+
+@enduml

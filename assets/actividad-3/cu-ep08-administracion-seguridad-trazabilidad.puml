@@ -1,0 +1,25 @@
+@startuml cu-ep08-administracion-seguridad-trazabilidad
+left to right direction
+title Casos de Uso Específicos — EP-08 Administración, seguridad y trazabilidad
+
+actor "Administrador" as ADM
+actor "Coordinador" as COORD
+actor "Usuario de\nConsulta" as USC
+actor "Auditor" as AUD
+
+rectangle "SGR — Módulo Administración y Seguridad" {
+  usecase "Administrar Delegaciones,\nUsuarios y Roles (HU-26)" as UC26
+  usecase "Administrar\nCatálogos (HU-27)" as UC27
+  usecase "Administrar\nPeríodos (HU-28)" as UC28
+  usecase "Buscar y Filtrar\nInformación (HU-29)" as UC29
+  usecase "Auditar\nCambios (HU-30)" as UC30
+}
+
+ADM --> UC26
+ADM --> UC27
+COORD --> UC28
+USC --> UC29
+ADM --> UC30
+AUD --> UC30
+
+@enduml

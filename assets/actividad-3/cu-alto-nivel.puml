@@ -1,0 +1,60 @@
+@startuml cu-alto-nivel
+left to right direction
+title Diagrama de Casos de Uso — Alto Nivel\nSistema de Gestión de Resultados (SGR)
+
+actor "Funcionario" as FUN
+actor "Supervisor" as SUP
+actor "Coordinador" as COORD
+actor "Verificador" as VER
+actor "Delegado" as DEL
+actor "Administrador" as ADM
+actor "Auditor" as AUD
+actor "Usuario de\nConsulta" as USC
+
+rectangle "Sistema de Gestión de Resultados (SGR)" {
+  usecase "EP-01\nRegistrar y Administrar\nActividades" as EP01
+  usecase "EP-02\nMedir Desempeño" as EP02
+  usecase "EP-03\nGestionar Evidencias" as EP03
+  usecase "EP-04\nGestionar Agenda\nColectiva" as EP04
+  usecase "EP-05\nMonitorear y Controlar\nla Gestión" as EP05
+  usecase "EP-06\nGenerar Reportes" as EP06
+  usecase "EP-07\nColaborar en la\nPlataforma" as EP07
+  usecase "EP-08\nAdministrar el\nSistema" as EP08
+}
+
+FUN --> EP01
+SUP --> EP01
+COORD --> EP01
+
+COORD --> EP02
+FUN --> EP02
+
+FUN --> EP03
+VER --> EP03
+
+FUN --> EP04
+DEL --> EP04
+
+FUN --> EP05
+COORD --> EP05
+DEL --> EP05
+
+COORD --> EP06
+
+FUN --> EP07
+ADM --> EP07
+
+ADM --> EP08
+COORD --> EP08
+USC --> EP08
+AUD --> EP08
+
+legend right
+  Cada caso de uso representa, a grandes rasgos,
+  una épica completa (EP-01 a EP-08).
+  El detalle por Historia de Usuario, con las
+  relaciones <<include>>/<<extend>>, se muestra
+  en los diagramas específicos por módulo.
+end legend
+
+@enduml

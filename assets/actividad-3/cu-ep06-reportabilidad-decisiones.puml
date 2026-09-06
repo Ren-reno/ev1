@@ -1,0 +1,13 @@
+@startuml cu-ep06-reportabilidad-decisiones
+left to right direction
+title Casos de Uso Específicos — EP-06 Reportabilidad y toma de decisiones
+
+actor "Coordinador" as COORD
+
+rectangle "SGR — Módulo Reportabilidad" {
+  usecase "Generar Informes\n(HU-20)" as UC20
+}
+
+COORD --> UC20
+
+@enduml

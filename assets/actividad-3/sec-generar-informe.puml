@@ -1,0 +1,22 @@
+@startuml sec-generar-informe
+title Secuencia — Generar Informe (Factory, HU-20)
+
+actor Coordinador
+participant InformeFactory
+participant Informe
+
+Coordinador -> InformeFactory: crearInforme(tipo, filtros)
+activate InformeFactory
+InformeFactory -> Informe: new InformeXxx(tipo)
+activate Informe
+InformeFactory --> Coordinador: informe
+deactivate InformeFactory
+
+Coordinador -> Informe: generarContenido()
+Informe --> Coordinador: contenido
+
+Coordinador -> Informe: exportar(formato)
+Informe --> Coordinador: archivo exportado (RF-033)
+deactivate Informe
+
+@enduml

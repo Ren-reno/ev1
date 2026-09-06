@@ -1,0 +1,27 @@
+@startuml cu-ep02-medicion-desempeno
+left to right direction
+title Casos de Uso Específicos — EP-02 Medición y desempeño
+
+actor "Coordinador" as COORD
+actor "Funcionario" as FUN
+
+rectangle "SGR — Módulo Medición y Desempeño" {
+  usecase "Definir Metas\n(HU-05)" as UC5
+  usecase "Visualizar Avance\n(HU-06)" as UC6
+  usecase "Calcular Cumplimiento\nAutomático (HU-07)" as UC7
+}
+
+COORD --> UC5
+FUN --> UC6
+COORD --> UC7
+
+UC6 ..> UC7 : <<include>>
+
+note bottom of UC7
+  Se ejecuta siempre que se
+  visualiza/refresca el avance
+  (HU-06, criterio 2): no depende
+  de una condición opcional.
+end note
+
+@enduml

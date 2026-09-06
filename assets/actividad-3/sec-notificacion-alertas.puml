@@ -1,0 +1,26 @@
+@startuml sec-notificacion-alertas
+title Secuencia — Notificación de Alertas (Observer, HU-14, HU-16, RF-037)
+
+participant Compromiso
+participant Indicador
+participant GeneradorAlertas
+actor Delegado
+actor Funcionario
+
+alt Compromiso próximo a vencer (HU-14, criterio 2)
+  Compromiso -> Compromiso: estaProximoAVencer() == true
+  Compromiso -> GeneradorAlertas: actualizar(evento)
+  activate GeneradorAlertas
+  GeneradorAlertas -> GeneradorAlertas: crearAlerta()
+  GeneradorAlertas --> Delegado: notifica vencimiento próximo
+  deactivate GeneradorAlertas
+else Avance bajo el 60% (HU-16, criterio 2 / RN-008)
+  Indicador -> Indicador: calcularSemaforo() == ROJO
+  Indicador -> GeneradorAlertas: actualizar(evento)
+  activate GeneradorAlertas
+  GeneradorAlertas -> GeneradorAlertas: crearAlerta()
+  GeneradorAlertas --> Funcionario: notifica avance bajo
+  deactivate GeneradorAlertas
+end
+
+@enduml

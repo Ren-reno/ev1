@@ -1,0 +1,32 @@
+@startuml patron-singleton
+title Patrón Singleton — ConfiguracionSistema
+
+class ConfiguracionSistema {
+  -{static} instancia: ConfiguracionSistema
+  -umbralAmbarDefecto: double
+  -umbralRojoDefecto: double
+  -formatosEvidenciaPermitidos: String[]
+  -tamanoMaximoEvidenciaMB: int
+  -ConfiguracionSistema()
+  +{static} getInstancia(): ConfiguracionSistema
+  +obtenerUmbrales(): double[]
+}
+
+Periodo ..> ConfiguracionSistema : usa (umbrales por\ndefecto al crear un período)
+Evidencia ..> ConfiguracionSistema : usa (formatos y tamaño\npermitido — RNF-017)
+
+note bottom of ConfiguracionSistema
+  Constructor privado + getInstancia() estático:
+  garantiza una única instancia global con punto
+  de acceso centralizado — gestor de configuración
+  del sistema (HU-25, RNF-013/014/015).
+end note
+
+class Periodo {
+  -umbralAmbar: double
+}
+class Evidencia {
+  -formato: String
+}
+
+@enduml

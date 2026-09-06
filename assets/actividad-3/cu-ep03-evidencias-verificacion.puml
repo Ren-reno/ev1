@@ -1,0 +1,36 @@
+@startuml cu-ep03-evidencias-verificacion
+left to right direction
+title Casos de Uso Específicos — EP-03 Evidencias y verificación
+
+actor "Funcionario" as FUN
+actor "Verificador" as VER
+
+rectangle "SGR — Módulo Evidencias y Verificación" {
+  usecase "Registrar Actividad\n(HU-01, EP-01)" as UC1
+  usecase "Adjuntar Evidencia\n(HU-09)" as UC9
+  usecase "Generar Código\nVerificador (HU-10)" as UC10
+  usecase "Validar Evidencia\n(HU-11)" as UC11
+}
+
+FUN --> UC1
+FUN --> UC9
+VER --> UC11
+
+UC1 ..> UC10 : <<include>>
+UC1 ..> UC11 : <<include>>
+UC9 ..> UC11 : <<include>>
+
+note bottom of UC1
+  Pertenece a EP-01; se repite aquí
+  solo para mostrar las relaciones
+  <<include>> que nacen desde HU-01.
+end note
+
+note bottom of UC11
+  "Validar Evidencia" es el comportamiento
+  obligatorio y reutilizable (función común)
+  que disparan los distintos casos que
+  suben evidencia: UC1 y UC9.
+end note
+
+@enduml

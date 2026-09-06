@@ -1,0 +1,31 @@
+@startuml cu-ep05-monitoreo-control-gestion
+left to right direction
+title Casos de Uso Específicos — EP-05 Monitoreo y control de gestión
+
+actor "Funcionario" as FUN
+actor "Coordinador" as COORD
+actor "Delegado" as DEL
+
+rectangle "SGR — Módulo Monitoreo y Control" {
+  usecase "Visualizar Semáforo de\nCumplimiento (HU-16)" as UC16
+  usecase "Comparar Avance Esperado\nvs. Real (HU-17)" as UC17
+  usecase "Consultar Resumen\nEjecutivo (HU-18)" as UC18
+  usecase "Generar Alerta" as UCA2
+}
+
+FUN --> UC16
+COORD --> UC17
+DEL --> UC18
+
+UCA2 ..> UC16 : <<extend>>
+
+note bottom of UCA2
+  Condición: el avance queda bajo el
+  60% de lo esperado — semáforo rojo
+  (HU-16, criterio 2 / RN-008).
+  Es la misma "Generar Alerta" que
+  extiende "Monitorear Compromisos"
+  en EP-04, con otra condición.
+end note
+
+@enduml

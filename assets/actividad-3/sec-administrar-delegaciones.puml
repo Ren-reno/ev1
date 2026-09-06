@@ -1,0 +1,23 @@
+@startuml sec-administrar-delegaciones
+title Secuencia — Administrar Delegaciones, Usuarios y Roles (HU-26)
+
+actor Administrador
+participant "Sistema SGR" as SGR
+participant Auditoria
+
+Administrador -> SGR: crearDelegacion(datos)
+activate SGR
+SGR -> SGR: validar(datos)
+SGR -> Auditoria: registrarEvento()
+note right: RF-036 / RNF-008
+SGR --> Administrador: delegación creada
+deactivate SGR
+
+Administrador -> SGR: asignarRol(funcionario, rol)
+activate SGR
+SGR -> SGR: validar segregación de funciones (RNF-005)
+SGR -> Auditoria: registrarEvento()
+SGR --> Administrador: rol asignado
+deactivate SGR
+
+@enduml

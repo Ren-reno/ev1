@@ -1,0 +1,29 @@
+@startuml cu-ep04-agenda-colectiva-compromisos
+left to right direction
+title Casos de Uso Específicos — EP-04 Agenda colectiva y compromisos
+
+actor "Funcionario" as FUN
+actor "Delegado" as DEL
+
+rectangle "SGR — Módulo Agenda Colectiva" {
+  usecase "Gestionar Agenda\nCompartida (HU-12)" as UC12
+  usecase "Actualizar Estado de\nCompromiso (HU-13)" as UC13
+  usecase "Monitorear\nCompromisos (HU-14)" as UC14
+  usecase "Generar Alerta" as UCA1
+}
+
+FUN --> UC12
+FUN --> UC13
+DEL --> UC14
+
+UCA1 ..> UC14 : <<extend>>
+
+note bottom of UCA1
+  Condición: el compromiso próximo
+  a vencer alcanza el umbral
+  configurado (HU-14, criterio 2).
+  Comportamiento opcional, no siempre
+  se dispara al monitorear.
+end note
+
+@enduml
