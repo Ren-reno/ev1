@@ -48,20 +48,18 @@ node "Instancia AWS EC2 tipo c2\n(AWS Academy Learner Lab, AMI Linux)" as SRV {
   artifact "Gunicorn\n(servidor WSGI)" as WSGI
   artifact "Django\n(API y aplicación)" as APP
   artifact "Núcleo de Dominio\n(reglas y cálculos)" as DOM
-  artifact "AutenticacionAdapter\n(patrón Adapter, sección 3.1)" as ADAPTER
+  artifact "Módulo de Autenticación\n(django.contrib.auth)" as AUTH
   database "Motor de BD Relacional\n(por definir)" as BD
   folder "Almacenamiento\nde Evidencias" as FILES
 }
-
-cloud "Directorio Institucional\n(LDAP/AD)" as LDAP
 
 CLIENTE --> WSGI : HTTPS/TLS\ncifrado (RNF-006)
 WSGI --> APP : sirve la\naplicación Django
 APP --> DOM : aplica reglas\ny cálculos
 APP --> BD : SQL\npersistencia
 APP --> FILES : lectura/escritura\nevidencias (RNF-017)
-APP --> ADAPTER : autentica
-ADAPTER --> LDAP : LDAP/AD\nautenticación (RNF-004)
+APP --> AUTH : autentica
+AUTH --> BD : valida credenciales\ncontra tabla de usuarios\n(hash, RNF-004)
 
 note bottom of CLIENTE
   Cualquier PC o notebook con navegador
@@ -79,6 +77,12 @@ note right of SRV
   respaldos programados (RNF-010: RPO 24 h /
   RTO 4 h). Motor de base de datos aún por
   definir (PostgreSQL u otra opción).
+  Autenticación con el sistema propio de Django
+  (django.contrib.auth): contraseñas con hash
+  seguro y sesiones protegidas, cumpliendo
+  RNF-004 y los controles de identidad de
+  guia-sgr.md §14.2, sin depender de un
+  directorio institucional externo.
 end note
 
 package "Nivel Óptimo\n(actividad-2.md §2.2, recorte proporcional al MVP)" {

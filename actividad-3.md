@@ -163,15 +163,19 @@ conjunto de valores es cerrado (RF-018 y RN-008/§7.1 respectivamente).
 
 ### 3.1 Patrones de diseño aplicados
 
-Se documentan los 4 patrones citados por el ramo — los 4 tienen un caso real dentro de las 23 HU del
-MVP, no solo el nombre:
+Se documentan 3 de los 4 patrones citados por el ramo — cada uno con un caso real dentro de las 23 HU
+del MVP, no solo el nombre. El cuarto patrón sugerido por el material del curso (Adapter, pensado para
+integrar un servicio externo con una interfaz distinta a la esperada — ver la cita de la sección 3
+arriba) no tiene hoy un caso de uso real que lo sustente: la autenticación se resuelve con el sistema
+propio de Django (`django.contrib.auth`, ver sección 6), sin ningún servicio externo que requiera
+traducción de interfaz. Como la propia cita de instrucciones aclara, "no es obligatorio forzar los 4
+patrones", así que se documentan solo los 3 con caso de uso real y justificable.
 
 | Patrón | Clase(s) | HU/RF/RNF que lo sustenta |
 |---|---|---|
 | Singleton | `ConfiguracionSistema` | HU-25 (adaptar configuración), RNF-013/014/015 |
 | Factory | `InformeFactory` / `InformeFactoryImpl` | HU-20 (tipos de informe según módulo) |
 | Observer | `IObservadorAlerta` / `GeneradorAlertas` | HU-14, HU-16, RF-037 — mismo `extend` de la sección 2 |
-| Adapter | `AutenticacionAdapter` | RNF-004 (integración con directorio institucional) |
 
 #### Singleton — `ConfiguracionSistema`
 
@@ -198,15 +202,6 @@ vencer, semáforo en rojo); `GeneradorAlertas` es el observador concreto que cre
 misma relación que ya se fijó como `extend` en la sección 2 (EP-04 y EP-05) — este diagrama solo
 formaliza en clases esa misma decisión, no introduce una nueva.
 
-#### Adapter — `AutenticacionAdapter`
-
-![Patrón Adapter](assets/actividad-3/patron-adapter.svg)
-
-`AutenticacionAdapter` implementa la interfaz `IAutenticacion` que SGR espera internamente y por dentro
-traduce hacia la interfaz real —y distinta— del directorio institucional (RNF-004: "integración
-recomendada al directorio institucional"), permitiendo cambiar de proveedor sin tocar el resto del
-sistema.
-
 ---
 
 ## 4. Diagrama de Secuencia
@@ -215,8 +210,8 @@ sistema.
 > (dimensión "Análisis de los recursos...", 40%). Conviene incluirlo igual para no perder puntaje en esa
 > dimensión. Típicamente uno por cada caso de uso principal.
 
-Se eligieron 6 flujos representativos (no las 23 HU una por una): cubren la mayoría de las épicas y, en
-particular, ponen en acción los 4 patrones y las relaciones `include`/`extend` ya fijadas en las
+Se eligieron 5 flujos representativos (no las 23 HU una por una): cubren la mayoría de las épicas y, en
+particular, ponen en acción los 3 patrones y las relaciones `include`/`extend` ya fijadas en las
 secciones 2 y 3, para que las tres vistas (casos de uso, clases, secuencia) cuenten la misma historia.
 
 ### 4.1 Registrar Actividad con Evidencia y Validación
@@ -249,14 +244,7 @@ actores distintos (Delegado vs. Funcionario).
 `InformeFactory` crea la subclase concreta de `Informe` (HU-20) sin que el Coordinador la conozca —
 misma decisión de diseño que la sección 3.1.
 
-### 4.5 Autenticación de Usuario (Adapter)
-
-![Secuencia — Autenticación](assets/actividad-3/sec-autenticacion.svg)
-
-`AutenticacionAdapter` traduce la llamada interna hacia el formato real del directorio institucional
-(RNF-004) y de vuelta, sin que `Sistema SGR` conozca los detalles de LDAP/AD.
-
-### 4.6 Administrar Delegaciones, Usuarios y Roles
+### 4.5 Administrar Delegaciones, Usuarios y Roles
 
 ![Secuencia — Administrar Delegaciones](assets/actividad-3/sec-administrar-delegaciones.svg)
 
@@ -273,19 +261,21 @@ clases.
 
 ![Diagrama de Componentes](assets/actividad-3/componentes.svg)
 
-Sigue los 4 bloques de `guia-sgr.md` §14.1 (Interfaz / API y aplicación / Dominio / Datos y archivos),
-sin comprometerse a un framework o motor específico — igual que `actividad-2.md` §2 ("runtime del
-lenguaje de backend elegido", "motor de base de datos relacional"), que deja esa elección abierta. Si
-el equipo ya fijó tecnologías concretas, basta con renombrar los componentes: la estructura y los
-consumos de servicio no cambian.
+Sigue los 4 bloques de `guia-sgr.md` §14.1 (Interfaz / API y aplicación / Dominio / Datos y archivos). El
+diagrama nombra los componentes por su responsabilidad lógica (qué hace cada pieza), no por el nombre de
+la tecnología que la implementa — el framework de backend ya está fijado como Django en `actividad-2.md`
+§2.2 (Etapa de producción/operación), y esa decisión no cambia la estructura ni los consumos de servicio
+que se ven aquí, solo indica con qué herramienta concreta se construirá cada bloque. El motor de base de
+datos relacional, en cambio, sigue abierto (`actividad-2.md` §2.2 lo marca como "por definir"), así que
+ese componente permanece sin comprometerse a un motor específico hasta que el equipo lo decida.
 
 **Consumos de servicio:**
 - Cliente → API: HTTPS/JSON (RNF-002 rendimiento, RNF-006 confidencialidad → implica TLS).
 - API → Servicios de Casos de Uso → Núcleo de Dominio: las reglas y cálculos de la sección 3.
 - Servicios de Casos de Uso → Base de Datos: persistencia relacional.
 - Servicios de Casos de Uso → Almacenamiento de Evidencias: lectura/escritura de archivos (RNF-017).
-- API → `AutenticacionAdapter` → Directorio Institucional (externo): único servicio externo del MVP,
-  ya identificado como patrón Adapter en la sección 3.1 y en la secuencia 4.5.
+- API → Módulo de Autenticación → Base de Datos: valida credenciales contra la tabla de usuarios
+  (hash, RNF-004), sin servicios externos — ver sección 6 para el detalle de despliegue.
 
 ---
 
@@ -300,11 +290,16 @@ consumos de servicio no cambian.
 
 **Nivel Mínimo** (`actividad-2.md` §2.2, obligatorio): una única instancia AWS EC2 tipo c2 (cuenta AWS
 Academy Learner Lab, presupuesto de 50 USD en créditos) con AMI de Linux aloja en el mismo nodo a
-Gunicorn (servidor WSGI), la aplicación Django, el núcleo de dominio, el `AutenticacionAdapter` y el
-motor de base de datos — no se separa la BD a un nodo distinto en el mínimo. El equipo cliente no tiene
-requisitos especiales de hardware, solo un navegador compatible (RNF-013). Software mínimo: AMI de
-Linux, certificado HTTPS básico y respaldos programados (RNF-010: RPO 24 h / RTO 4 h). El motor de base
-de datos queda marcado como pendiente de definir, igual que en `actividad-2.md` §2.2.
+Gunicorn (servidor WSGI), la aplicación Django, el núcleo de dominio, el módulo de autenticación
+(`django.contrib.auth`) y el motor de base de datos — no se separa la BD a un nodo distinto en el
+mínimo. La autenticación se resuelve con el sistema propio de Django (contraseñas con hash seguro y
+sesiones protegidas), cumpliendo RNF-004 y los controles de identidad de `guia-sgr.md` §14.2, sin
+depender de un directorio institucional externo: el enunciado solo recomienda esa integración
+("se recomienda", RNF-004), no la exige, y el equipo optó por la alternativa más simple y realista para
+el plazo del MVP. El equipo cliente no tiene requisitos especiales de hardware, solo un navegador
+compatible (RNF-013). Software mínimo: AMI de Linux, certificado HTTPS básico y respaldos programados
+(RNF-010: RPO 24 h / RTO 4 h). El motor de base de datos queda marcado como pendiente de definir, igual
+que en `actividad-2.md` §2.2.
 
 **Nivel Óptimo** (`actividad-2.md` §2.2, opcional, recorte proporcional al MVP): representado con línea
 punteada, agrega únicamente una réplica de la base de datos (streaming replication) para continuidad,
