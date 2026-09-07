@@ -1,4 +1,37 @@
 @startuml componentes
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam component {
+  BackgroundColor #EFF6FF
+  BorderColor #2563EB
+  FontColor #1E3A5F
+  FontSize 13
+}
+skinparam package {
+  BorderColor #64748B
+  FontColor #334155
+  FontStyle bold
+}
+skinparam database {
+  BackgroundColor #F0FDF4
+  BorderColor #16A34A
+  FontColor #14532D
+  FontSize 13
+}
+skinparam folder {
+  BackgroundColor #F0FDF4
+  BorderColor #16A34A
+  FontColor #14532D
+  FontSize 13
+}
+skinparam note {
+  BackgroundColor #FEF9C3
+  BorderColor #CA8A04
+  FontSize 11
+}
+skinparam ArrowColor #475569
+skinparam TitleFontSize 15
+
 title Diagrama de Componentes — Sistema SGR
 
 package "Cliente" {
