@@ -1,0 +1,110 @@
+@startuml despliegue
+title Diagrama de Despliegue — Sistema SGR
+
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam node {
+  BackgroundColor #EFF6FF
+  BorderColor #2563EB
+  FontColor #1E3A5F
+  FontSize 13
+}
+skinparam database {
+  BackgroundColor #F0FDF4
+  BorderColor #16A34A
+  FontColor #14532D
+  FontSize 13
+}
+skinparam folder {
+  BackgroundColor #F0FDF4
+  BorderColor #16A34A
+  FontColor #14532D
+  FontSize 13
+}
+skinparam cloud {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  FontColor #1E293B
+  FontSize 13
+}
+skinparam rectangle {
+  BorderColor #64748B
+  FontColor #334155
+  FontStyle bold
+}
+skinparam note {
+  BackgroundColor #FEF9C3
+  BorderColor #CA8A04
+  FontSize 11
+}
+skinparam ArrowColor #475569
+skinparam TitleFontSize 15
+
+node "Equipo Cliente\n(funcionario municipal)" as CLIENTE {
+  artifact "Navegador Web" as NAV
+}
+
+node "Instancia AWS EC2 tipo c2\n(AWS Academy Learner Lab, AMI Linux)" as SRV {
+  artifact "Gunicorn\n(servidor WSGI)" as WSGI
+  artifact "Django\n(API y aplicación)" as APP
+  artifact "Núcleo de Dominio\n(reglas y cálculos)" as DOM
+  artifact "AutenticacionAdapter\n(patrón Adapter, sección 3.1)" as ADAPTER
+  database "Motor de BD Relacional\n(por definir)" as BD
+  folder "Almacenamiento\nde Evidencias" as FILES
+}
+
+cloud "Directorio Institucional\n(LDAP/AD)" as LDAP
+
+CLIENTE --> WSGI : HTTPS/TLS\ncifrado (RNF-006)
+WSGI --> APP : sirve la\naplicación Django
+APP --> DOM : aplica reglas\ny cálculos
+APP --> BD : SQL\npersistencia
+APP --> FILES : lectura/escritura\nevidencias (RNF-017)
+APP --> ADAPTER : autentica
+ADAPTER --> LDAP : LDAP/AD\nautenticación (RNF-004)
+
+note bottom of CLIENTE
+  Cualquier PC o notebook con navegador
+  compatible (RNF-013), sin requisitos
+  especiales de hardware (actividad-2.md
+  §2.2, columna Mínimo).
+end note
+
+note right of SRV
+  **Mínimo** (actividad-2.md §2.2): 1 instancia
+  EC2 c2 (AWS Academy, presupuesto de 50 USD en
+  créditos) aloja en un solo nodo el servidor
+  WSGI, la aplicación Django y la base de datos.
+  AMI de Linux, certificado HTTPS básico,
+  respaldos programados (RNF-010: RPO 24 h /
+  RTO 4 h). Motor de base de datos aún por
+  definir (PostgreSQL u otra opción).
+end note
+
+package "Nivel Óptimo\n(actividad-2.md §2.2, recorte proporcional al MVP)" {
+  database "Réplica de\nBase de Datos" as BD2 <<óptimo>>
+}
+
+APP ..> BD2 : réplica para\ncontinuidad
+BD ..> BD2 : streaming\nreplication
+
+note bottom of BD2
+  **Óptimo** (actividad-2.md §2.2): misma
+  instancia EC2 c2 — sin escalar a un tipo
+  mayor ni a múltiples instancias, para no
+  exceder el crédito disponible — agregando
+  certificado HTTPS reforzado (Let's Encrypt),
+  backups más frecuentes y esta réplica de BD.
+  No se incluyen balanceador de carga,
+  orquestador de contenedores ni monitoreo
+  dedicado: el sistema es de uso interno,
+  restringido a funcionarios municipales, sin
+  necesidad de escalar ante alta concurrencia.
+end note
+
+legend right
+  Línea sólida = infraestructura mínima (actividad-2.md §2.2, obligatoria)
+  Línea punteada = elemento añadido en el nivel óptimo (opcional)
+end legend
+
+@enduml

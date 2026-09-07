@@ -1,0 +1,19 @@
+diff --git a/actividad-2.md b/actividad-2.md
+index 84f68ce..b8be1e3 100644
+--- a/actividad-2.md
++++ b/actividad-2.md
+@@ -179,12 +179,12 @@ a la alternativa estructurada más comparable.
+ 
+ ### 2.2 Etapa de producción/operación
+ 
+ | Recurso | Mínimo | Óptimo |
+ |---|---|---|
+-| Hardware | Servidor/VPS con 1-2 vCPU, 2-4 GB de RAM y 40-50 GB de almacenamiento SSD para alojar la API y la base de datos; equipos cliente de los funcionarios municipales sin requisitos especiales (cualquier PC o notebook con navegador compatible, cumpliendo RNF-013) | Servidor con 4 o más vCPU, 8-16 GB de RAM y almacenamiento con respaldo automatizado, o un servicio cloud administrado y escalable; almacenamiento redundante dedicado a evidencias fotográficas (RNF-017); certificado SSL válido y firewall/WAF dedicado |
+-| Software | Sistema operativo de servidor (distribución Linux LTS), motor de base de datos en versión de producción, servidor web como proxy inverso, certificado HTTPS básico y respaldos programados (RNF-010: RPO 24 h / RTO 4 h como línea base) | Balanceador de carga para picos de uso (RNF-002), sistema de monitoreo y alertas sobre errores y caídas de disponibilidad (RNF-018, RNF-001), backups automatizados con retención definida, orquestador de contenedores para escalar horizontalmente (RNF-014), logs centralizados que respalden la auditoría (RNF-008) |
++| Hardware | 1 instancia AWS EC2 tipo c2 (cuenta AWS Academy Learner Lab, presupuesto de 50 USD en créditos) con AMI de Linux, alojando en el mismo nodo la API y la base de datos; equipos cliente de los funcionarios municipales sin requisitos especiales (cualquier PC o notebook con navegador compatible, cumpliendo RNF-013) | Misma instancia EC2 c2 (sin escalar a un tipo mayor ni a múltiples instancias, para no exceder el crédito disponible), agregando una réplica de la base de datos para continuidad ante fallos; certificado SSL válido |
++| Software | AMI de Linux, Python 3.x, Django (framework de backend), Gunicorn como servidor WSGI de producción (Django por sí solo no está pensado para servir tráfico real), motor de base de datos relacional *(por definir — pendiente elegir entre PostgreSQL u otra opción, y si corre en la misma instancia o en una separada)*, certificado HTTPS básico y respaldos programados (RNF-010: RPO 24 h / RTO 4 h como línea base) | Mismo software del mínimo, más certificado HTTPS reforzado (ej. Let's Encrypt con renovación automática), backups automatizados con mayor frecuencia y retención definida, y configuración de réplica de base de datos (streaming replication) para la continuidad indicada en la columna Hardware |
+ 
+ ---
+ 
+ ## 3. Recursos Humanos
+ 

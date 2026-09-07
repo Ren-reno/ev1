@@ -296,7 +296,24 @@ consumos de servicio no cambian.
 > hardware/software mínimos y óptimos definidos en la Actividad 2** — no pueden ser inconsistentes entre
 > sí.
 
-_(Insertar diagrama. Verificar contra `actividad-2.md` sección 2 antes de dar por cerrado.)_
+![Diagrama de Despliegue](assets/actividad-3/despliegue.svg)
+
+**Nivel Mínimo** (`actividad-2.md` §2.2, obligatorio): una única instancia AWS EC2 tipo c2 (cuenta AWS
+Academy Learner Lab, presupuesto de 50 USD en créditos) con AMI de Linux aloja en el mismo nodo a
+Gunicorn (servidor WSGI), la aplicación Django, el núcleo de dominio, el `AutenticacionAdapter` y el
+motor de base de datos — no se separa la BD a un nodo distinto en el mínimo. El equipo cliente no tiene
+requisitos especiales de hardware, solo un navegador compatible (RNF-013). Software mínimo: AMI de
+Linux, certificado HTTPS básico y respaldos programados (RNF-010: RPO 24 h / RTO 4 h). El motor de base
+de datos queda marcado como pendiente de definir, igual que en `actividad-2.md` §2.2.
+
+**Nivel Óptimo** (`actividad-2.md` §2.2, opcional, recorte proporcional al MVP): representado con línea
+punteada, agrega únicamente una réplica de la base de datos (streaming replication) para continuidad,
+además de certificado HTTPS reforzado y backups más frecuentes — sin escalar a un tipo de instancia
+mayor ni a múltiples instancias, para no exceder el crédito disponible de AWS Academy. A diferencia de
+una versión anterior de este diagrama, no se incluyen balanceador de carga, orquestador de contenedores
+ni monitoreo dedicado: esas piezas resuelven problemas de alta concurrencia o alta disponibilidad
+crítica que no aplican a un sistema de uso interno, restringido a funcionarios municipales, en etapa
+MVP. El diagrama fue verificado contra `actividad-2.md` sección 2.2 antes de darse por cerrado.
 
 ---
 
