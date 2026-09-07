@@ -7,9 +7,7 @@ enum Rol {
   COORDINADOR
   DELEGADO
   ADMINISTRADOR
-  AUDITOR
   USUARIO_CONSULTA
-  SUPERVISOR
 }
 
 enum EstadoCompromiso {

@@ -2,7 +2,7 @@
 title Diagrama de Componentes — Sistema SGR
 
 package "Cliente" {
-  [Aplicación Web (SPA)] as WEB
+  [Web responsiva] as WEB
 }
 
 package "Backend" {

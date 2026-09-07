@@ -3,55 +3,41 @@ left to right direction
 title Diagrama de Casos de Uso — Alto Nivel\nSistema de Gestión de Resultados (SGR)
 
 actor "Funcionario" as FUN
-actor "Supervisor" as SUP
-actor "Coordinador" as COORD
+actor "Coordinador del\nsistema" as COORD
 actor "Verificador" as VER
-actor "Delegado" as DEL
+actor "Delegado o\njefatura" as DEL
 actor "Administrador" as ADM
-actor "Auditor" as AUD
-actor "Usuario de\nConsulta" as USC
+actor "Usuario de\nconsulta" as USC
 
 rectangle "Sistema de Gestión de Resultados (SGR)" {
-  usecase "EP-01\nRegistrar y Administrar\nActividades" as EP01
-  usecase "EP-02\nMedir Desempeño" as EP02
-  usecase "EP-03\nGestionar Evidencias" as EP03
-  usecase "EP-04\nGestionar Agenda\nColectiva" as EP04
-  usecase "EP-05\nMonitorear y Controlar\nla Gestión" as EP05
-  usecase "EP-06\nGenerar Reportes" as EP06
-  usecase "EP-07\nColaborar en la\nPlataforma" as EP07
-  usecase "EP-08\nAdministrar el\nSistema" as EP08
+  usecase "Registrar actividades\n(EP-01)" as EP01
+  usecase "Medir desempeño\n(EP-02)" as EP02
+  usecase "Verificar evidencias\n(EP-03)" as EP03
+  usecase "Coordinar agenda\n(EP-04)" as EP04
+  usecase "Monitorear gestión\n(EP-05)" as EP05
+  usecase "Consultar reportes\n(EP-06)" as EP06
+  usecase "Colaborar en plataforma\n(EP-07)" as EP07
+  usecase "Administrar sistema\n(EP-08)" as EP08
 }
 
-FUN --> EP01
-SUP --> EP01
-COORD --> EP01
+ADM --> EP08
 
+COORD --> EP05
 COORD --> EP02
-FUN --> EP02
 
-FUN --> EP03
-VER --> EP03
-
-FUN --> EP04
 DEL --> EP04
 
-FUN --> EP05
-COORD --> EP05
-DEL --> EP05
-
-COORD --> EP06
-
+FUN --> EP01
 FUN --> EP07
-ADM --> EP07
 
-ADM --> EP08
-COORD --> EP08
-USC --> EP08
-AUD --> EP08
+VER --> EP03
+
+USC --> EP06
 
 legend right
   Cada caso de uso representa, a grandes rasgos,
-  una épica completa (EP-01 a EP-08).
+  una épica completa (EP-01 a EP-08), indicada
+  entre paréntesis en cada óvalo.
   El detalle por Historia de Usuario, con las
   relaciones <<include>>/<<extend>>, se muestra
   en los diagramas específicos por módulo.
