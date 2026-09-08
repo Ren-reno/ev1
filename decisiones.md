@@ -103,3 +103,39 @@ las categorías admisibles).
 Se mantienen los mismos códigos de `guia-sgr.md` (RF-001, RNF-001, EP-01, HU-01, etc.), sin renumerar.
 Los RF/RNF/HU que quedan fuera del MVP (ver tabla de arriba) **no se renumeran ni se reutilizan sus
 códigos** — simplemente no aparecen en la documentación de este proyecto.
+
+---
+
+## Relación Actividad–ElementoCatalogo en el diagrama de clases (Actividad 3)
+
+**Decisión cerrada: la asociación entre `Actividad` y `ElementoCatalogo` se modela como 4 asociaciones
+independientes con rol** (`tipoActividad`, `servicio`, `atencion`, `subatencion`), no como una sola.
+No se toca la redacción de ningún RF/RNF/HU para llegar a esto — es una decisión de diseño del
+diagrama, no una corrección del documento base.
+
+**Por qué:** `guia-sgr.md` §8.1 ("Campos mínimos del registro de actividad") enumera textualmente
+"ítem, servicio, tipo y subtipo de atención" como parte de un mismo registro, y RF-004 ya administra
+esas cuatro categorías como entidades separadas del catálogo ("tipos de actividad, servicio, atención
+y subatención por área"). Con una sola asociación `Actividad -- ElementoCatalogo`, una actividad solo
+puede clasificarse en una de las cuatro categorías a la vez, lo que no permite representar un caso
+real del dominio (ej. una visita a terreno por poda de árboles, registrada simultáneamente como
+atención comunitaria y como reclamo).
+
+**Nota sobre RF-009:** RF-009 dice "ítem" en singular, y los criterios de aceptación de HU-01 también
+hablan de "indicador asociado" en singular. Esa redacción no se cambia. La lectura del equipo es que
+§8.1 (que sí lista las cuatro categorías) y RF-009 (resumen corto del mismo requisito) no son
+contradictorios entre sí, sino que §8.1 da el detalle que RF-009 resume — por eso el modelo de 4
+asociaciones no reinterpreta RF-009, solo traduce a UML lo que §8.1 ya especifica.
+
+**Impacto en otros artefactos de la Actividad 3:**
+- `assets/actividad-3/clases-dominio.puml` y su SVG: ya actualizados con las 4 asociaciones.
+- Wireframe `wf-02-registrar-actividad.png` (Pantalla 2, "Registrar Actividad"): **pendiente**. Hoy
+  muestra un único dropdown "Ítem / Categoría"; debería pasar a 4 selectores. Es una imagen sin fuente
+  editable versionada en el repo, por lo que no se regenera junto con el diagrama de clases — queda
+  anotado en `actividad-3.md` (Pantalla 2) para quien la actualice.
+- HU-03 ("Registro de servicios entregados") **no** es el sustento de este cambio: es P2 y queda fuera
+  del alcance del MVP (ver tabla de arriba). El respaldo es §8.1 + RF-004, ambos dentro del MVP.
+
+Cualquier integrante o IA que reciba una tarea sobre el diagrama de clases o el wireframe de Registrar
+Actividad debe asumir esta decisión ya cerrada, salvo que este archivo se actualice explícitamente
+para decir lo contrario.

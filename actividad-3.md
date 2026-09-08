@@ -158,6 +158,16 @@ conjunto de valores es cerrado (RF-018 y RN-008/§7.1 respectivamente).
   el cálculo derivado de una Meta puntual (RF-023/024).
 - `Actividad "1" *-- "0..*" Evidencia`: 1 a muchos según RN-010 ("relación uno a uno o uno a muchos
   según el tipo de actividad").
+- `Actividad --> ElementoCatalogo` (4 asociaciones con rol: `tipoActividad`, `servicio`, `atencion`,
+  `subatencion`): `guia-sgr.md` §8.1 enumera, dentro de los campos mínimos del registro de actividad,
+  "ítem, servicio, tipo y subtipo de atención" — cuatro clasificaciones, no una sola — y RF-004 ya
+  reconoce esas mismas cuatro categorías como entidades separadas dentro del catálogo ("tipos de
+  actividad, servicio, atención y subatención por área"). Una única asociación solo permitiría guardar
+  una de las cuatro por actividad, lo que impide un caso real y frecuente del dominio (ej. una visita a
+  terreno por poda de árboles registrada como atención comunitaria/reclamo, donde las cuatro
+  clasificaciones aplican a la vez). Se modelan entonces como cuatro asociaciones independientes hacia
+  la misma clase `ElementoCatalogo`, cada una con su propio rol — no como una redefinición de RF-009 ni
+  de HU-01 (que se mantienen sin cambios), sino como la traducción a UML de lo que §8.1 ya enumera.
 - El resto queda como asociación simple (agrupa, ocupa, define, etc.): ambos lados pueden existir
   independientemente (ej. una Delegación sigue existiendo aunque un Funcionario se desvincule).
 
@@ -385,6 +395,12 @@ acceder fuera de su ámbito, entonces el acceso se deniega y el intento queda re
 
 Formulario de HU-01 con adjuntar evidencia (HU-09) y generación de código verificador (HU-10) al guardar,
 más el modal de conflicto de edición concurrente de HU-23 criterio 2.
+
+> **Pendiente:** el wireframe muestra un único campo "Ítem / Categoría". Tras incorporar las 4
+> asociaciones con rol entre `Actividad` y `ElementoCatalogo` (ver punto 3, "Relaciones destacadas"),
+> este mockup debería actualizarse a 4 selectores (tipo de actividad, servicio, atención, subatención)
+> para no quedar inconsistente con el diagrama de clases. No se regenera en este cambio porque el
+> wireframe es una imagen (`wf-02-registrar-actividad.png`) sin fuente editable versionada en el repo.
 
 #### Pantalla 3 — Validar Evidencia
 
