@@ -1,4 +1,5 @@
 @startuml clases-dominio
+skinparam backgroundColor #FFFFFF
 title Diagrama de Clases — Dominio SGR (MVP, 23 HU)
 
 enum Rol {
@@ -163,7 +164,7 @@ Actividad "1" *-- "0..*" Evidencia : adjunta
 Evidencia "1" *-- "0..1" Validacion : recibe
 Validacion "0..*" -- "1" Funcionario : realizada por\n(rol Verificador)
 Funcionario "1" -- "0..*" Compromiso : responsable de
-Compromiso "0..*" -- "1" Delegacion : territorio
+Compromiso "0..*" -- "1" Delegacion : pertenece a
 Meta "1" *-- "0..*" Indicador : calcula
 Funcionario "1" -- "0..*" Indicador : posee
 Funcionario "1" -- "0..*" Auditoria : genera

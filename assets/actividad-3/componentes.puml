@@ -64,7 +64,7 @@ SERV --> FILES : lee/escribe\nevidencias (RNF-017)
 AUTH --> BD : valida credenciales\n(hash, RNF-004)
 
 note bottom of DOM
-  Entidades de la sección 3:
+  Entidades de la sección 8:
   Funcionario, Actividad, Meta,
   Indicador, Compromiso, etc.
 end note
