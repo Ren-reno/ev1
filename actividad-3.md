@@ -394,13 +394,10 @@ acceder fuera de su ámbito, entonces el acceso se deniega y el intento queda re
 ![Wireframe — Registrar Actividad con Evidencia](assets/actividad-3/wireframes/wf-02-registrar-actividad.png)
 
 Formulario de HU-01 con adjuntar evidencia (HU-09) y generación de código verificador (HU-10) al guardar,
-más el modal de conflicto de edición concurrente de HU-23 criterio 2.
-
-> **Pendiente:** el wireframe muestra un único campo "Ítem / Categoría". Tras incorporar las 4
-> asociaciones con rol entre `Actividad` y `ElementoCatalogo` (ver punto 3, "Relaciones destacadas"),
-> este mockup debería actualizarse a 4 selectores (tipo de actividad, servicio, atención, subatención)
-> para no quedar inconsistente con el diagrama de clases. No se regenera en este cambio porque el
-> wireframe es una imagen (`wf-02-registrar-actividad.png`) sin fuente editable versionada en el repo.
+más el modal de conflicto de edición concurrente de HU-23 criterio 2. El wireframe incorpora los 4
+selectores en cascada (tipo de actividad, servicio, atención, subatención) que corresponden a las 4
+asociaciones con rol entre `Actividad` y `ElementoCatalogo` (ver punto 3, "Relaciones destacadas"),
+quedando así consistente con el diagrama de clases.
 
 #### Pantalla 3 — Validar Evidencia
 
