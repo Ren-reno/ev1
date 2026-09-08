@@ -227,3 +227,45 @@ alterar períodos ya cerrados" ya la cubre `Periodo.estado` junto con `reabrir(j
 
 Cualquier integrante o IA que reciba una tarea sobre el diagrama de clases debe asumir estos 2 puntos
 como ya resueltos, salvo que este archivo se actualice explícitamente para decir lo contrario.
+
+---
+
+## Nota de consistencia: `ConfiguracionSistema` no aparece en `clases-dominio.puml` ni en el diagrama de secuencia de Registrar Actividad
+
+**Detectada al revisar el diagrama de secuencia 4.1 (Registrar Actividad con Evidencia y Validación).**
+Una versión anterior de `sec-registrar-actividad-evidencia.puml` traía una nota indicando que la
+validación de formato de evidencia "usa ConfiguracionSistema (RNF-017)", y además usaba la etiqueta
+`<<include>>` para marcar los pasos de Generar Código Verificador y Validar Evidencia. Ambas cosas se
+quitaron del diagrama.
+
+**Por qué se quitó `<<include>>`:** esa etiqueta es una relación de casos de uso (ver
+`fuentes/audio-clase-2.md`, definición del profesor), no algo que exista en la notación de un diagrama
+de secuencia. Se reemplazó por llamadas reflexivas (`Act -> Act: generarCodigoVerificador()`), que es
+la forma correcta de representar que un objeto ejecuta su propia operación como parte de otra, dentro
+de las reglas propias de un diagrama de secuencia.
+
+**Por qué se quitó la referencia a `ConfiguracionSistema` — y la aclaración importante sobre esto:**
+`ConfiguracionSistema` **sí existe** como clase documentada, con atributos y métodos, en
+`assets/actividad-3/patron-singleton.puml` (patrón Singleton, sección 3.1 de `actividad-3.md`), donde
+consta explícitamente la relación `Evidencia ..> ConfiguracionSistema : usa (formatos y tamaño
+permitido — RNF-017)`. No es una clase inventada. Lo que sí es cierto es que **no aparece en
+`clases-dominio.puml`** (el diagrama de clases del dominio principal, con las 13 entidades) ni en el
+diagrama de secuencia de Registrar Actividad. Se decide no traerla a este diagrama de secuencia porque
+ahí `Evidencia` no está modelada como participante propio — solo `Funcionario`, `Sistema SGR` y
+`Verificador` —, y agregar `ConfiguracionSistema` exigiría primero separar `Evidencia` como objeto
+independiente, lo que excede el alcance de esa simplificación.
+
+**Impacto en otros artefactos:**
+- `assets/actividad-3/sec-registrar-actividad-evidencia.puml` y su SVG: actualizados, sin `<<include>>`
+  ni referencia a `ConfiguracionSistema`.
+- `actividad-3.md`, sección 4.1: texto explicativo actualizado para reflejar ambos cambios y su
+  justificación real.
+- `assets/actividad-3/patron-singleton.puml` y `clases-dominio.puml`: **sin cambios**. `ConfiguracionSistema`
+  sigue existiendo solo en el diagrama del patrón Singleton, no en el diagrama de clases del dominio —
+  esto es intencional, no un olvido: no es una entidad del dominio SGR, sino infraestructura de
+  configuración del sistema (HU-25, RNF-013/014/015), por lo que no le corresponde un lugar en
+  `clases-dominio.puml`.
+
+Cualquier integrante o IA que reciba una tarea sobre el diagrama de secuencia de Registrar Actividad, o
+sobre `ConfiguracionSistema` en cualquier otro artefacto, debe asumir esta nota como ya resuelta, salvo
+que este archivo se actualice explícitamente para decir lo contrario.

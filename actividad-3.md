@@ -272,8 +272,17 @@ secciones 2 y 3, para que las tres vistas (casos de uso, clases, secuencia) cuen
 ![Secuencia — Registrar Actividad](assets/actividad-3/sec-registrar-actividad-evidencia.svg)
 
 Recorre en orden los dos `include` de EP-03 (sección 2.9): Registrar Actividad → Generar Código
-Verificador, y Adjuntar Evidencia → Validar Evidencia — además del uso de `ConfiguracionSistema`
-(Singleton) al validar el formato de la evidencia.
+Verificador, y Adjuntar Evidencia → Validar Evidencia. Ambos se representan como llamadas reflexivas
+(`Act -> Act: ...`) y no con la etiqueta `<<include>>`: esa notación es propia de los diagramas de casos
+de uso (ver `fuentes/audio-clase-2.md`, definición del profesor) y no existe como relación en un
+diagrama de secuencia — usarla ahí aplica la notación fuera de su contexto correcto.
+
+El diagrama tampoco referencia `ConfiguracionSistema` (Singleton, ver punto 3.1) al validar el formato
+de la evidencia, aunque esa clase sí está documentada en `assets/actividad-3/patron-singleton.puml`
+(relación `Evidencia ..> ConfiguracionSistema`). Se omite aquí porque este diagrama de secuencia no
+modela `Evidencia` como participante propio — solo `Funcionario`, `Sistema SGR` y `Verificador` —, y
+traer `ConfiguracionSistema` exigiría primero separar `Evidencia` como objeto independiente, lo que
+excede el alcance de esta simplificación (ver nota de consistencia en `decisiones.md`).
 
 ### 4.2 Visualizar Avance y Calcular Cumplimiento
 
