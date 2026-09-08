@@ -133,7 +133,6 @@ class Indicador {
   -avance: double
   -cumplimiento: double
   -cumplimientoPonderado: double
-  -ajuste: double
   -semaforo: Semaforo
   -fechaCalculo: Date
   +calcularCumplimiento()
