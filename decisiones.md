@@ -129,13 +129,59 @@ asociaciones no reinterpreta RF-009, solo traduce a UML lo que §8.1 ya especifi
 
 **Impacto en otros artefactos de la Actividad 3:**
 - `assets/actividad-3/clases-dominio.puml` y su SVG: ya actualizados con las 4 asociaciones.
-- Wireframe `wf-02-registrar-actividad.png` (Pantalla 2, "Registrar Actividad"): **pendiente**. Hoy
-  muestra un único dropdown "Ítem / Categoría"; debería pasar a 4 selectores. Es una imagen sin fuente
-  editable versionada en el repo, por lo que no se regenera junto con el diagrama de clases — queda
-  anotado en `actividad-3.md` (Pantalla 2) para quien la actualice.
+- Wireframe `wf-02-registrar-actividad.png` (Pantalla 2, "Registrar Actividad"): **resuelto**. Ya
+  muestra los 4 selectores en cascada (tipo de actividad, servicio, atención, subatención), consistente
+  con el diagrama de clases.
 - HU-03 ("Registro de servicios entregados") **no** es el sustento de este cambio: es P2 y queda fuera
   del alcance del MVP (ver tabla de arriba). El respaldo es §8.1 + RF-004, ambos dentro del MVP.
 
 Cualquier integrante o IA que reciba una tarea sobre el diagrama de clases o el wireframe de Registrar
 Actividad debe asumir esta decisión ya cerrada, salvo que este archivo se actualice explícitamente
 para decir lo contrario.
+
+---
+
+## Ajustes al diagrama de clases: responsable de Delegación, identificador de Auditoría, umbral colectivo
+
+**Decisión cerrada, tras revisión de equipo sobre 4 observaciones:** se incorporan 3 cambios a
+`clases-dominio.puml`; un cuarto punto propuesto (agregar un campo `item` a `Actividad`) se evalúa y
+se descarta, porque ya está resuelto por la decisión de las 4 asociaciones con `ElementoCatalogo`
+(sección anterior).
+
+**1. `Delegacion.obtenerResponsable(): Funcionario` — agregado.** `guia-sgr.md` §8 dice que Delegación
+tiene "identificador, nombre, estado, **responsables** y ámbito" (plural). Hoy la asociación
+`Delegacion "1" -- "0..*" Funcionario : agrupa` no distingue rol dentro de esa colección; el método
+encapsula el filtro por `Rol` (Delegado/Coordinador) que de otro modo se repetiría en cada lugar que
+lo necesite (notificaciones, escalamiento de alertas, resumen de delegación).
+
+**2. `Auditoria.identificador: String` — agregado.** `guia-sgr.md` §8 especifica "usuario, evento,
+fecha, entidad, **identificador**, valor anterior y valor nuevo" para Auditoría. Sin este atributo, un
+registro de auditoría dice qué entidad cambió (ej. "Actividad") pero no cuál fila específica.
+
+**3. `Periodo.umbralColectivo: double` — agregado.** RN-006 define un umbral mínimo de cumplimiento
+**colectivo** (80 % inicial, configurable por período o indicador), distinto de `umbralAmbar`
+(RN-008), que es el corte de semáforo **individual** por Funcionario. Se decide ubicarlo en `Periodo`,
+junto a `umbralAmbar`, en vez de en `Meta`/`Indicador`: ambos umbrales son parámetros configurables que
+rigen a todos los vigentes en un período, mientras que `Meta` es una entidad por funcionario/cargo y no
+calza con un umbral que mide al colectivo. RN-006 deja abierta la opción de asociarlo a "indicador" en
+cambio de "período" — se prioriza `Periodo` por consistencia con el patrón ya existente de
+`umbralAmbar`, no porque el documento base cierre la pregunta.
+
+**4. Campo `item` en `Actividad` — evaluado y descartado.** Se propuso agregarlo porque RF-009 y los
+criterios de aceptación de HU-01 dicen "ítem"/"indicador asociado" en singular. Ya existe una decisión
+de equipo (sección anterior de este archivo) que resuelve exactamente esta redacción: §8.1 lista
+"ítem, servicio, tipo y subtipo de atención" como cuatro categorías, y esas cuatro ya están modeladas
+como las asociaciones con rol `tipoActividad`/`servicio`/`atencion`/`subatencion` hacia
+`ElementoCatalogo`. Agregar un campo `item` adicional sería redundante con esas asociaciones y
+reabriría una discusión ya cerrada.
+
+**Impacto en otros artefactos:**
+- `assets/actividad-3/clases-dominio.puml` y su SVG: actualizados con los 3 cambios.
+- `actividad-3.md`, sección "Relaciones destacadas": documenta el porqué de cada uno.
+- El SVG se regeneró con PlantUML 1.2024.7 (el `.puml` original no fija versión). El SVG previo en el
+  repo fue generado con 1.2019.6; el layout y estilo (vía `style.cfg`) son equivalentes entre ambas
+  versiones — se verificó renderizando ambos a PNG antes de regenerar — por lo que el cambio de
+  versión de herramienta no afecta el contenido del diagrama.
+
+Cualquier integrante o IA que reciba una tarea sobre el diagrama de clases debe asumir estos 4 puntos
+como ya resueltos, salvo que este archivo se actualice explícitamente para decir lo contrario.

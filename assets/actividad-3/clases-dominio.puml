@@ -30,6 +30,7 @@ class Delegacion {
   -estado: boolean
   +activar()
   +desactivar()
+  +obtenerResponsable(): Funcionario
 }
 
 class Cargo {
@@ -56,6 +57,7 @@ class Periodo {
   -diasComputables: int
   -estado: String
   -umbralAmbar: double
+  -umbralColectivo: double
   -versionParametros: int
   +abrir()
   +cerrar()
@@ -139,6 +141,7 @@ class Auditoria {
   -evento: String
   -fecha: Date
   -entidad: String
+  -identificador: String
   -valorAnterior: String
   -valorNuevo: String
   +registrarEvento()

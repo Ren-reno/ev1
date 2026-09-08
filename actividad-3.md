@@ -171,6 +171,26 @@ conjunto de valores es cerrado (RF-018 y RN-008/§7.1 respectivamente).
 - El resto queda como asociación simple (agrupa, ocupa, define, etc.): ambos lados pueden existir
   independientemente (ej. una Delegación sigue existiendo aunque un Funcionario se desvincule).
 
+**Atributos y métodos incorporados tras revisión de equipo:**
+- `Delegacion.obtenerResponsable(): Funcionario`: `guia-sgr.md` §8 lista, dentro de las entidades del
+  modelo de datos, que Delegación tiene "identificador, nombre, estado, **responsables** y ámbito"
+  (plural). La asociación `Delegacion "1" -- "0..*" Funcionario : agrupa` no distingue por rol dentro
+  de esa colección, por lo que sin este método no hay forma directa de obtener al Funcionario con rol
+  Delegado/Coordinador de una Delegación — habría que filtrar la colección completa por `Rol` en cada
+  lugar que lo necesite. El método encapsula ese filtro (equivalente a
+  `funcionario.tieneRol(Rol.DELEGADO)` sobre la colección de `agrupa`) en un solo punto.
+- `Auditoria.identificador: String`: `guia-sgr.md` §8 especifica textualmente que Auditoría registra
+  "usuario, evento, fecha, entidad, **identificador**, valor anterior y valor nuevo". Sin este atributo,
+  un registro de auditoría identifica la entidad afectada (ej. "Actividad") pero no la fila específica
+  que cambió dentro de esa entidad.
+- `Periodo.umbralColectivo: double`: RN-006 define un "umbral mínimo de cumplimiento colectivo" (80 %
+  inicial) distinto de `umbralAmbar` (RN-008, semáforo individual por Funcionario). RN-006 permite que
+  sea "configurable por período o indicador"; se decide modelarlo en `Periodo`, junto a `umbralAmbar`,
+  por consistencia con ese mismo patrón ya usado en la clase — ambos son parámetros configurables que
+  rigen para todos los que están vigentes en un período, a diferencia de `Meta`, que es una entidad por
+  funcionario/cargo y no calza con un umbral que mide al colectivo. Se prioriza `Periodo` sobre
+  `Indicador` por esta razón, aunque RN-006 deja ambas ubicaciones abiertas.
+
 ### 3.1 Patrones de diseño aplicados
 
 Se documentan 3 de los 4 patrones citados por el ramo — cada uno con un caso real dentro de las 23 HU
