@@ -185,3 +185,45 @@ reabriría una discusión ya cerrada.
 
 Cualquier integrante o IA que reciba una tarea sobre el diagrama de clases debe asumir estos 4 puntos
 como ya resueltos, salvo que este archivo se actualice explícitamente para decir lo contrario.
+
+---
+
+## Diagrama de clases: clase `Funcion` separada de `Cargo`, vigencia de HU-04 resuelta
+
+**Decisión cerrada, tras retomar una tarea interrumpida (una sesión anterior se quedó sin tokens antes
+de guardar los cambios que había narrado):** se incorporan 2 cambios a `clases-dominio.puml`.
+
+**1. `Funcion` (clase nueva) + `Cargo "0..*" -- "0..*" Funcion : asigna` — agregado, reemplaza a
+`Cargo.asignarFuncion(item: String)`.** `guia-sgr.md` §8 agrupa "Cargo y función" en un solo renglón
+de la tabla de entidades ("ítems medibles, servicios, ponderaciones y vigencia" como datos mínimos),
+pero un método que recibe un `String` sin estructura no permite listar, editar ni reutilizar las
+funciones ya creadas, ni expresar que una misma función se repite en más de un cargo. Se modela como
+clase propia (`nombre: String`, sin id) con asociación muchos a muchos.
+
+**2. Vigencia de HU-04 Criterio 2 — resuelta sin nuevo atributo.** El criterio dice (`actividad-1.md`):
+"dada una actualización de funciones, cuando se guarda, entonces rige desde su fecha de vigencia sin
+alterar períodos ya cerrados." No se agrega `vigenciaDesde` a `Funcion` ni se mantiene en `Cargo`: la
+vigencia pertenece a la asignación función–cargo para un período, no a la función como concepto ni al
+cargo en sí — el mismo patrón que ya resuelve `Meta "0..*" -- "1" Periodo : vigente en`. PlantUML
+admite una clase de asociación para esto, pero no hay precedente de esa técnica en el proyecto; se
+apoya en el mecanismo `Meta`–`Periodo` ya existente por consistencia de estilo. La restricción de "no
+alterar períodos ya cerrados" ya la cubre `Periodo.estado` junto con `reabrir(justificacion: String)`.
+
+**Impacto en otros artefactos:**
+- `assets/actividad-3/clases-dominio.puml` y su SVG: actualizados con los 2 cambios.
+- `actividad-3.md`: conteo de entidades corregido a 13, sección "Atributos y métodos incorporados"
+  documenta ambos puntos.
+- **Corrección de numeración de la sesión interrumpida:** había quedado referenciado como "HU-04
+  criterio 3" y como "pasa a 12 entidades" — ambos números eran incorrectos. `actividad-1.md` (ya
+  cerrada) solo tiene Criterio 1 y Criterio 2 para HU-04; el "3" venía de contar los bullets de
+  `guia-sgr.md` §12.2, que es la fuente cruda, no la HU ya aprobada. Y el `.puml` ya tenía 12 clases
+  antes de este cambio (11 de `guia-sgr.md` §8 + `ElementoCatalogo`), por lo que sumar `Funcion` da 13,
+  no 12.
+- El SVG se regeneró con PlantUML 1.2020.02 vía `-config style.cfg` (la entrada anterior de este
+  archivo usó 1.2024.7 y verificó equivalencia con 1.2019.6). Con esta versión, a diferencia del color
+  de clase, `skinparam backgroundColor white` no queda explícito en el atributo `style` del `<svg>`
+  raíz, así que se agregó `background:#FFFFFF;` ahí manualmente para igualar al resto de los diagramas
+  del repo.
+
+Cualquier integrante o IA que reciba una tarea sobre el diagrama de clases debe asumir estos 2 puntos
+como ya resueltos, salvo que este archivo se actualice explícitamente para decir lo contrario.

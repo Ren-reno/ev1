@@ -35,10 +35,12 @@ class Delegacion {
 
 class Cargo {
   -nombre: String
-  -vigenciaDesde: Date
   -estado: boolean
-  +asignarFuncion(item: String)
   +validarPonderacionTotal(): boolean
+}
+
+class Funcion {
+  -nombre: String
 }
 
 class Funcionario {
@@ -150,6 +152,7 @@ class Auditoria {
 Delegacion "1" -- "0..*" Funcionario : agrupa
 Funcionario "0..*" -- "1" Cargo : ocupa
 Cargo "1" -- "0..*" Meta : define
+Cargo "0..*" -- "0..*" Funcion : asigna
 Meta "0..*" -- "1" Periodo : vigente en
 Funcionario "1" -- "0..*" Actividad : registra
 Actividad "0..*" --> "1" ElementoCatalogo : tipoActividad

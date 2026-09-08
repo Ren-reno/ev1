@@ -146,10 +146,12 @@ de las HU del MVP.
 
 ![Diagrama de Clases — Dominio](assets/actividad-3/clases-dominio.svg)
 
-**Entidades:** las 11 de `guia-sgr.md` §8 (Delegación, Funcionario, Cargo, Período, Meta, Actividad,
-Compromiso, Evidencia, Validación, Indicador, Auditoría) + `ElementoCatalogo` (HU-27) + el enum `Rol`
-(roles de la tabla de actores, sección 1). `EstadoCompromiso` y `Semaforo` quedan como enum porque su
-conjunto de valores es cerrado (RF-018 y RN-008/§7.1 respectivamente).
+**Entidades:** 13 clases — las 11 de `guia-sgr.md` §8 (Delegación, Funcionario, Cargo, Período, Meta,
+Actividad, Compromiso, Evidencia, Validación, Indicador, Auditoría), desglosando el renglón "Cargo y
+función" de esa misma tabla en dos clases (`Cargo` y `Funcion`; justificación en "Atributos y métodos
+incorporados" más abajo), + `ElementoCatalogo` (HU-27) + el enum `Rol` (roles de la tabla de actores,
+sección 1). `EstadoCompromiso` y `Semaforo` quedan como enum porque su conjunto de valores es cerrado
+(RF-018 y RN-008/§7.1 respectivamente).
 
 **Relaciones destacadas:**
 - Composición (`Actividad *— Evidencia`, `Evidencia *— Validación`, `Meta *— Indicador`): la parte no
@@ -190,6 +192,27 @@ conjunto de valores es cerrado (RF-018 y RN-008/§7.1 respectivamente).
   rigen para todos los que están vigentes en un período, a diferencia de `Meta`, que es una entidad por
   funcionario/cargo y no calza con un umbral que mide al colectivo. Se prioriza `Periodo` sobre
   `Indicador` por esta razón, aunque RN-006 deja ambas ubicaciones abiertas.
+- `Funcion` (clase nueva) y `Cargo "0..*" -- "0..*" Funcion : asigna` (reemplaza a
+  `Cargo.asignarFuncion(item: String)`): `guia-sgr.md` §8 agrupa "Cargo y función" en un solo renglón
+  de la tabla de entidades, con "ítems medibles, servicios, ponderaciones y vigencia" como datos
+  mínimos — pero un método que recibe un `String` sin estructura no permite listar, editar ni
+  reutilizar las funciones ya creadas, y tampoco expresa que una misma función puede repetirse en más
+  de un cargo (ej. "atención de público" aplica a más de un cargo administrativo). Se separa entonces
+  en una clase propia `Funcion` (solo `nombre: String`, sin id porque el nombre basta como identidad
+  para este MVP) conectada por una asociación muchos a muchos: un cargo agrupa varias funciones y una
+  función puede asignarse a más de un cargo.
+- Vigencia de HU-04 Criterio 2 (`actividad-1.md`: "dada una actualización de funciones, cuando se
+  guarda, entonces rige desde su fecha de vigencia sin alterar períodos ya cerrados"): no se agrega
+  `vigenciaDesde` a `Funcion` ni se mantiene en `Cargo`, porque la vigencia no pertenece a la función
+  como concepto (puede existir sin estar asignada a ningún cargo) ni al cargo en sí, sino a la
+  asignación función–cargo para un período dado — el mismo caso que ya resuelve
+  `Meta "0..*" -- "1" Periodo : vigente en` para ítems y ponderaciones. PlantUML admite modelar esto
+  con una clase de asociación, pero ningún otro `.puml` del proyecto usa esa técnica; se prioriza
+  consistencia de estilo y se deja que la vigencia de la configuración completa de un cargo
+  (funciones, ítems y ponderaciones, que HU-04 actualiza en conjunto) quede cubierta por el mismo
+  mecanismo `Meta`–`Periodo` ya existente, sin introducir un segundo mecanismo de vigencia paralelo.
+  La segunda mitad del criterio ("sin alterar períodos ya cerrados") ya la impone `Periodo.estado`
+  junto con `reabrir(justificacion: String)`, el único método capaz de reabrir un período cerrado.
 
 ### 3.1 Patrones de diseño aplicados
 
