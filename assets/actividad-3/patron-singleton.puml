@@ -19,7 +19,7 @@ note bottom of ConfiguracionSistema
   Constructor privado + getInstancia() estático:
   garantiza una única instancia global con punto
   de acceso centralizado — gestor de configuración
-  del sistema (HU-25, RNF-013/014/015).
+  del sistema (HU-25, RNF-015).
 end note
 
 class Periodo {

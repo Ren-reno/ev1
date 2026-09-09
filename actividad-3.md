@@ -238,7 +238,7 @@ patrones", así que se documentan solo los 3 con caso de uso real y justificable
 
 | Patrón | Clase(s) | HU/RF/RNF que lo sustenta |
 |---|---|---|
-| Singleton | `ConfiguracionSistema` | HU-25 (adaptar configuración), RNF-013/014/015 |
+| Singleton | `ConfiguracionSistema` | HU-25 (adaptar configuración), RNF-015 |
 | Factory | `InformeFactory` / `InformeFactoryImpl` | HU-20 (tipos de informe según módulo) |
 | Observer | `IObservadorAlerta` / `GeneradorAlertas` | HU-14, HU-16, RF-037 — mismo `extend` de la sección 2 |
 
