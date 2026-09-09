@@ -10,6 +10,7 @@ rectangle "SGR — Módulo Evidencias y Verificación" {
   usecase "Adjuntar Evidencia\n(HU-09)" as UC9
   usecase "Generar Código\nVerificador (HU-10)" as UC10
   usecase "Validar Evidencia\n(HU-11)" as UC11
+  usecase "Solicitar Corrección\n(HU-11)" as UC11B
 }
 
 FUN --> UC1
@@ -17,20 +18,41 @@ FUN --> UC9
 VER --> UC11
 
 UC1 ..> UC10 : <<include>>
-UC1 ..> UC11 : <<include>>
-UC9 ..> UC11 : <<include>>
+UC9 ..> UC1 : <<extend>>
+UC11B ..> UC11 : <<extend>>
 
 note bottom of UC1
   Pertenece a EP-01; se repite aquí
-  solo para mostrar las relaciones
-  <<include>> que nacen desde HU-01.
+  para mostrar sus relaciones con
+  este módulo.
+end note
+
+note bottom of UC10
+  RF-011 — siempre: se genera al
+  guardar un registro válido
+  (HU-10, criterio 1). Sin condición.
+end note
+
+note bottom of UC9
+  RF-012 — opcional: solo si el
+  Funcionario adjunta un archivo
+  al registrar (HU-09, criterio 1).
+end note
+
+note bottom of UC11B
+  RF-013 — 1 de 3 decisiones del
+  Verificador al validar (aprobar /
+  rechazar / corregir; HU-11,
+  criterio 1).
 end note
 
 note bottom of UC11
-  "Validar Evidencia" es el comportamiento
-  obligatorio y reutilizable (función común)
-  que disparan los distintos casos que
-  suben evidencia: UC1 y UC9.
+  La valida un actor distinto,
+  después, como decisión separada
+  — no un <<include>> de UC1/UC9.
+  Objetivo de EP-03: "separar el
+  registro de la decisión de
+  validación" (guia-sgr.md §12.4).
 end note
 
 @enduml

@@ -9,7 +9,7 @@ Funcionario -> SGR: registrarActividad(datos)
 activate SGR
 SGR -> SGR: validar campos (RF-010)
 SGR -> SGR: generarCodigoVerificador()
-note right: <<include>> HU-10 (RF-011)
+note right: HU-10 (RF-011) — include en el CU de EP-03
 SGR --> Funcionario: actividad registrada + código
 deactivate SGR
 
@@ -28,7 +28,7 @@ deactivate SGR
 
 Verificador -> SGR: validarEvidencia(evidencia, decisión, observación)
 activate SGR
-note right: <<include>> HU-11 (RF-013)
+note right: HU-11 (RF-013) — decisión del\nVerificador, separada de\nRegistrar/Adjuntar Evidencia
 alt decisión == aprobada
   SGR -> SGR: incorporar actividad al avance (RF-014, RN-009)
 else decisión == rechazada / corrección

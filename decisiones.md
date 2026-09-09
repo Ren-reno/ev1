@@ -269,3 +269,64 @@ independiente, lo que excede el alcance de esa simplificación.
 Cualquier integrante o IA que reciba una tarea sobre el diagrama de secuencia de Registrar Actividad, o
 sobre `ConfiguracionSistema` en cualquier otro artefacto, debe asumir esta nota como ya resuelta, salvo
 que este archivo se actualice explícitamente para decir lo contrario.
+
+---
+
+## Nota de consistencia: relaciones `include`/`extend` de EP-03 (Validar Evidencia)
+
+**Detectada en revisión entre pares de la Actividad 3.** El diagrama específico de EP-03
+(`cu-ep03-evidencias-verificacion.puml`) usaba `<<include>>` desde Registrar Actividad (HU-01) y desde
+Adjuntar Evidencia (HU-09) hacia Validar Evidencia (HU-11), siguiendo al pie de la letra el ejemplo del
+profesor en `fuentes/audio-clase-2.md` ("Validar Evidencia" incluido por los casos que suben evidencia).
+Un compañero de equipo detectó que eso invierte la lógica del dominio.
+
+**Por qué se quitaron esos dos `<<include>>`:** RF-013 dice que la validación la ejecuta el Verificador
+— un actor distinto — después y como decisión separada, no como paso obligatorio del mismo flujo de
+Registrar Actividad o Adjuntar Evidencia. El propio objetivo de la épica lo dice explícito:
+"Respaldar la ejecución y **separar el registro de la decisión de validación**" (`guia-sgr.md` §12.4).
+El ejemplo del profesor sigue siendo válido como patrón general de `include` (una función común
+reutilizada dentro del mismo flujo); simplemente no aplica tal cual a este caso porque el disparador es
+un actor y un momento distintos. El diagrama de secuencia 4.1 ya representaba esa separación temporal
+(bloques distintos + `...tiempo después...`), así que la corrección alinea el diagrama de casos de uso
+con lo que el de secuencia ya mostraba.
+
+**Reemplazo:** dos `<<extend>>` — Adjuntar Evidencia sobre Registrar Actividad (opcional, se dispara solo
+si el Funcionario adjunta un archivo al registrar; RF-012) y la nueva Solicitar Corrección sobre Validar
+Evidencia (1 de las 3 decisiones del Verificador: aprobar/rechazar/corregir; RF-013). Se agregó "Solicitar
+Corrección (HU-11)" como caso de uso propio — antes no estaba modelado por separado — y una anotación
+corta junto a cada `include`/`extend` con el RF que lo justifica y su condición (siempre / opcional / 1
+de 3), a pedido de la misma revisión entre pares.
+
+**Nota aparte — regresión encontrada de pasada:** la nota de consistencia anterior de este mismo archivo
+("`ConfiguracionSistema` no aparece en...") ya había dejado registrado que se quitaba `<<include>>` de
+`sec-registrar-actividad-evidencia.puml` por ser notación fuera de contexto en un diagrama de secuencia.
+Al revisar los 5 `sec-*.puml` para esta corrección, las etiquetas `<<include>>` seguían presentes en
+notas de **dos** de ellos — `sec-registrar-actividad-evidencia.puml` (HU-10 y HU-11) y también
+`sec-avance-cumplimiento.puml` (HU-07, que ni siquiera es parte de EP-03) — no quedó claro cuándo ni por
+qué volvieron. Se quitaron de nuevo en ambos, como texto plano sin comillas angulares. Los otros 3
+(`sec-notificacion-alertas`, `sec-generar-informe`, `sec-administrar-delegaciones`) ya estaban limpios.
+Aparte, se revisaron también `patron-observer.puml` (usa `<<extend>>` dos veces, pero solo como cita
+textual a la relación ya existente del diagrama de casos de uso — no es un error, se dejó igual) y el
+resto de `cu-ep0X.puml` (EP-02, EP-04, EP-05: sus `include`/`extend` sí son consistentes con sus RF; EP-06,
+EP-07, EP-08 no declaran ninguna relación `include`/`extend`).
+
+**Impacto en otros artefactos:**
+- `assets/actividad-3/cu-ep03-evidencias-verificacion.puml` y su SVG: reemplazados los 2 `include`
+  hacia Validar Evidencia por 2 `extend`; agregado el caso de uso Solicitar Corrección (HU-11); agregada
+  una nota corta por cada relación con su RF y condición.
+- `assets/actividad-3/cu-ep01-registro-gestion-actividades.puml` y su SVG: la nota bajo Registrar
+  Actividad (UC1) ya no dice que dispara `<<include>>` hacia Validar Evidencia; ahora dice que es
+  extendido opcionalmente por Adjuntar Evidencia, con referencia a la corrección de EP-03.
+- `assets/actividad-3/sec-registrar-actividad-evidencia.puml` y su SVG: quitadas (de nuevo) las
+  etiquetas `<<include>>` de las dos notas (HU-10 y HU-11), reemplazadas por texto plano.
+- `assets/actividad-3/sec-avance-cumplimiento.puml` y su SVG: mismo caso, quitada la etiqueta
+  `<<include>>` de la nota de HU-07.
+- `actividad-3.md`: sección 2.9 (tabla de relaciones y párrafo explicativo de la corrección), sección 4.1
+  (texto actualizado: ya solo hay 1 `include` en EP-03, y aclaración de que Adjuntar/Validar Evidencia ya
+  estaban separadas en el tiempo en el diagrama de secuencia), sección 8.2 (matriz de trazabilidad: las
+  dos filas afectadas ahora muestran su relación `extend`).
+
+Cualquier integrante o IA que reciba una tarea sobre el diagrama de casos de uso de EP-03, sobre el
+diagrama de secuencia de Registrar Actividad, o sobre la matriz de trazabilidad de wireframes, debe
+asumir esta nota como ya resuelta, salvo que este archivo se actualice explícitamente para decir lo
+contrario.

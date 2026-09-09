@@ -108,12 +108,24 @@ para que cada uno sea trazable directamente a sus HU. Fuente PlantUML en
 
 | Relación | Caso base | Caso incluido/extensión | Módulo | Justificación |
 |---|---|---|---|---|
-| `include` | Registrar Actividad (HU-01) | Generar Código Verificador (HU-10) | EP-01→EP-03 | Todo registro válido genera siempre un código único al guardarse (HU-10, criterio 1); sin condición. |
-| `include` | Registrar Actividad (HU-01) | Validar Evidencia (HU-11) | EP-01→EP-03 | La actividad puede traer evidencia, que siempre pasa por el flujo de validación del Verificador. |
-| `include` | Adjuntar Evidencia (HU-09) | Validar Evidencia (HU-11) | EP-03 | Segundo caso que "sube evidencia" e incluye la misma validación — coincide con el ejemplo del profesor en `audio-clase-2.md`. |
+| `include` | Registrar Actividad (HU-01) | Generar Código Verificador (HU-10) | EP-01→EP-03 | Todo registro válido genera siempre un código único al guardarse (HU-10, criterio 1); sin condición. RF-011. |
+| `extend` | Adjuntar Evidencia (HU-09) | Registrar Actividad (HU-01) | EP-03 | Se dispara solo si el Funcionario adjunta un archivo al registrar la actividad (HU-09, criterio 1) — condicional. RF-012. |
+| `extend` | Solicitar Corrección (HU-11) | Validar Evidencia (HU-11) | EP-03 | Una de las 3 decisiones posibles del Verificador al validar: aprobar, rechazar o corregir (HU-11, criterio 1) — condicional. RF-013. |
 | `include` | Visualizar Avance (HU-06) | Calcular Cumplimiento Automático (HU-07) | EP-02 | El recálculo ocurre siempre que se visualiza/refresca el panel (HU-06, criterio 2), sin condición opcional. |
 | `extend` | Generar Alerta | Monitorear Compromisos (HU-14) | EP-04 | Solo se dispara si el compromiso alcanza el umbral de vencimiento configurado (HU-14, criterio 2) — condicional. |
 | `extend` | Generar Alerta | Visualizar Semáforo de Cumplimiento (HU-16) | EP-05 | Solo se dispara si el avance cae bajo el 60 % esperado (HU-16, criterio 2 / RN-008) — condicional. |
+
+**Corrección EP-03 (revisión entre pares):** la versión anterior de este diagrama usaba `include` desde
+Registrar Actividad y desde Adjuntar Evidencia hacia Validar Evidencia, siguiendo al pie de la letra el
+ejemplo del profesor en `audio-clase-2.md` ("Validar Evidencia" incluido por los casos que suben
+evidencia). Una revisión entre pares detectó que eso invierte la lógica del dominio: RF-013 dice que la
+validación la ejecuta el Verificador — un actor distinto — **después** y como decisión separada, no como
+paso obligatorio del mismo flujo de Registrar Actividad o Adjuntar Evidencia; de hecho, el objetivo de la
+propia épica es "separar el registro de la decisión de validación" (`guia-sgr.md` §12.4). El ejemplo del
+profesor sigue siendo válido como patrón general de `include` (una función común reutilizada dentro del
+mismo flujo), pero no aplica tal cual a este caso concreto porque el disparador es un actor y un momento
+distintos. Se reemplazó por dos `extend`: Adjuntar Evidencia sobre Registrar Actividad (opcional, RF-012)
+y la nueva Solicitar Corrección sobre Validar Evidencia (1 de las 3 decisiones del Verificador, RF-013).
 
 Es la misma "Generar Alerta" en ambos `extend` (EP-04 y EP-05): coherente con el patrón Observer que se
 documentará en el diagrama de clases (punto 3 — ver la nota sobre HU-14/HU-16 más abajo en este mismo
@@ -271,11 +283,16 @@ secciones 2 y 3, para que las tres vistas (casos de uso, clases, secuencia) cuen
 
 ![Secuencia — Registrar Actividad](assets/actividad-3/sec-registrar-actividad-evidencia.svg)
 
-Recorre en orden los dos `include` de EP-03 (sección 2.9): Registrar Actividad → Generar Código
-Verificador, y Adjuntar Evidencia → Validar Evidencia. Ambos se representan como llamadas reflexivas
-(`Act -> Act: ...`) y no con la etiqueta `<<include>>`: esa notación es propia de los diagramas de casos
-de uso (ver `fuentes/audio-clase-2.md`, definición del profesor) y no existe como relación en un
-diagrama de secuencia — usarla ahí aplica la notación fuera de su contexto correcto.
+Recorre el único `include` que queda en EP-03 tras la corrección de la sección 2.9 (Registrar Actividad →
+Generar Código Verificador), representado como llamada reflexiva (`Act -> Act: ...`) y no con la etiqueta
+`<<include>>`: esa notación es propia de los diagramas de casos de uso (ver `fuentes/audio-clase-2.md`,
+definición del profesor) y no existe como relación en un diagrama de secuencia — usarla ahí aplica la
+notación fuera de su contexto correcto (las notas del `.puml` solo referencian el RF/HU en texto plano,
+sin comillas angulares). El diagrama ya mostraba, antes de la corrección, a Adjuntar Evidencia y Validar
+Evidencia como interacciones separadas por un salto temporal explícito (`...tiempo después...`) e
+iniciadas por actores distintos (Funcionario vs. Verificador) — consistente con el `extend` de Solicitar
+Corrección sobre Validar Evidencia fijado en la sección 2.9, y con el objetivo de la épica de separar el
+registro de la decisión de validación (`guia-sgr.md` §12.4).
 
 El diagrama tampoco referencia `ConfiguracionSistema` (Singleton, ver punto 3.1) al validar el formato
 de la evidencia, aunque esa clase sí está documentada en `assets/actividad-3/patron-singleton.puml`
@@ -529,8 +546,8 @@ fechas) y el estado de "fuera de ámbito autorizado" de HU-29 criterio 2.
 | Wireframe | RF/RNF | Épica | HU | CU alto nivel | CU específico |
 |---|---|---|---|---|---|
 | Inicio de Sesión | RF-001, RF-002, RNF-004, RNF-005 | EP-08 | HU-26 | EP-08 Administrar el Sistema | Administrar Delegaciones, Usuarios y Roles (HU-26) |
-| Registrar Actividad con Evidencia | RF-009, RF-010, RF-011, RF-012, RF-014, RF-022, RF-034, RNF-003, RNF-017 | EP-01, EP-03 | HU-01, HU-09, HU-10, HU-23 | EP-01 Registrar y Administrar Actividades; EP-03 Gestionar Evidencias | Registrar Actividad (HU-01) →include→ Generar Código Verificador (HU-10); Adjuntar Evidencia (HU-09) |
-| Validar Evidencia | RF-013, RF-014, RF-036 | EP-03 | HU-11 | EP-03 Gestionar Evidencias | Validar Evidencia (HU-11) |
+| Registrar Actividad con Evidencia | RF-009, RF-010, RF-011, RF-012, RF-014, RF-022, RF-034, RNF-003, RNF-017 | EP-01, EP-03 | HU-01, HU-09, HU-10, HU-23 | EP-01 Registrar y Administrar Actividades; EP-03 Gestionar Evidencias | Registrar Actividad (HU-01) →include→ Generar Código Verificador (HU-10); Registrar Actividad (HU-01) →extend→ Adjuntar Evidencia (HU-09) |
+| Validar Evidencia | RF-013, RF-014, RF-036 | EP-03 | HU-11 | EP-03 Gestionar Evidencias | Validar Evidencia (HU-11) →extend→ Solicitar Corrección (HU-11) |
 | Registrar Compromiso Ciudadano | RF-016 a RF-021 | EP-01 | HU-02 | EP-01 Registrar y Administrar Actividades | Registrar Compromiso Ciudadano (HU-02) |
 | Agenda Colectiva Compartida | RF-016, RF-017, RF-018, RF-036 | EP-04 | HU-12, HU-13 | EP-04 Gestionar Agenda Colectiva | Gestionar Agenda Compartida (HU-12); Actualizar Estado de Compromiso (HU-13) |
 | Mi Avance (panel + semáforo) | RF-008, RF-022 a RF-028 | EP-02, EP-05 | HU-06, HU-07, HU-16 | EP-02 Medir Desempeño; EP-05 Monitorear y Controlar la Gestión | Visualizar Avance (HU-06) →include→ Calcular Cumplimiento Automático (HU-07); Visualizar Semáforo de Cumplimiento (HU-16) |

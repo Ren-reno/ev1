@@ -19,10 +19,15 @@ COORD --> UC4
 
 note bottom of UC1
   UC1 dispara <<include>> hacia
-  "Generar Código Verificador" (HU-10)
-  y "Validar Evidencia" (HU-11),
-  ambos del módulo EP-03.
-  Ver diagrama específico de EP-03.
+  "Generar Código Verificador" (HU-10,
+  RF-011) y es extendido de forma
+  opcional por "Adjuntar Evidencia"
+  (HU-09, RF-012), ambos del módulo
+  EP-03. Ver diagrama específico de
+  EP-03 (corregido tras revisión
+  entre pares: la validación ya no
+  es include de UC1, es un extend
+  aparte sobre "Validar Evidencia").
 end note
 
 @enduml
