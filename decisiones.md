@@ -230,45 +230,52 @@ como ya resueltos, salvo que este archivo se actualice explícitamente para deci
 
 ---
 
-## Nota de consistencia: `ConfiguracionSistema` no aparece en `clases-dominio.puml` ni en el diagrama de secuencia de Registrar Actividad
+## Diagrama de secuencia 4.1 (Registrar Actividad con Evidencia y Validación): rediseñado con objetos de dominio propios y `ConfiguracionSistema` incorporada
 
-**Detectada al revisar el diagrama de secuencia 4.1 (Registrar Actividad con Evidencia y Validación).**
-Una versión anterior de `sec-registrar-actividad-evidencia.puml` traía una nota indicando que la
-validación de formato de evidencia "usa ConfiguracionSistema (RNF-017)", y además usaba la etiqueta
-`<<include>>` para marcar los pasos de Generar Código Verificador y Validar Evidencia. Ambas cosas se
-quitaron del diagrama.
+**Detectada al revisar el diagrama de secuencia 4.1.** Una versión anterior de
+`sec-registrar-actividad-evidencia.puml` traía una nota indicando que la validación de formato de
+evidencia "usa ConfiguracionSistema (RNF-017)", con la etiqueta `<<include>>` presente en ese momento
+en las notas de HU-10 y HU-11 (esa parte de `<<include>>` en texto de nota ya se corrigió por separado,
+ver la nota siguiente sobre EP-03).
 
-**Por qué se quitó `<<include>>`:** esa etiqueta es una relación de casos de uso (ver
-`fuentes/audio-clase-2.md`, definición del profesor), no algo que exista en la notación de un diagrama
-de secuencia. Se reemplazó por llamadas reflexivas (`Act -> Act: generarCodigoVerificador()`), que es
-la forma correcta de representar que un objeto ejecuta su propia operación como parte de otra, dentro
-de las reglas propias de un diagrama de secuencia.
+**Decisión anterior (revertida): se había optado por no incluir `ConfiguracionSistema`.** Una primera
+revisión de este diagrama concluyó que `ConfiguracionSistema` no debía traerse aquí porque el diagrama,
+en ese momento, no modelaba `Evidencia` como participante propio — todo el flujo pasaba por llamadas
+reflexivas de un único objeto `Sistema SGR`, y agregar `ConfiguracionSistema` sin separar antes
+`Evidencia` habría sido inconsistente. Esa nota ya aclaraba, eso sí, que `ConfiguracionSistema` **sí
+existe** como clase documentada, con atributos y métodos, en `assets/actividad-3/patron-singleton.puml`
+(patrón Singleton, sección 3.1 de `actividad-3.md`) — nunca fue una clase inventada, solo no estaba
+traída a este diagrama en particular.
 
-**Por qué se quitó la referencia a `ConfiguracionSistema` — y la aclaración importante sobre esto:**
-`ConfiguracionSistema` **sí existe** como clase documentada, con atributos y métodos, en
-`assets/actividad-3/patron-singleton.puml` (patrón Singleton, sección 3.1 de `actividad-3.md`), donde
-consta explícitamente la relación `Evidencia ..> ConfiguracionSistema : usa (formatos y tamaño
-permitido — RNF-017)`. No es una clase inventada. Lo que sí es cierto es que **no aparece en
-`clases-dominio.puml`** (el diagrama de clases del dominio principal, con las 13 entidades) ni en el
-diagrama de secuencia de Registrar Actividad. Se decide no traerla a este diagrama de secuencia porque
-ahí `Evidencia` no está modelada como participante propio — solo `Funcionario`, `Sistema SGR` y
-`Verificador` —, y agregar `ConfiguracionSistema` exigiría primero separar `Evidencia` como objeto
-independiente, lo que excede el alcance de esa simplificación.
+**Decisión actual: se revierte lo anterior. El diagrama se rediseña con objetos de dominio propios, y
+`ConfiguracionSistema` se incorpora.** En vez de una única caja `Sistema SGR` con llamadas reflexivas
+para todo, el diagrama ahora separa `Actividad`, `Evidencia`, `Validacion` e `Indicador` como
+participantes independientes, mostrando las interacciones reales entre ellos
+(`Sistema -> Act: crear(datos)`, `Evi -> Act: adjuntarEvidencia(e)`, `Val -> Ind: recalcularAvance()`).
+Con `Evidencia` ya como objeto propio, la razón para omitir `ConfiguracionSistema` deja de aplicar: se
+agrega `Evi -> Config: obtenerFormatosYTamanoPermitido() (RNF-017)`, la misma relación ya documentada en
+`patron-singleton.puml` (`Evidencia ..> ConfiguracionSistema : usa (formatos y tamaño permitido —
+RNF-017)`) — este diagrama de secuencia solo la pone en acción en el tiempo, sin introducir ninguna
+clase ni relación nueva.
+
+**Relación con la nota de `include`/`extend` de EP-03 (siguiente en este archivo):** ese rediseño no
+afecta la corrección de las notas HU-10/HU-11 (texto plano, sin `<<include>>`) ya aplicada sobre el
+`.puml` anterior — solo cambia qué participantes existen y qué interacciones se muestran entre ellos.
+Ambas correcciones conviven en la versión final del diagrama.
 
 **Impacto en otros artefactos:**
-- `assets/actividad-3/sec-registrar-actividad-evidencia.puml` y su SVG: actualizados, sin `<<include>>`
-  ni referencia a `ConfiguracionSistema`.
-- `actividad-3.md`, sección 4.1: texto explicativo actualizado para reflejar ambos cambios y su
-  justificación real.
-- `assets/actividad-3/patron-singleton.puml` y `clases-dominio.puml`: **sin cambios**. `ConfiguracionSistema`
-  sigue existiendo solo en el diagrama del patrón Singleton, no en el diagrama de clases del dominio —
-  esto es intencional, no un olvido: no es una entidad del dominio SGR, sino infraestructura de
-  configuración del sistema (HU-25, RNF-013/014/015), por lo que no le corresponde un lugar en
-  `clases-dominio.puml`.
+- `assets/actividad-3/sec-registrar-actividad-evidencia.puml` y su SVG: reemplazados por completo.
+- `actividad-3.md`, sección 4.1: segundo párrafo actualizado para describir el nuevo diagrama (el primer
+  párrafo, sobre el `include` de EP-03, no se toca — pertenece a la nota siguiente).
+- `assets/actividad-3/patron-singleton.puml` y `clases-dominio.puml`: sin cambios — `ConfiguracionSistema`
+  ya estaba correctamente documentada ahí; este diagrama de secuencia solo la reutiliza. Sigue sin
+  aparecer en `clases-dominio.puml` porque no es una entidad del dominio SGR, sino infraestructura de
+  configuración del sistema (HU-25, RNF-013/014/015).
 
 Cualquier integrante o IA que reciba una tarea sobre el diagrama de secuencia de Registrar Actividad, o
-sobre `ConfiguracionSistema` en cualquier otro artefacto, debe asumir esta nota como ya resuelta, salvo
-que este archivo se actualice explícitamente para decir lo contrario.
+sobre `ConfiguracionSistema` en cualquier otro artefacto, debe asumir esta versión (con `Actividad`,
+`Evidencia`, `Validacion`, `Indicador` y `ConfiguracionSistema` como participantes propios) como la
+vigente, salvo que este archivo se actualice explícitamente para decir lo contrario.
 
 ---
 
@@ -318,7 +325,11 @@ EP-07, EP-08 no declaran ninguna relación `include`/`extend`).
   Actividad (UC1) ya no dice que dispara `<<include>>` hacia Validar Evidencia; ahora dice que es
   extendido opcionalmente por Adjuntar Evidencia, con referencia a la corrección de EP-03.
 - `assets/actividad-3/sec-registrar-actividad-evidencia.puml` y su SVG: quitadas (de nuevo) las
-  etiquetas `<<include>>` de las dos notas (HU-10 y HU-11), reemplazadas por texto plano.
+  etiquetas `<<include>>` de las dos notas (HU-10 y HU-11), reemplazadas por texto plano. **Nota:** este
+  mismo archivo fue rediseñado por completo después de esta corrección (ver la nota anterior en este
+  archivo, "Diagrama de secuencia 4.1... rediseñado con objetos de dominio propios..."); las notas
+  `note right:` de HU-10/HU-11 corregidas aquí ya no existen como tales en la versión vigente — el
+  detalle de HU-10/HU-11 quedó implícito en los nombres de los métodos entre los nuevos participantes.
 - `assets/actividad-3/sec-avance-cumplimiento.puml` y su SVG: mismo caso, quitada la etiqueta
   `<<include>>` de la nota de HU-07.
 - `actividad-3.md`: sección 2.9 (tabla de relaciones y párrafo explicativo de la corrección), sección 4.1

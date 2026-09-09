@@ -294,12 +294,13 @@ iniciadas por actores distintos (Funcionario vs. Verificador) — consistente co
 Corrección sobre Validar Evidencia fijado en la sección 2.9, y con el objetivo de la épica de separar el
 registro de la decisión de validación (`guia-sgr.md` §12.4).
 
-El diagrama tampoco referencia `ConfiguracionSistema` (Singleton, ver punto 3.1) al validar el formato
-de la evidencia, aunque esa clase sí está documentada en `assets/actividad-3/patron-singleton.puml`
-(relación `Evidencia ..> ConfiguracionSistema`). Se omite aquí porque este diagrama de secuencia no
-modela `Evidencia` como participante propio — solo `Funcionario`, `Sistema SGR` y `Verificador` —, y
-traer `ConfiguracionSistema` exigiría primero separar `Evidencia` como objeto independiente, lo que
-excede el alcance de esta simplificación (ver nota de consistencia en `decisiones.md`).
+Además, el diagrama modela los objetos de dominio como participantes propios (`Actividad`, `Evidencia`,
+`Validacion`, `Indicador`), no como llamadas reflexivas de un único objeto `Sistema SGR`, para mostrar
+las interacciones reales entre ellos. Sobre esa misma base, incluye `ConfiguracionSistema` (Singleton,
+ver punto 3.1): `Evidencia` la consulta para obtener los formatos y el tamaño máximo permitido al
+recibir un archivo (RNF-017), la misma relación ya documentada en
+`assets/actividad-3/patron-singleton.puml` (`Evidencia ..> ConfiguracionSistema`) — este diagrama de
+secuencia solo la pone en acción en el tiempo (ver nota de consistencia en `decisiones.md`).
 
 ### 4.2 Visualizar Avance y Calcular Cumplimiento
 
