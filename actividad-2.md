@@ -6,8 +6,8 @@
 - [`decisiones.md`](./decisiones.md) — metodología elegida: **Scrum**. Segunda metodología de
   comparación: **Cascada** (categoría estructurada, la que ofrece el contraste técnico más claro
   frente a Scrum para un caso con fases de análisis/diseño/construcción bien identificables). Alcance
-  del proyecto: MVP de 22 HU (ver `decisiones.md` § Alcance del MVP).
-- Actividad 1 → el volumen del backlog del MVP (22 HU de 31, con sus RF/RNF asociados, ver
+  del proyecto: MVP de 23 HU (ver `decisiones.md` § Alcance del MVP).
+- Actividad 1 → el volumen del backlog del MVP (23 HU de 31, con sus RF/RNF asociados, ver
   `decisiones.md` § Alcance del MVP) es evidencia técnica a favor de la metodología elegida: úsalo en
   la sección 1.4 (comparación técnica) en vez de razonar en abstracto sobre "un proyecto típico". Si
   Actividad 1 todavía no cerró sus códigos finales, ese número puede citarse como aproximado, pero debe
@@ -46,7 +46,7 @@ la sección 1, no reemplaza el análisis técnico específico del caso SGR).
 - Equipo de 4 personas
 - Plazo acotado: 9 días para esta etapa, semestre completo como restricción mayor
 - Requerimientos ya definidos por el docente, con margen de ajuste ("bajada")
-- Alcance ya fijado al MVP de `guia-sgr.md` §13.2 (22 HU de 31, ver `decisiones.md` § Alcance del MVP);
+- Alcance ya fijado al MVP de `guia-sgr.md` §13.2 (23 HU de 31, ver `decisiones.md` § Alcance del MVP);
   esto refuerza la necesidad de una metodología que permita entregar valor de forma incremental dentro
   del propio MVP, ya priorizado por sprints en `guia-sgr.md` §13.3
 
@@ -67,7 +67,7 @@ cuales el equipo diseña, construye y prueba un incremento potencialmente utiliz
   margen de ajuste ("bajada"): ese ajuste se absorbe actualizando el backlog, sin necesidad de
   reabrir trabajo ya cerrado.
 - **Artefactos:** Product Backlog, Sprint Backlog e Incremento. Son artefactos que se construyen de
-  forma incremental y verificable, lo que calza directamente con las 22 HU del MVP fijadas en
+  forma incremental y verificable, lo que calza directamente con las 23 HU del MVP fijadas en
   `decisiones.md`: pueden organizarse como un único Product Backlog priorizado, siguiendo la misma
   lógica de la ruta de sprints sugerida en `guia-sgr.md` §13.3 (Sprint 0 a Sprint 4, cada uno con un
   foco funcional distinto).
@@ -134,7 +134,7 @@ inmediato, qué condición real del proyecto (§1.1) inclina la balanza hacia un
   retrabajo y que Scrum absorbe sin fricción.
 - **Artefactos.** Scrum construye Product Backlog, Sprint Backlog e Incremento de forma progresiva;
   Cascada exige especificación, diseño y plan de pruebas extensos antes de escribir una sola línea de
-  código. Las 22 HU del MVP ya vienen secuenciadas por sprint en `guia-sgr.md` §13.3 (Sprint 0 a Sprint
+  código. Las 23 HU del MVP ya vienen secuenciadas por sprint en `guia-sgr.md` §13.3 (Sprint 0 a Sprint
   4): ese plan de origen ya asume artefactos incrementales, no una especificación monolítica previa.
 - **Roles.** Scrum trabaja con un equipo multifuncional donde los roles se combinan o rotan; Cascada
   separa analista, diseñador, programador y tester en fases que no se solapan en el tiempo. Con 4
@@ -198,7 +198,7 @@ vez de fijarse en una sola persona durante todo el proyecto.
 
 | Rol | Perfil | Responsabilidad |
 |---|---|---|
-| Product Owner (rotativo) | En cada sprint, uno de los 4 integrantes asume el rol; se prioriza a quien tenga mayor familiaridad con el bloque funcional de ese sprint (ver `guia-sgr.md` §13.3) | Gestionar y priorizar el Product Backlog (las 22 HU del MVP), resolver dudas de alcance y aceptar o rechazar el incremento al cierre de su sprint |
+| Product Owner (rotativo) | En cada sprint, uno de los 4 integrantes asume el rol; se prioriza a quien tenga mayor familiaridad con el bloque funcional de ese sprint (ver `guia-sgr.md` §13.3) | Gestionar y priorizar el Product Backlog (las 23 HU del MVP), resolver dudas de alcance y aceptar o rechazar el incremento al cierre de su sprint |
 | Scrum Master (rotativo) | En cada sprint, uno de los 4 integrantes distinto de quien ejerce de Product Owner ese mismo sprint | Facilitar las ceremonias Scrum, remover impedimentos del equipo y cuidar que el proceso se cumpla sin sobrecargar a nadie |
 | Equipo de desarrollo | Los 4 integrantes, incluidos quienes ejercen PO o SM ese sprint | Diseñar, construir, probar e integrar las historias asignadas en cada sprint; participar en la estimación de esfuerzo y en las ceremonias |
 

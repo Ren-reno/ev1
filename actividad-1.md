@@ -192,14 +192,20 @@ un artefacto que ya existe y ya está en uso.
 | N.º | Problema descrito en `guia-sgr.md` §1.1 (síntesis propia) | RF/RNF y épica que responde | Qué aportaría cada técnica si se aplicara con los actores reales |
 |---|---|---|---|
 | 1 | Cada delegación define hoy sus propios criterios de configuración (cargos, catálogos, períodos), sin una fuente única que dé visión transversal de la organización. | RF-001 a RF-003, RF-006, RF-007 — EP-01, EP-08 | **Taller:** contrasta en vivo, entre Administrador, Coordinador y Delegados de más de una delegación, qué criterios usa cada una hoy y acuerda el modelo de configuración único que deberían compartir. **Encuesta:** cuantifica, en más delegaciones de las que alcanza una sesión de taller, cuántas usan hoy planillas o criterios propios distintos para el mismo fin. |
-| 2 | No existe un registro consolidado de solicitudes, actividades, compromisos y servicios entregados; cada uno se lleva por separado. | RF-004, RF-009, RF-010, RF-016 a RF-021 — EP-01, EP-04 | **Taller:** mapea junto a los Funcionarios el flujo real de registro actual (qué campos llenan, en qué orden, qué se traspapela) antes de fijar los campos obligatorios de RF-009/RF-010. **Encuesta:** estima cuántos funcionarios usan hoy instrumentos paralelos (planillas, cuadernos, correo) para registrar lo mismo, dato útil para dimensionar la migración de datos. |
+| 2 | No existe un registro consolidado de solicitudes, actividades, compromisos y servicios entregados; cada uno se lleva por separado. | RF-004, RF-009, RF-010, RF-016 a RF-021 — EP-01, EP-04, EP-08 (RF-004 traza únicamente a HU-27/EP-08) | **Taller:** mapea junto a los Funcionarios el flujo real de registro actual (qué campos llenan, en qué orden, qué se traspapela) antes de fijar los campos obligatorios de RF-009/RF-010. **Encuesta:** estima cuántos funcionarios usan hoy instrumentos paralelos (planillas, cuadernos, correo) para registrar lo mismo, dato útil para dimensionar la migración de datos. |
 | 3 | Las tareas, metas y ponderaciones de cada cargo no están formalizadas en una herramienta única. | RF-003, RF-005 a RF-007 — EP-02 | **Taller:** permite que Coordinador y Administrador acuerden cara a cara cómo debe comportarse la regla de ponderación (por ejemplo, qué hacer cuando la suma no cierra en 100 %, RN-001) antes de parametrizarla. **Encuesta:** verifica en más cargos si ya existen criterios de ponderación distintos entre sí, dato que ayuda a decidir cuánta flexibilidad necesita RF-006. |
-| 4 | La jefatura requiere indicadores oportunos para acompañar a los equipos y controlar compromisos, y hoy no los tiene a tiempo. | RF-026 a RF-029, RF-031, RF-033, RF-037 — EP-05, EP-06 | **Taller:** permite que la propia jefatura (Delegado/Coordinador) explique qué indicadores consulta hoy y con qué frecuencia, y valide junto a los Funcionarios qué umbrales de semáforo (RN-006, RN-008) tienen sentido operativo. **Encuesta:** cuantifica, entre más funcionarios, cuántos no saben hoy su avance esperado "al día", lo que valida la urgencia de RF-026/RF-027. |
+| 4 | La jefatura requiere indicadores oportunos para acompañar a los equipos y controlar compromisos, y hoy no los tiene a tiempo. | RF-026 a RF-029, RF-031, RF-033, RF-037 — EP-04, EP-05, EP-06 (RF-037 traza únicamente a HU-14/EP-04 entre las HU P1) | **Taller:** permite que la propia jefatura (Delegado/Coordinador) explique qué indicadores consulta hoy y con qué frecuencia, y valide junto a los Funcionarios qué umbrales de semáforo (RN-006, RN-008) tienen sentido operativo. **Encuesta:** cuantifica, entre más funcionarios, cuántos no saben hoy su avance esperado "al día", lo que valida la urgencia de RF-026/RF-027. |
 | 5 | La evidencia de ejecución de una actividad debe quedar asociada a ella y ser validada, y hoy eso no ocurre de forma sistemática. | RF-011 a RF-014, RNF-017 — EP-03 | **Taller:** permite que Funcionario y Verificador expongan juntos las fricciones actuales de la validación (por ejemplo, qué pasa hoy cuando se rechaza una evidencia), insumo directo para los criterios de aceptación de RF-013/RF-014. **Encuesta:** cuantifica cuántos funcionarios han tenido problemas de formato o tamaño al subir evidencia, dato que dimensiona RNF-017. |
 
-Los cinco problemas cubren, entre todos, las 8 épicas del MVP (`decisiones.md` § Alcance del MVP), lo
-que confirma que ninguna épica quedó sin una razón de negocio real que la sustente — a diferencia de
-la versión anterior de esta sección, donde la priorización dependía de votos de un taller ficticio.
+Los cinco problemas cubren, entre todos, **7 de las 8 épicas** del MVP (`decisiones.md` § Alcance del
+MVP): EP-01 a EP-06 y EP-08. La excepción es **EP-07 (Plataforma colaborativa — HU-23, HU-25)**:
+`guia-sgr.md` §1.1 no registra ningún punto de problemática sobre trabajo simultáneo o adaptación del
+sistema en el tiempo, así que esa épica no puede respaldarse con un problema organizacional real de
+esta lista. Su respaldo viene, en cambio, directamente del objetivo propio de la épica y de la
+redacción de HU-23/HU-25 en `guia-sgr.md` §12.8, que sí trazan a requisitos reales (RF-034, RNF-003,
+RF-038 — ver la derivación completa en la sección 1.4). Se prefirió dejar esto explícito antes que
+forzar una sexta fila con un "problema" no presente en la fuente, lo que habría repetido el error de
+la versión anterior de esta sección, cuando la priorización dependía de votos de un taller ficticio.
 
 **b) Reglas de negocio y parámetros de cálculo (`guia-sgr.md` §6, §7 y §13.1)**
 
@@ -342,7 +348,7 @@ transversales listados arriba se mantienen bajo la etiqueta de completitud del M
 | RF-001 | Administrar delegaciones: crear, editar, activar y desactivar unidades organizacionales. | Alta |
 | RF-002 | Administrar usuarios, roles y su asociación a cargo y delegación. | Alta |
 | RF-003 | Asociar funciones e ítems medibles a cada cargo. | Alta |
-| RF-004 | Mantener el catálogo de tipos de actividad, servicio y atención por área. | Alta |
+| RF-004 | Mantener el catálogo de tipos de actividad, servicio, atención y subatención por área. | Alta |
 | RF-005 | Configurar períodos de medición (inicio, término, días computables, estado). | Alta |
 | RF-006 | Configurar el porcentaje de ponderación de cada ítem por cargo y período. | Alta |
 | RF-007 | Configurar metas, umbral de cumplimiento y reglas del semáforo por ítem. | Alta |
@@ -616,7 +622,7 @@ Dado/Cuando/Entonces.
 - **Criterio 2:** Dado un elemento usado históricamente, cuando se desactiva, entonces no puede seleccionarse en registros nuevos pero se conserva en los antiguos.
 
 **HU-28. Administración de períodos**  
-*Prioridad: P1 &nbsp;|&nbsp; Requisitos relacionados: RF-005*
+*Prioridad: P1 &nbsp;|&nbsp; Requisitos relacionados: RF-005, RN-013*
 > Como Coordinador, quiero crear, abrir y cerrar períodos de medición, para aplicar reglas y fechas consistentes a los cálculos.
 
 - **Criterio 1:** Dado un período nuevo, cuando se configura, entonces la fecha de término no puede ser anterior al inicio y se calculan sus días computables.
@@ -676,6 +682,7 @@ Dado/Cuando/Entonces.
 | HU-14 | T-14.1 | Implementar el servicio que identifica compromisos próximos a vencer y vencidos (RF-019) |
 | HU-14 | T-14.2 | Construir el resumen para el Delegado con los compromisos destacados |
 | HU-14 | T-14.3 | Integrar el resumen con el motor de alertas (RF-037) |
+| HU-14 | T-14.4 | Construir el motor de alertas: reglas de disparo (RF-037) para vencimientos, evidencias pendientes, ausencia de registro y avance bajo el umbral, con su mecanismo de entrega |
 | HU-16 | T-16.1 | Implementar las reglas de semáforo (RN-008) como servicio de dominio |
 | HU-16 | T-16.2 | Construir el componente visual de semáforo en el panel personal |
 | HU-17 | T-17.1 | Calcular la meta esperada al día (RF-026) y su diferencia contra el avance real |
@@ -733,7 +740,7 @@ metodología ya definida en `decisiones.md` (Scrum):
 | T-01.3 | HU-01 | 3 | Formulario con validación en línea de varios campos; depende de T-01.2. |
 | T-02.1 | HU-02 | 2 | Estructura de tabla simple, sin cálculos asociados. |
 | T-02.2 | HU-02 | 5 | Máquina de estados con reglas de transición e historial; mayor incertidumbre. |
-| T-02.3 | HU-02 | 3 | Filtros múltiples, pero patrón reutilizable de T-29.1. |
+| T-02.3 | HU-02 | 3 | Filtros múltiples; el patrón que define aquí es el que T-29.1 reutilizará más adelante (Sprint 4) a nivel global. |
 | T-04.1 | HU-04 | 3 | Modelar vigencia temporal agrega complejidad a una tabla simple. |
 | T-04.2 | HU-04 | 3 | CRUD con reglas de asociación a cargo y período. |
 | T-04.3 | HU-04 | 2 | Formulario administrativo estándar. |
@@ -762,7 +769,8 @@ metodología ya definida en `decisiones.md` (Scrum):
 | T-13.2 | HU-13 | 2 | Componente visual sobre datos ya existentes. |
 | T-14.1 | HU-14 | 3 | Cálculo de fechas y umbrales; complejidad moderada. |
 | T-14.2 | HU-14 | 2 | Presentación sobre datos ya calculados. |
-| T-14.3 | HU-14 | 5 | Depende de un componente aún no construido (motor de alertas); mayor incertidumbre. |
+| T-14.3 | HU-14 | 3 | Depende de T-14.4 (motor de alertas ya definido); ya no hay componente incierto, solo integración. |
+| T-14.4 | HU-14 | 5 | Motor transversal con varias reglas de disparo encadenadas (RF-037); complejidad similar a T-07.1. |
 | T-16.1 | HU-16 | 3 | Reutiliza los cálculos de T-07; agrega solo la clasificación por umbral. |
 | T-16.2 | HU-16 | 2 | Componente de interfaz simple (color según estado). |
 | T-17.1 | HU-17 | 3 | Fórmula adicional sobre lo ya calculado en T-07/T-16. |
@@ -805,7 +813,7 @@ metodología ya definida en `decisiones.md` (Scrum):
 | HU-11 | 11 |
 | HU-12 | 8 |
 | HU-13 | 5 |
-| HU-14 | 10 |
+| HU-14 | 13 |
 | HU-16 | 5 |
 | HU-17 | 6 |
 | HU-18 | 13 |
@@ -817,7 +825,7 @@ metodología ya definida en `decisiones.md` (Scrum):
 | HU-28 | 8 |
 | HU-29 | 6 |
 | HU-30 | 7 |
-| **Total MVP** | **209** |
+| **Total MVP** | **212** |
 
 **Resumen de esfuerzo por épica**
 
@@ -826,14 +834,14 @@ metodología ya definida en `decisiones.md` (Scrum):
 | EP-01 — Registro y gestión de actividades | 26 |
 | EP-02 — Medición y desempeño | 36 |
 | EP-03 — Evidencias y verificación | 25 |
-| EP-04 — Agenda colectiva y compromisos | 23 |
+| EP-04 — Agenda colectiva y compromisos | 26 |
 | EP-05 — Monitoreo y control de gestión | 24 |
 | EP-06 — Reportabilidad y toma de decisiones | 11 |
 | EP-07 — Plataforma colaborativa | 23 |
 | EP-08 — Administración, seguridad y trazabilidad | 41 |
 
 Con un equipo de 4 personas y 4 sprints planificados (ver sección 5), la capacidad
-sugerida es de aproximadamente **52 story points por sprint** (209 SP totales
+sugerida es de **53 story points por sprint** (212 SP totales
 ÷ 4 sprints), cifra que se ajustará con la velocidad real del equipo después del primer sprint.
 
 ---
@@ -851,14 +859,18 @@ posteriores al cierre de esta Actividad 1)
 | Sprint | Objetivo | HU incluidas | Story Points |
 |---|---|---|---|
 | Sprint 1 | Acceso y configuración base | HU-26, HU-27, HU-28 | 28 |
-| Sprint 2 | Registro de actividades y evidencias | HU-01, HU-02, HU-04, HU-09, HU-10, HU-11 | 51 |
-| Sprint 3 | Medición y agenda colectiva | HU-05, HU-06, HU-07, HU-12, HU-13, HU-14 | 59 |
+| Sprint 2 | Registro de actividades y evidencias | HU-01, HU-02, HU-04, HU-09, HU-10 | 40 |
+| Sprint 3 | Medición, validación de evidencias y agenda colectiva | HU-05, HU-06, HU-07, HU-11, HU-12, HU-13, HU-14 | 73 |
 | Sprint 4 | Monitoreo, reportabilidad, colaboración y cierre | HU-16, HU-17, HU-18, HU-20, HU-23, HU-25, HU-29, HU-30 | 71 |
 
-La carga no queda perfectamente pareja entre sprints (28 SP en el Sprint 1 frente a 71 SP en el
-Sprint 4): es esperable, porque HU-26 (autenticación/autorización) debe ir primero al ser
+La carga no queda perfectamente pareja entre sprints (28 SP en el Sprint 1 frente a 73 SP en el
+Sprint 3): es esperable, porque HU-26 (autenticación/autorización) debe ir primero al ser
 dependencia técnica de otras HU (T-12.3, T-20.3, T-29.2), lo que deja el Sprint 1 más liviano y
-concentra HU de monitoreo/reporte/colaboración al final. Se recomienda revisar esta distribución con
+concentra HU de monitoreo/reporte/colaboración al final. Por la misma razón, **HU-11 (Validación de
+actividades) se movió del Sprint 2 al Sprint 3**: su tarea T-11.3 recalcula el avance del ítem al
+aprobar o rechazar evidencia, lo que exige que el motor de cálculo de HU-07 (T-07.1, RF-022/RF-023/
+RF-024) ya exista; en la versión anterior de esta tabla ambas quedaban en sprints distintos con HU-07
+después de HU-11, lo que hacía inviable esa tarea. Se recomienda revisar esta distribución con
 la velocidad real del equipo tras los sprints 1-2, y adelantar HU-29/HU-30 a un sprint anterior si
 sobra capacidad.
 
@@ -875,10 +887,10 @@ sobra capacidad.
 | HU-07 | Cálculo automático de cumplimiento | EP-02 | 16 | Sprint 3 | Por iniciar |
 | HU-09 | Registro de evidencia fotográfica | EP-03 | 8 | Sprint 2 | Por iniciar |
 | HU-10 | Generación de códigos verificadores | EP-03 | 6 | Sprint 2 | Por iniciar |
-| HU-11 | Validación de actividades | EP-03 | 11 | Sprint 2 | Por iniciar |
+| HU-11 | Validación de actividades | EP-03 | 11 | Sprint 3 | Por iniciar |
 | HU-12 | Agenda compartida | EP-04 | 8 | Sprint 3 | Por iniciar |
 | HU-13 | Actualización de estados | EP-04 | 5 | Sprint 3 | Por iniciar |
-| HU-14 | Seguimiento de compromisos | EP-04 | 10 | Sprint 3 | Por iniciar |
+| HU-14 | Seguimiento de compromisos | EP-04 | 13 | Sprint 3 | Por iniciar |
 | HU-16 | Semáforo de cumplimiento | EP-05 | 5 | Sprint 4 | Por iniciar |
 | HU-17 | Comparación entre avance esperado y real | EP-05 | 6 | Sprint 4 | Por iniciar |
 | HU-18 | Resumen ejecutivo | EP-05 | 13 | Sprint 4 | Por iniciar |
@@ -907,8 +919,8 @@ sobra capacidad.
 - [x] Lista de RNF codificados (18 RNF, §2.2)
 - [x] Épicas definidas (8 épicas, §3.1)
 - [x] HU por épica con criterios de aceptación (23 HU, §3.2)
-- [x] Tareas por cada HU (61 tareas, §3.3)
+- [x] Tareas por cada HU (62 tareas, §3.3)
 - [x] Esfuerzo estimado + justificación del criterio (Story Points, §4)
 - [x] Evidencia de tablero (carta Gantt + backlog listo para GitHub Projects, §5)
-- [ ] Códigos finales comunicados a quien trabaje la Actividad 3 — **pendiente del equipo**: avisar
-      especialmente la corrección de 22 → 23 HU antes de iniciar la Actividad 3
+- [x] Códigos finales comunicados a quien trabaje la Actividad 3 — la corrección de 22 → 23 HU ya se
+      propagó a `decisiones.md`, `README.md`, `actividad-2.md` y `actividad-3.md`

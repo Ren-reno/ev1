@@ -7,7 +7,7 @@ Las 3 actividades dependen de las mismas decisiones base (alcance, metodología,
 arranca sin eso definido, las épicas/HU de la Actividad 1 no van a calzar con los diagramas de la Actividad 3.
 
 **Alcance (decisión cerrada, no releer transcripciones antiguas de esto):** el proyecto cubre el
-**MVP de `guia-sgr.md` §13.2** — 22 de las 31 HU (las marcadas P1 en §12), con sus RF/RNF asociados más
+**MVP de `guia-sgr.md` §13.2** — 23 de las 31 HU (las marcadas P1 en §12), con sus RF/RNF asociados más
 los RNF transversales. No se cubre el documento completo. El detalle exacto de qué HU/RF/RNF entran y
 cuáles quedan fuera está en `decisiones.md` § Alcance del MVP — consultarlo antes de escribir cualquier
 lista de RF/RNF/HU para no incluir un ítem fuera de alcance.
@@ -34,7 +34,7 @@ depende o a cuál alimenta — revisar esa cabecera antes de dar por cerrada la 
 
 - **[`actividad-1.md`](./actividad-1.md)** (25%) — Técnicas de requerimientos, RF/RNF, épicas, HU, tareas,
   esfuerzo, planificación. Fuentes: `que-hacer-1-2-3.md` (sección Actividad 1) + secciones de RF/RNF/HU
-  de `guia-sgr.md` que correspondan al **MVP ya fijado en `decisiones.md` § Alcance del MVP** (22 HU,
+  de `guia-sgr.md` que correspondan al **MVP ya fijado en `decisiones.md` § Alcance del MVP** (23 HU,
   no las 31) + `apuntes-cocreacion-patrones.md` (marco teórico de técnicas de cocreación y clasificación
   de RNF, usar solo como respaldo conceptual).
 - **[`actividad-2.md`](./actividad-2.md)** (35%) — Comparación de metodologías, elección justificada
@@ -45,7 +45,7 @@ depende o a cuál alimenta — revisar esa cabecera antes de dar por cerrada la 
 - **[`actividad-3.md`](./actividad-3.md)** (40%, la de mayor peso y riesgo) — Diagramas UML, wireframes,
   matriz de trazabilidad. Fuentes: `que-hacer-1-2-3.md` (sección Actividad 3) + `audio-clase-2.md` (por
   la discrepancia RF/RNF) + los códigos exactos que se cierren en `actividad-1.md` y `actividad-2.md`
-  (recordar: solo las 22 HU del MVP, no las 31). `apuntes-cocreacion-patrones.md` aporta los patrones de
+  (recordar: solo las 23 HU del MVP, no las 31). `apuntes-cocreacion-patrones.md` aporta los patrones de
   diseño GoF (singleton, factory, observer, adapter) a evaluar en el diagrama de clases/componentes.
 
 **Orden de dependencia:** Actividad 1 y Actividad 2 pueden avanzar en paralelo, pero Actividad 3 necesita

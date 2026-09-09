@@ -35,12 +35,20 @@ Actividad 1 ni se diagraman en la Actividad 3.
 | EP-07 | Plataforma colaborativa | HU-23, HU-25 | HU-24 (P2) |
 | EP-08 | Administración, seguridad y trazabilidad | HU-26, HU-27, HU-28, HU-29, HU-30 | HU-31 (P2) |
 
-**Total MVP: 22 HU de 31** (las 22 marcadas P1 en `guia-sgr.md` §12). Quedan fuera del alcance: HU-03,
+**Total MVP: 23 HU de 31** (las 23 marcadas P1 en `guia-sgr.md` §12). Quedan fuera del alcance: HU-03,
 HU-08, HU-15, HU-19, HU-21, HU-22, HU-24 y HU-31 (todas P2 o P3).
+
+> **Corrección de consistencia (detectada al cerrar Actividad 1):** esta línea decía antes "22 HU de
+> 31", pero la tabla de arriba ya sumaba 23 códigos de HU al totalizar las 8 épicas
+> (3+3+3+3+3+1+2+5 = 23) — el "22" era un error aritmético de esta misma sección, no una cifra
+> distinta con otro respaldo. Se corrige aquí para que este archivo, que es la fuente de verdad del
+> alcance del proyecto, no siga contradiciendo a `actividad-1.md` (que ya usa 23 y documenta el
+> hallazgo en su nota de alcance inicial) ni a `actividad-3.md` (que ya lo señalaba como pendiente en
+> su propia nota de consistencia).
 
 ### RF y RNF cubiertos por el MVP
 
-Se incluyen los RF/RNF que sustentan directamente alguna de las 22 HU del MVP (columna "Requisitos
+Se incluyen los RF/RNF que sustentan directamente alguna de las 23 HU del MVP (columna "Requisitos
 relacionados" de cada HU en `guia-sgr.md` §12.2 a §12.9):
 
 - **RF incluidos:** RF-001 a RF-014, RF-016 a RF-029, RF-031 a RF-033, RF-036, RF-037, RF-038.
@@ -64,14 +72,14 @@ la sección 1.4, en vez de forzar una conexión artificial que no está en el do
 ### Nota para no confundir dos usos distintos de la palabra "MVP" en este proyecto
 
 1. *MVP como recorte de alcance de requerimientos* (esta decisión) → aplica: la Actividad 1 documenta
-   únicamente las 22 HU P1 y los RF/RNF que las sustentan, no el documento completo de `guia-sgr.md`.
+   únicamente las 23 HU P1 y los RF/RNF que las sustentan, no el documento completo de `guia-sgr.md`.
 2. *MVP como entrega funcional demostrable al final del curso* (mencionado en `fuentes/audio-clase-1.md`,
    por la dinámica de "licitación" entre grupos, y en `actividad-2.md` §1.1) → es un concepto relacionado
-   pero no idéntico: incluso dentro de las 22 HU del MVP de alcance, la entrega de software puede
+   pero no idéntico: incluso dentro de las 23 HU del MVP de alcance, la entrega de software puede
    priorizarse de forma incremental dentro de los sprints (ver `guia-sgr.md` §13.3, ruta sugerida de
    desarrollo).
 
-Cualquier IA o integrante que reciba una tarea de este proyecto debe asumir este alcance (22 HU P1, no
+Cualquier IA o integrante que reciba una tarea de este proyecto debe asumir este alcance (23 HU P1, no
 el documento completo), salvo que este archivo se actualice explícitamente para decir lo contrario.
 
 ---

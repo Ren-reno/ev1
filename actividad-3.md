@@ -4,19 +4,19 @@
 
 **Depende de:**
 - [`decisiones.md`](./decisiones.md) — códigos originales de `guia-sgr.md`, sin renumerar. Alcance:
-  MVP de 22 HU (ver `decisiones.md` § Alcance del MVP) — los diagramas de esta actividad representan
-  únicamente esas 22 HU y sus RF/RNF asociados, no el documento completo.
+  MVP de 23 HU (ver `decisiones.md` § Alcance del MVP) — los diagramas de esta actividad representan
+  únicamente esas 23 HU y sus RF/RNF asociados, no el documento completo.
 - Actividad 1 → épicas, HU y códigos RF/RNF finales (no usar un subconjunto distinto al ya cerrado ahí,
   ni volver a ampliar al documento completo).
 - Actividad 2 → recursos de hardware/software mínimos y óptimos (deben coincidir con el diagrama de
   despliegue de este documento).
 
-**Nota de consistencia (detectada al trabajar los puntos 1 y 2):** `decisiones.md` indica "22 HU" en su
-línea de total, pero su propia tabla — igual que `actividad-1.md` §3.1 ("Total HU incluidas en el MVP:
-23 de 31") — lista 23 códigos HU al sumar las 8 épicas. Los diagramas de esta actividad siguen los 23
-códigos efectivamente cerrados en Actividad 1 (el listado por épica es idéntico en ambos documentos,
-solo cambia la cifra del total). Conviene que el equipo corrija esa línea en `decisiones.md` para que no
-quede ambigua de cara a la entrega.
+**Nota de consistencia (detectada al trabajar los puntos 1 y 2; corregida en origen):** `decisiones.md`
+indicaba "22 HU" en su línea de total, pero su propia tabla — igual que `actividad-1.md` §3.1 ("Total
+HU incluidas en el MVP: 23 de 31") — ya sumaba 23 códigos HU al totalizar las 8 épicas. Los diagramas
+de esta actividad siguen los 23 códigos efectivamente cerrados en Actividad 1 (el listado por épica es
+idéntico en ambos documentos). `decisiones.md` ya fue corregido a "23 HU de 31" para que no quede
+ambigua de cara a la entrega.
 
 **Fuentes a consultar:** `fuentes/que-hacer-1-2-3.md` (sección Actividad 3, la más detallada),
 `fuentes/audio-clase-2.md` (aclaraciones técnicas de include/extend y la discrepancia RF/RNF en la
@@ -154,7 +154,7 @@ de las HU del MVP.
 >   (ej. autenticación con directorio institucional — ver RNF-004).
 >
 > No es obligatorio forzar los 4 patrones: se documenta solo el o los que tengan un caso de uso real y
-> justificable dentro de las 22 HU del MVP, indicando en el diagrama qué clase(s) lo implementan.
+> justificable dentro de las 23 HU del MVP, indicando en el diagrama qué clase(s) lo implementan.
 
 ![Diagrama de Clases — Dominio](assets/actividad-3/clases-dominio.svg)
 
